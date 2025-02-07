@@ -1,0 +1,33 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Signals.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
+             x:DataType="vm:HoldingsPageViewModel"
+             x:Class="Signals.Views.HoldingsPageView">
+
+    <Design.DataContext>
+        <vm:HoldingsPageViewModel />
+    </Design.DataContext>
+    
+    <StackPanel Margin="5">
+        <!-- Header -->
+        <controls:StocklistHeader></controls:StocklistHeader>
+
+        <ItemsControl ItemsSource="{Binding Holdings}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <controls:StockItemHeader
+                        Symbol="{Binding Symbol}"
+                        Name="{Binding Name}"
+                        ColourByTrend="{Binding ColourByTrend}"
+                        LatestQuotedPrice="{Binding LatestQuotedPrice}"
+                        WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                        CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

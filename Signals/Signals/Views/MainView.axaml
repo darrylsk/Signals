@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
+             x:Class="Signals.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons -->
+
+
+    <Grid RowDefinitions="Auto, *, Auto" Margin="20">
+        <!-- Top Bar: Contains App Title and subtitle -->
+        <StackPanel Grid.Row="0">
+            <TextBlock Classes="title" Text="{Binding Title}" />
+            <TextBlock Classes="subtitle" Text="{Binding Subtitle}" />
+            <Border Classes="page-title">
+                <TextBlock Classes="page-title" Text="{Binding PageTitle}" />
+            </Border>
+        </StackPanel>
+
+        <!-- Main part -->
+        <Border Grid.Row="1" Background="{DynamicResource MainSectionBackground}">
+            <StackPanel Grid.Row="1">
+                <ContentControl Content="{Binding CurrentPage}"
+                                Foreground="{DynamicResource PrimaryForeground}"
+                                VerticalAlignment="Stretch">
+                </ContentControl>
+            </StackPanel>
+        </Border>
+
+        <!-- Bottom Bar -->
+        <Border Grid.Row="2" CornerRadius="0,0,10,10" Background="Black">
+            <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
+                <!-- Navigation Buttons -->
+                <StackPanel Orientation="Horizontal">
+                    <Button Classes="main-navigation" Command="{Binding GoToHomeCommand}">
+                        <StackPanel>
+                            <Label Classes="icon" Content="&#xe2c6;">
+                            </Label>
+                            <Label Content="Home"></Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="main-navigation" Command="{Binding GoToWatchlistCommand}">
+                        <StackPanel>
+                            <Label Classes="icon" Content="&#xe220;">
+                            </Label>
+                            <Label Content="Watchlist"></Label>
+                        </StackPanel>
+                    </Button>
+                    <Button Classes="main-navigation" Command="{Binding GoToHoldingsCommand}">
+                        <StackPanel>
+                            <Label Classes="icon" Content="&#xea8c;"></Label>
+                            <Label Content="Holdings"></Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <!-- Settings Button -->
+                    <Button Classes="main-navigation" Background="Transparent" Command="{Binding GoToSettingsCommand}">
+                        <StackPanel>
+                            <Label Classes="icon" Content="&#xe272;"></Label>
+                            <Label Content="Settings"></Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+
+</UserControl>

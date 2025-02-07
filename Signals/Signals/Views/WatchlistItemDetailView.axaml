@@ -1,0 +1,39 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Signals.Controls"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:data="clr-namespace:Signals.Data"
+             x:Class="Signals.Views.WatchlistItemDetailView"
+             x:DataType="vm:WatchlistItemDetailViewModel">
+
+    <Design.DataContext>
+        <vm:WatchlistItemDetailViewModel />
+    </Design.DataContext>
+
+    <StackPanel>
+        <ContentControl Content="{Binding WatchlistItem}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate DataType="data:WatchlistItem">
+                    <controls:StockItemDetail 
+                        Symbol="{Binding Symbol}"
+                        Name="{Binding Name}"
+                        ExchangeName="{Binding ExchangeName}"
+                        LatestQuotedPrice="{Binding LatestQuotedPrice}"
+                        WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                        PreviousDayClosingPrice="{Binding PreviousDayClosingPrice}"
+                        CurrentDayOpeningPrice="{Binding CurrentDayOpeningPrice}"
+                        CurrentDayHighPrice="{Binding CurrentDayHighPrice}"
+                        CurrentDayLowPrice="{Binding CurrentDayLowPrice}"
+                        CurrentDayPercentChange="{Binding CurrentDayPercentChange}"
+                        />
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+    </StackPanel>
+
+
+
+</UserControl>

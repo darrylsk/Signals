@@ -1,0 +1,48 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Signals.Controls">
+    <Design.PreviewWith>
+        <controls:StockItemHeader />
+    </Design.PreviewWith>
+
+    <!-- This theme styles the Templated Control StocklistItem identified by 
+         the selector below.  The selector doubles as a type identifier
+         and provides strong typing and intellisense.
+          -->
+
+    <Style Selector="controls|StockItemHeader">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Classes="item-border">
+                    <StackPanel>
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *, Auto">
+                            <StackPanel Grid.Row="0" Grid.Column="0" Width="80">
+                                <TextBlock Text="{TemplateBinding Symbol}"
+                                           Foreground="{TemplateBinding ColourByTrend}" Classes="item-heading" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text="{TemplateBinding Name}" Classes="item-heading" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="0">
+                                <TextBlock
+                                    Text="{Binding LatestQuotedPrice, 
+                                        RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:C}}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1">
+                                <TextBlock
+                                    Text="{Binding WhenLatestQuoteReceived, 
+                                        RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2">
+                                <TextBlock
+                                    Text="{Binding CurrentDayPercentChange,
+                                         RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:#0.0%}}" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

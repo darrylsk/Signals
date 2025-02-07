@@ -1,0 +1,19 @@
+Finn Hub
+-------------------------------------
+Token: brhr5qvrh5r807v5jimg
+Base URL: https://finnhub.io/api/v1/
+
+Symbol Lookup Query
+-------------------
+method: search
+curl "https://finnhub.io/api/v1/search?q=nvidia&exchange=US&token=brhr5qvrh5r807v5jimg"
+
+Price Quote Query
+-----------------
+method: quote
+curl "https://finnhub.io/api/v1/quote?symbol=NVDA&token=brhr5qvrh5r807v5jimg"
+
+Company Profile Query
+---------------------
+method: profile2
+curl "https://finnhub.io/api/v1/stock/profile2?symbol=NVDA&token=brhr5qvrh5r807v5jimg"

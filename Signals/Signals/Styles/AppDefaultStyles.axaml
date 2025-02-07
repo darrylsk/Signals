@@ -1,0 +1,139 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Label Classes="icon" Content="&#xea8c;"></Label>
+                    <Label Content="Holdings"></Label>
+                </StackPanel>
+            </Button>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here 
+    .......................................................................................................... 
+    Note: Using icon fonts from https://phosphoricons.com/ for certain icons 
+    "Phosphor is a passion project by Helena Zhang and Tobias Fried.  It’s used by companies and creatives like 
+    AllTrails, Anthropic, Babbel, Figma Academy, Framer, Khan Academy, Pablo Stanley, Qatalog, reMarkable, 
+    Spacedrive, Stash, and Threads. Phosphor is free and open-source, licensed under MIT. If you enjoy these 
+    icons, please support us with a donation."
+    
+    Also downloaded and imported Nunito and NotoSansJP fonts from Google fonts, to try it out
+    
+    Fonts are installed by copying the .ttf files into the /Assets/Fonts folder, and ensuring that the Build 
+    Action property of each file is set to "Avalonia Resource".
+    .......................................................................................................... 
+    -->
+
+    <Style Selector="Window">
+        <Setter Property="FontFamily" Value="{DynamicResource  DefaultFontFamily}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource WindowBackground}"></Setter>
+    </Style>
+
+    <Style Selector="Label.icon">
+        <Setter Property="FontFamily" Value="{DynamicResource Phosphor}"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="Label.heading">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock">
+        <Setter Property="Padding" Value="5,5,5,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.title">
+        <Setter Property="FontSize" Value="36"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.subtitle">
+        <Setter Property="Margin" Value="0, -20, 20, 10"></Setter>
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+    </Style>
+    
+    <Style Selector="TextBlock.page-title">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+    </Style>
+    <Style Selector="Border.page-title">
+        <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="CornerRadius" Value="10, 10, 0, 0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.item-heading">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.icon">
+        <Setter Property="FontFamily" Value="{DynamicResource Phosphor}"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.price">
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+    </Style>
+
+    <Style Selector="Button">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="CornerRadius" Value="15"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"></Setter>
+    </Style>
+
+    <Style Selector="Button /template/ ContentPresenter">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Foreground" Duration="0:0:0.5"></BrushTransition>
+                <BrushTransition Property="Background" Duration="0:0:0.5"></BrushTransition>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"></TransformOperationsTransition>
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryHoverBackground}"></Setter>
+    </Style>
+
+    <Style Selector="Button.main-navigation">
+        <Setter Property="Background" Value="Transparent"></Setter>
+    </Style>
+
+    <Style Selector="Button.main-navigation:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="RenderTransform" Value="scale(1.2)"></Setter>
+    </Style>
+
+    <Style Selector="Border.item-border">
+        <Setter Property="BorderBrush" Value="{DynamicResource ItemBorder}"></Setter>
+        <Setter Property="BorderThickness" Value="0, 0, 0, 1"></Setter>
+        <Setter Property="Padding" Value="0,0,0,5"></Setter>
+    </Style>
+    
+    <Style Selector="Border.heading">
+        <Setter Property="Background" Value="LightGray"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
+    </Style>
+
+    <Style Selector="Grid.heading">
+        <Setter Property="Background" Value="LightGray"></Setter>
+    </Style>
+    
+    <!--<Style Selector="Grid">
+        <Setter Property="ShowGridLines" Value="True"></Setter>
+    </Style>-->
+
+</Styles>
