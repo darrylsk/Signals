@@ -16,11 +16,17 @@ public class PageFactory
     }
 
     public PageViewModel GetPageViewModel(PageNames pageName) => _pageFactory.Invoke(pageName);
+}
 
-    public PageFactory(Func<PageNames, string, PageViewModel> pageFactory)
+public class PageFactory<T>
+{
+    private readonly Func<PageNames, Action<T>, PageViewModel> _pageFactory;
+
+    public PageFactory(Func<PageNames, Action<T>, PageViewModel> pageFactory)
     {
-        _pageFactory2 = pageFactory;
+        _pageFactory = pageFactory;
     }
-    public PageViewModel GetPageViewModel(PageNames pageName, string id) => _pageFactory2.Invoke(pageName, "null");
-
+    
+    public PageViewModel GetPageViewModel(PageNames pageName, Action<T> action) =>
+        _pageFactory.Invoke(pageName, action);
 }
