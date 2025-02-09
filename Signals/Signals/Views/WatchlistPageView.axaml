@@ -15,17 +15,23 @@
     <StackPanel Margin="5">
         <!-- Header -->
         <controls:StocklistHeader></controls:StocklistHeader>
-<Button Content="Clicky"
+        
+        <!-- Button with ordinary Binding clause - Works! -->
+<Button Content="This One Works"
     Command="{Binding Path=GoToWatchlistDetailCommand}"
     CommandParameter="NVDA"
     />
-        <!--
+<Button Content="This One Does Not Work"
+    Command="{Binding RelativeSource={RelativeSource  AncestorType=vm:MainViewModel}, 
+    Path=GoToWatchlistDetailCommand}"
+    CommandParameter="NVDA"
+    />
         <ItemsControl ItemsSource="{Binding Watchlist}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    ~1~
-                    The templated control is not as intuitive as it seems.  
-                    @1@
+                    <!--
+                    A button inside an ItemsControl also does not work.  
+                    -->
                     <controls:StockItemHeader
                         Command="{Binding RelativeSource={RelativeSource  AncestorType=vm:MainViewModel},
                             Path=GoToWatchlistDetailCommand}"
@@ -40,6 +46,5 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    -->
     </StackPanel>
 </UserControl>
