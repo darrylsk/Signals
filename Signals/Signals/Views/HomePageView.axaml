@@ -6,6 +6,18 @@
              xmlns:vm="clr-namespace:Signals.ViewModels"
              x:DataType="vm:HomePageViewModel"
              x:Class="Signals.Views.HomePageView">
-    
-    <Label Content="{Binding PageSubtitle}"></Label>
+
+	<StackPanel>
+		<Label Content="{Binding PageSubtitle}"></Label>
+
+		<Label Content="Application Data Folder"></Label>
+		<TextBlock Text="{Binding ApplicationDataFolderName}"/>
+
+		<Label Content="Local Application Data Folder"></Label>
+		<TextBlock Text="{Binding ApplicationLocalDataFolderName}"/>
+
+		<Label Content="Common Application Data Folder"></Label>
+		<TextBlock Text="{Binding ApplicationCommonDataFolderName}"/>
+	</StackPanel>
+	
 </UserControl>

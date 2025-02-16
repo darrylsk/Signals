@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Signals.ApplicationLayer.Abstract;
-using Signals.Data;
+using Signals.ApplicationLayer.Services.Base;
+using Signals.CoreLayer.Abstract;
+using Signals.CoreLayer.Entities;
 
 namespace Signals.ApplicationLayer.Services;
 
-public class WatchlistService : IWatchlistService
+public class WatchlistService : BusinessService<WatchlistItem>, IWatchlistService
 {
+    public IWatchlistItemRepository Repository { get; }
+
+    public WatchlistService(IWatchlistItemRepository repository): base(repository)
+    {
+        Repository = repository;
+    }
     public async Task<IEnumerable<WatchlistItem>> GetAll()
     {
+        // return await Repository.GetAllAsync();
+        
         return await Task.FromResult(new List<WatchlistItem>()
             {
                 new("NVDA", "NYSE", "Nvidia", "USD"),
@@ -22,12 +32,12 @@ public class WatchlistService : IWatchlistService
 
     public Task<WatchlistItem> GetById(Guid id)
     {
-        throw new NotImplementedException();
+        return Repository.GetByIdAsync(id);
     }
 
     public Task<int> Add(WatchlistItem model)
     {
-        throw new NotImplementedException();
+        return Repository.AddAsync(model);
     }
 
     public Task<int> Update(WatchlistItem model)

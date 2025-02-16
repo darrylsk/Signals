@@ -3,4 +3,4 @@ using Signals.CoreLayer.Entities;
 
 namespace Signals.CoreLayer.Abstract;
 
-public interface IWatchlistItemRepository : IRepository<WatchlistItem>{}
+public interface ISettingsRepository : ISegregatedPartialRepository<Settings>{}

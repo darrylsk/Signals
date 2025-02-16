@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Signals.ApplicationLayer.Abstract;
-using Signals.Data;
+using Signals.CoreLayer.Entities;
 
 namespace Signals.ApplicationLayer.Services;
 

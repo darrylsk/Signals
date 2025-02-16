@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Signals.ApplicationLayer.Abstract;
-using Signals.Data;
+using Signals.CoreLayer.Entities;
 
 namespace Signals.ViewModels;
 
