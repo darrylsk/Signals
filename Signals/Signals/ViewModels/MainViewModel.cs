@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Signals.Data;
+using Signals.CoreLayer.Entities;
 using Signals.Factories;
 
-namespace Signals.ViewModels; 
+namespace Signals.ViewModels;
 
 public partial class MainViewModel : ViewModelBase //PageViewModel
 {
@@ -32,8 +32,9 @@ public partial class MainViewModel : ViewModelBase //PageViewModel
     /// </summary>
     public MainViewModel()
     {
-        CurrentPage = new HomePageViewModel();
+        CurrentPage = _pageFactory.GetPageViewModel(PageNames.Home);
     }
+
     public MainViewModel(PageFactory pageFactory) : base()
     {
         _pageFactory = pageFactory;

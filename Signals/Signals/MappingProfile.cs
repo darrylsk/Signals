@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Signals.Data;
+using Signals.CoreLayer.Entities;
 using Signals.ViewModels;
 
 namespace Signals;

@@ -6,8 +6,12 @@ using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using Signals.ApplicationLayer.Abstract;
 using Signals.ApplicationLayer.Services;
-using Signals.Data;
+using Signals.CoreLayer.Abstract;
+using Signals.CoreLayer.Entities;
 using Signals.Factories;
+using Signals.InfrastructureLayer.Abstract;
+using Signals.InfrastructureLayer.FileService;
+using Signals.InfrastructureLayer.Repository;
 using Signals.ViewModels;
 using Signals.Views;
 using PageViewModel = Signals.ViewModels.PageViewModel;
@@ -31,6 +35,14 @@ public partial class App : Application
         services.AddTransient<SettingsPageViewModel>();
         services.AddTransient<WatchlistItemDetailViewModel>();
         services.AddTransient<IWatchlistService, WatchlistService>();
+        services.AddTransient<IHoldingService, HoldingService>();
+        
+        services.AddTransient<IFileService, FileService>();
+        services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
+        services.AddTransient<IHoldingRepository, HoldingRepository>();
+        services.AddTransient<ISettingsRepository, SettingsRepository>();
+
+        services.AddSingleton<ISignalsDbContext, SignalsContext>();
 
         services.AddSingleton<Func<PageNames, PageViewModel>>( x => name
             => name switch

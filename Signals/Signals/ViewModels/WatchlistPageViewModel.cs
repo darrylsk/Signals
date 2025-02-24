@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel.__Internals;
 using CommunityToolkit.Mvvm.Input;
 using Signals.ApplicationLayer.Abstract;
-using Signals.Data;
+using Signals.CoreLayer.Entities;
 using Signals.Factories;
 
 namespace Signals.ViewModels;

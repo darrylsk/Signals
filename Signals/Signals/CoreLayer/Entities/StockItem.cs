@@ -1,13 +1,13 @@
 ﻿using System;
 using Signals.CoreLayer.Entities.Base;
 
-namespace Signals.Data;
+namespace Signals.CoreLayer.Entities;
 
-public class StockItem: Entity
+public class StockItem : Entity
 {
     public StockItem()
     {
-        
+
     }
     protected StockItem(string symbol, string exchange, string name, string currency)
     {

@@ -1,4 +1,4 @@
-﻿using Signals.Data;
+﻿using Signals.CoreLayer.Entities;
 
 namespace Signals.ApplicationLayer.Abstract;
 

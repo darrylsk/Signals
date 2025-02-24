@@ -1,4 +1,4 @@
-﻿namespace Signals.Data;
+﻿namespace Signals.Constants;
 
 public enum PageNames
 {
@@ -8,5 +8,5 @@ public enum PageNames
     Watchlist,
     WatchlistItemDetail,
     Holdings,
-    Settings,
+    Settings
 }

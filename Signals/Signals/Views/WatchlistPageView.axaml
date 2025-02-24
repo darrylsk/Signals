@@ -15,34 +15,43 @@
     <StackPanel Margin="5">
         <!-- Header -->
         <controls:StocklistHeader></controls:StocklistHeader>
-        
+
         <!-- Button with ordinary Binding clause - Works! -->
-<Button Content="This One Works"
-    Command="{Binding Path=GoToWatchlistDetailCommand}"
-    CommandParameter="NVDA"
-    />
-<Button Content="This One Does Not Work"
-    Command="{Binding RelativeSource={RelativeSource  AncestorType=vm:MainViewModel}, 
-    Path=GoToWatchlistDetailCommand}"
-    CommandParameter="NVDA"
-    />
+        <Button Foreground="LightBlue" Background="Black" 
+            Content="This One Works"
+                Command="{Binding Path=GoToWatchlistDetailCommand}"
+                CommandParameter="NVDA" />
+        <Button Foreground="LightBlue" Background="Black" IsVisible="True"
+                Content="This One Does Not Work"
+                Command="{Binding RelativeSource={RelativeSource  AncestorType=vm:MainViewModel}, 
+                Path=GoToWatchlistDetailCommand}"
+                CommandParameter="NVDA" />
         <ItemsControl ItemsSource="{Binding Watchlist}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <!--
                     A button inside an ItemsControl also does not work.  
-                    -->
-                    <controls:StockItemHeader
                         Command="{Binding RelativeSource={RelativeSource  AncestorType=vm:MainViewModel},
                             Path=GoToWatchlistDetailCommand}"
-                        CommandParameter="{Binding Symbol}"
-                        Symbol="{Binding Symbol}"
-                        Name="{Binding Name}"
-                        ColourByTrend="{Binding ColourByTrend}"
-                        LatestQuotedPrice="{Binding LatestQuotedPrice}"
-                        WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
-                        CurrentDayPercentChange="{Binding CurrentDayPercentChange}"
-                        />
+                    -->
+                    <StackPanel>
+                        <Button
+                            HorizontalAlignment="Stretch"
+                            Background="White"
+                            Content="{Binding Symbol}"
+                            Command="{Binding $parent[controls:StocklistHeader].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+                            CommandParameter="{Binding Symbol}"
+                            ></Button>
+                        <controls:StockItemHeader
+                            Command="{Binding $parent[controls:StockItemHeader].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+                            CommandParameter="{Binding Symbol}"
+                            Symbol="{Binding Symbol}"
+                            Name="{Binding Name}"
+                            ColourByTrend="{Binding ColourByTrend}"
+                            LatestQuotedPrice="{Binding LatestQuotedPrice}"
+                            WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                            CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
+                    </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
