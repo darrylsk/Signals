@@ -14,7 +14,7 @@
     
     <StackPanel>
         <Label Content="Symbol"></Label>
-        <TextBox CharacterCasing="Upper" Text="{Binding Symbol}"></TextBox>
+        <TextBox Text="{Binding Symbol}"></TextBox>
         <Button Content="Save" Command="{Binding AddSymbolCommand}"
                 IsEnabled="{Binding SaveIsEnabled}"></Button>
     </StackPanel>
