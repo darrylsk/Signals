@@ -7,6 +7,7 @@ public enum PageNames
     Home,
     Watchlist,
     WatchlistItemDetail,
+    AddItem,
     Holdings,
     Settings,
 }

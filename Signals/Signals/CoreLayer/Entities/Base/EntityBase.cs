@@ -1,7 +1,10 @@
-﻿namespace Signals.CoreLayer.Entities.Base;
+﻿using SQLite;
+
+namespace Signals.CoreLayer.Entities.Base;
 
 public abstract class EntityBase<TId> : IEntityBase<TId>
 {
+    [PrimaryKey]
     public virtual TId Id { get; protected set; }
 
     int? _requestedHashCode;

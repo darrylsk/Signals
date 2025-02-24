@@ -22,7 +22,17 @@ public class HoldingService : IHoldingService
         throw new NotImplementedException();
     }
 
+    public async Task<Holding> GetBySymbol(string symbol)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<int> Add(Holding model)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<int> AddSymbol(string symbol)
     {
         throw new NotImplementedException();
     }

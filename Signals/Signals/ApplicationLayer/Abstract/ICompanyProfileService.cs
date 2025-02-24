@@ -2,4 +2,4 @@
 
 namespace Signals.ApplicationLayer.Abstract;
 
-public interface IHoldingService : IStockItemService<Holding>{}
+public interface ICompanyProfileService : IBusinessService<CompanyProfile>{}

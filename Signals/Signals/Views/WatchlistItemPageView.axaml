@@ -6,11 +6,11 @@
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
              xmlns:entities="clr-namespace:Signals.CoreLayer.Entities"
-             x:Class="Signals.Views.WatchlistItemDetailView"
-             x:DataType="vm:WatchlistItemDetailViewModel">
+             x:Class="Signals.Views.WatchlistItemPageView"
+             x:DataType="vm:WatchlistItemPageViewModel">
 
     <Design.DataContext>
-        <vm:WatchlistItemDetailViewModel />
+        <vm:WatchlistItemPageViewModel />
     </Design.DataContext>
 
     <StackPanel>

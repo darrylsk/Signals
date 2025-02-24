@@ -1,0 +1,21 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:controls="clr-namespace:Signals.Controls"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
+             x:DataType="vm:AddItemViewModel"
+             x:Class="Signals.Views.AddItemView">
+    
+    <Design.DataContext>
+        <vm:AddItemViewModel />
+    </Design.DataContext> 
+    
+    <StackPanel>
+        <Label Content="Symbol"></Label>
+        <TextBox Text="{Binding Symbol}"></TextBox>
+        <Button Content="Save" Command="{Binding AddSymbolCommand}"
+                IsEnabled="{Binding SaveIsEnabled}"></Button>
+    </StackPanel>
+</UserControl>
