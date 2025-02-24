@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Security.AccessControl;
 using System.Threading.Tasks;
+using Signals.InfrastructureLayer.Abstract;
 
 namespace Signals.CoreLayer.Abstract.Base;
 

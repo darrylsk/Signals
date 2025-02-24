@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Signals.Views;
 
-public partial class WatchlistItemDetailView : UserControl
+public partial class AddItemView : UserControl
 {
-    public WatchlistItemDetailView()
+    public AddItemView()
     {
         InitializeComponent();
     }

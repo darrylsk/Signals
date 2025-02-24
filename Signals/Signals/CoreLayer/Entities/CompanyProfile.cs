@@ -1,0 +1,18 @@
+﻿using System;
+
+namespace Signals.CoreLayer.Entities;
+
+public class CompanyProfile
+{
+    public string Country { get; set; }
+    public string Currency { get; set; }
+    public string Exchange { get; set; }
+    public string Name { get; set; }
+    public string Symbol { get; set; }
+    public DateTime IopDate { get; set; }
+    public decimal MarketCapitalization { get; set; }
+    public decimal SharesOutstanding { get; set; }
+    public string Logo { get; set; }
+    public string WebUrl { get; set; }
+    public string Industry { get; set; }
+}

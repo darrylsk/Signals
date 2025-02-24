@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Signals.CoreLayer.Abstract.Base;
+namespace Signals.InfrastructureLayer.Abstract;
 
 public interface IQuotationService<T1,T2>
 {
@@ -8,6 +8,11 @@ public interface IQuotationService<T1,T2>
     /// The quotation service requires authentication via some kind of token in order to access it.
     /// </summary>
     public bool RequiresKey { get; set; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool ServiceSuspended { get; set; }
     
     /// <summary>
     /// Retrieve the latest quote for a given ticker symbol.

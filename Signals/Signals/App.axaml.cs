@@ -11,6 +11,9 @@ using Signals.CoreLayer.Entities;
 using Signals.Factories;
 using Signals.InfrastructureLayer.Abstract;
 using Signals.InfrastructureLayer.FileService;
+using Signals.InfrastructureLayer.QuotationService;
+using Signals.InfrastructureLayer.QuotationService.FinnhubQuotationService;
+using Signals.InfrastructureLayer.QuotationService.TiingoQuotationService;
 using Signals.InfrastructureLayer.Repository;
 using Signals.ViewModels;
 using Signals.Views;
@@ -29,14 +32,19 @@ public partial class App : Application
     {
         var services = new ServiceCollection();
         services.AddSingleton<MainViewModel>();
+        
         services.AddTransient<HomePageViewModel>();
-        services.AddTransient<WatchlistPageViewModel>();
         services.AddTransient<HoldingsPageViewModel>();
         services.AddTransient<SettingsPageViewModel>();
-        services.AddTransient<WatchlistItemDetailViewModel>();
+        services.AddTransient<WatchlistPageViewModel>();
+        services.AddTransient<WatchlistItemPageViewModel>();
+        services.AddTransient<AddItemViewModel>();
+
         services.AddTransient<IWatchlistService, WatchlistService>();
         services.AddTransient<IHoldingService, HoldingService>();
-        
+        services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
+        services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
+        services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
         services.AddTransient<IFileService, FileService>();
         services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
         services.AddTransient<IHoldingRepository, HoldingRepository>();
@@ -44,21 +52,23 @@ public partial class App : Application
 
         services.AddSingleton<ISignalsDbContext, SignalsContext>();
 
-        services.AddSingleton<Func<PageNames, PageViewModel>>( x => name
-            => name switch
+        services.AddSingleton<Func<Type, PageViewModel>>( x => type
+            => type switch
         {
-            PageNames.Home => x.GetRequiredService<HomePageViewModel>(),
-            PageNames.Watchlist => x.GetRequiredService<WatchlistPageViewModel>(),
-            PageNames.Holdings => x.GetRequiredService<HoldingsPageViewModel>(),
-            PageNames.Settings => x.GetRequiredService<SettingsPageViewModel>(),
-            PageNames.WatchlistItemDetail => x.GetRequiredService<WatchlistItemDetailViewModel>(),
+            //_ when type == typeof(MainViewModel)  => x.GetRequiredService<MainViewModel>(),
+            _ when type == typeof(HomePageViewModel)  => x.GetRequiredService<HomePageViewModel>(),
+            _ when type == typeof(WatchlistPageViewModel) => x.GetRequiredService<WatchlistPageViewModel>(),
+            _ when type == typeof(HoldingsPageViewModel) => x.GetRequiredService<HoldingsPageViewModel>(),
+            _ when type == typeof(SettingsPageViewModel)  => x.GetRequiredService<SettingsPageViewModel>(),
+            _ when type == typeof(WatchlistItemPageViewModel)  => x.GetRequiredService<WatchlistItemPageViewModel>(),
+            _ when type == typeof(AddItemViewModel)  => x.GetRequiredService<AddItemViewModel>(),
             _ => throw new NotImplementedException(),
         });
 
         // services.AddSingleton<Func<PageNames, string, PageViewModel>>(x => (names, s) 
         //     => names switch
         // {
-        //     PageNames.WatchlistItemDetail => x.GetRequiredService<WatchlistItemDetailViewModel>()
+        //     PageNames.WatchlistItemDetail => x.GetRequiredService<WatchlistItemPageViewModel>()
         // });
         
         services.AddSingleton<PageFactory>();
@@ -67,8 +77,8 @@ public partial class App : Application
         var provider = services.BuildServiceProvider();
         
         // var viewLocator = new ViewLocator();
-        // viewLocator.RegisterViewModelFactory(typeof(WatchlistItemDetailViewModel), vm => 
-        //     new WatchlistItemDetailViewModel(provider.GetRequiredService<IBusinessService<WatchlistItem>>()));
+        // viewLocator.RegisterViewModelFactory(typeof(WatchlistItemPageViewModel), vm => 
+        //     new WatchlistItemPageViewModel(provider.GetRequiredService<IBusinessService<WatchlistItem>>()));
         // this.DataTemplates.Add(viewLocator);
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)

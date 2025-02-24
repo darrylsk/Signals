@@ -16,6 +16,8 @@ public abstract class BusinessService<T>(IRepository<T> repository)
         return await Repository.AddAsync(model); 
     }
 
+    public abstract Task<int> AddSymbol(string symbol);
+
     public async Task<int> Delete(T model)
     {
         return await Repository.DeleteAsync(model);

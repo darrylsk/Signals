@@ -21,7 +21,7 @@ public abstract class SegregatedPartialBusinessService<T>(ISegregatedPartialRepo
     {
         return await Repository.GetByIdAsync(id);
     }
-
+    
     public async Task<int> Update(T model)
     {
         return await Repository.UpdateAsync(model);

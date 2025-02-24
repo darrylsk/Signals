@@ -16,16 +16,6 @@
         <!-- Header -->
         <controls:StocklistHeader></controls:StocklistHeader>
 
-        <!-- Button with ordinary Binding clause - Works! -->
-        <Button Foreground="LightBlue" Background="Black" 
-            Content="This One Works"
-                Command="{Binding Path=GoToWatchlistDetailCommand}"
-                CommandParameter="NVDA" />
-        <Button Foreground="LightBlue" Background="Black" IsVisible="True"
-                Content="This One Does Not Work"
-                Command="{Binding RelativeSource={RelativeSource  AncestorType=vm:MainViewModel}, 
-                Path=GoToWatchlistDetailCommand}"
-                CommandParameter="NVDA" />
         <ItemsControl ItemsSource="{Binding Watchlist}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -33,17 +23,12 @@
                     A button inside an ItemsControl also does not work.  
                         Command="{Binding RelativeSource={RelativeSource  AncestorType=vm:MainViewModel},
                             Path=GoToWatchlistDetailCommand}"
+                            
+                            The code below, makes it work
                     -->
                     <StackPanel>
-                        <Button
-                            HorizontalAlignment="Stretch"
-                            Background="White"
-                            Content="{Binding Symbol}"
-                            Command="{Binding $parent[controls:StocklistHeader].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
-                            CommandParameter="{Binding Symbol}"
-                            ></Button>
                         <controls:StockItemHeader
-                            Command="{Binding $parent[controls:StockItemHeader].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+                            Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
                             CommandParameter="{Binding Symbol}"
                             Symbol="{Binding Symbol}"
                             Name="{Binding Name}"

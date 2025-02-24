@@ -1,7 +1,5 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Signals.ViewModels"
              x:Class="Signals.Views.MainView"
              x:DataType="vm:MainViewModel">
@@ -13,20 +11,28 @@
 
     <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons -->
 
-
     <Grid RowDefinitions="Auto, *, Auto" Margin="20">
         <!-- Top Bar: Contains App Title and subtitle -->
         <StackPanel Grid.Row="0">
-            <TextBlock Classes="title" Text="{Binding Title}" />
-            <TextBlock Classes="subtitle" Text="{Binding Subtitle}" />
-            <Border Classes="page-title">
-                <TextBlock Classes="page-title" Text="{Binding PageTitle}" />
+            <TextBlock Classes="title" Text="{Binding AppTitle}" />
+            <TextBlock Classes="tag-line" Text="{Binding TagLine}" />
+            <Border Classes="header">
+                <Grid ColumnDefinitions="*, Auto">
+                    <TextBlock Grid.Column="0" Classes="page-title" FontSize="24" Text="{Binding PageTitle}" />
+                    <Button Grid.Column="1" Classes="main-navigation" Background="Transparent" HorizontalAlignment="Right" 
+                            Command="{Binding GoToAddItemCommand}">
+                        <StackPanel>
+                            <Label Classes="icon add-item" FontSize="24" Content="&#xe3D6;"></Label>
+                        </StackPanel>
+                    </Button>
+
+                </Grid>
             </Border>
         </StackPanel>
 
         <!-- Main part -->
         <Border Grid.Row="1" Background="{DynamicResource MainSectionBackground}">
-            <StackPanel Grid.Row="1">
+            <StackPanel>
                 <ContentControl Content="{Binding CurrentPage}"
                                 Foreground="{DynamicResource PrimaryForeground}"
                                 VerticalAlignment="Stretch">
@@ -35,7 +41,7 @@
         </Border>
 
         <!-- Bottom Bar -->
-        <Border Grid.Row="2" CornerRadius="0,0,10,10" Background="Black">
+        <Border Grid.Row="2" Classes="footer" CornerRadius="0,0,10,10" Background="Black">
             <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
                 <!-- Navigation Buttons -->
                 <StackPanel Orientation="Horizontal">
