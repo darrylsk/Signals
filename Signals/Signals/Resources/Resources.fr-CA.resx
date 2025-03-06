@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="AppTitle" xml:space="preserve">
+        <value>$ignal$</value>
+    </data>
+    <data name="TagLine" xml:space="preserve">
+        <value>Regardez ce qui se passe</value>
+    </data>
+    <data name="AboutParagraph1" xml:space="preserve">
+        <value>Signals suit les performances de vos investissements et vous avertit des événements importants tels qu'un doublement du prix ou une forte baisse en pourcentage.</value>    
+    </data>
+    <data name="AboutParagraph2" xml:space="preserve">
+        <value>Vous pouvez utiliser cette application dès maintenant, telle quelle, pour suivre quelques éléments, mais pour en tirer le meilleur parti, vous devrez créer un compte auprès du fournisseur de données Finnhub. Heureusement, c'est facile à faire. Cliquez sur le bouton ci-dessous pour visiter Finnhub et obtenir votre clé API gratuite dès maintenant. Vous n'avez pas besoin de fournir beaucoup d'informations (juste une adresse e-mail) et ils ne vous envoient pas de spam. Une fois que vous avez votre clé, saisissez-la dans la page Paramètres de l'application.</value>
+    </data>
+    <data name="AboutParagraph3" xml:space="preserve">
+        <value>Signals ouse Money Trader ne fournit pas de conseils en matière d'investissement. En utilisant cette application, vous assumez l'entière responsabilité de vos propres décisions d'investissement et de la performance de vos investissements.</value>
+    </data>
+    <data name="ApplicationVersionStatement" xml:space="preserve">
+        <value>La version actuelle est la 1.0 publiée en 2025</value>
+    </data>
+</root>

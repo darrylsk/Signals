@@ -1,0 +1,15 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lang="clr-namespace:Signals.Resources"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Signals.Views.UpdatesPageView">
+
+    <StackPanel>
+        <Button Name="BtnBackupDatabase" Content="{x:Static lang:Resources.BtnBackupDatabaseContent}"></Button>
+        <Button Name="BtnRestoreDatabase" Content="{x:Static lang:Resources.BtnRestoreDatabaseContent}"></Button>
+        <TextBlock>Current version is 1.0 released 2025</TextBlock>
+        <Button Name="BtnCheckForNewVersion" Content="{x:Static lang:Resources.BtnCheckForNewVersionContent}"></Button>
+    </StackPanel>
+</UserControl>

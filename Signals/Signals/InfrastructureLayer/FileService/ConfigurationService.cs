@@ -5,11 +5,11 @@ using System.Text.Json;
 
 namespace Signals.InfrastructureLayer.FileService;
 
-public class ConfigManager : FileService, IConfigurationService
+public class ConfigurationService : FileService, IConfigurationService
 {
     private readonly string _configPath;
 
-    public ConfigManager(string appName)
+    public ConfigurationService()
     {
         // Get the LocalApplicationData folder (cross-platform)
         string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);

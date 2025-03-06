@@ -8,10 +8,12 @@ namespace Signals.CoreLayer.Abstract.Base;
 
 public abstract class QuotationService<T1, T2> : IQuotationService<T1, T2>, IDisposable
 {
+    public IConfigurationService ConfigurationService { get; }
     private bool _serviceSuspended;
 
-    public QuotationService()
+    public QuotationService(IConfigurationService configurationService)
     {
+        ConfigurationService = configurationService;
         Client = new HttpClient();
     }
 

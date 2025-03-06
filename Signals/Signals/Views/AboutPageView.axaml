@@ -1,0 +1,25 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lang="clr-namespace:Signals.Resources"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Signals.Views.AboutPageView"
+             x:DataType="vm:AboutPageViewModel">
+
+    <Design.DataContext>
+        <vm:AboutPageViewModel />
+    </Design.DataContext>
+    
+    <StackPanel>
+        <TextBlock Name="Paragraph1" Text="{x:Static lang:Resources.AboutParagraph1}" />
+        <TextBlock Name="Paragraph2" Text="{x:Static lang:Resources.AboutParagraph2}" />
+        <TextBlock Name="Paragraph3" Text="{x:Static lang:Resources.AboutParagraph3}" />
+        <Button Content="{x:Static lang:Resources.BtnGetKeyContent}"></Button>
+        <TextBlock Name="VersionStatement" Text="{x:Static lang:Resources.ApplicationVersionStatement}" />
+        <TextBlock Name="VersionStatement2" Text="Version 1.0 released 2025" />
+        <Button Content="{x:Static lang:Resources.BtnCheckForNewVersionContent}" />
+    </StackPanel>
+
+</UserControl>

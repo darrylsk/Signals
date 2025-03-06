@@ -1,6 +1,7 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:Signals"
+             xmlns:converters="clr-namespace:Signals.Converters"
              x:Class="Signals.App"
              RequestedThemeVariant="Default">
     
@@ -16,6 +17,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="Resources/AppResources.axaml"></ResourceInclude>
             </ResourceDictionary.MergedDictionaries>
+            <converters:UpperCaseConverter x:Key="UpperCaseConverter" />
         </ResourceDictionary>
     </Application.Resources>
 

@@ -5,17 +5,24 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:controls="clr-namespace:Signals.Controls"
              xmlns:vm="clr-namespace:Signals.ViewModels"
-             x:DataType="vm:AddItemViewModel"
-             x:Class="Signals.Views.AddItemView">
+             x:DataType="vm:AddItemPageViewModel"   
+             x:Class="Signals.Views.AddItemPageView">
     
     <Design.DataContext>
-        <vm:AddItemViewModel />
+        <vm:AddItemPageViewModel />
     </Design.DataContext> 
+    
+    <!--
+    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+     -->
     
     <StackPanel>
         <Label Content="Symbol"></Label>
-        <TextBox Text="{Binding Symbol}"></TextBox>
+        <TextBox Text="{Binding Symbol, Converter={StaticResource UpperCaseConverter}}"></TextBox>
+        
         <Button Content="Save" Command="{Binding AddSymbolCommand}"
+                CommandParameter="{Binding $parent[UserControl].((vm:AddItemPageViewModel)DataContext).BackLink, FallbackValue=null}"
                 IsEnabled="{Binding SaveIsEnabled}"></Button>
     </StackPanel>
+    
 </UserControl>

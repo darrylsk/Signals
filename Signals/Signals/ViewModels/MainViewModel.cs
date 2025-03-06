@@ -4,7 +4,7 @@ using Signals.Factories;
 
 namespace Signals.ViewModels;
 
-public partial class MainViewModel : ViewModelBase //PageViewModel
+public partial class MainViewModel : ViewModelBase 
 {
     private readonly PageFactory _pageFactory;
 
@@ -80,7 +80,28 @@ public partial class MainViewModel : ViewModelBase //PageViewModel
     [RelayCommand]
     private void GoToAddItem()
     {
-        CurrentPage = _pageFactory.GetPageViewModel<AddItemViewModel>();
-        CurrentPage.MainMenu = this;
+        CurrentPage = _pageFactory.GetPageViewModel<AddItemPageViewModel>();
+        CurrentPage.BackLink = this;
+    }
+
+    [RelayCommand]
+    private void GotoAbout()
+    {
+        CurrentPage = _pageFactory.GetPageViewModel<AboutPageViewModel>();
+        CurrentPage.BackLink = this;
+    }
+
+    [RelayCommand]
+    private void GotoUpdates()
+    {
+        CurrentPage = _pageFactory.GetPageViewModel<UpdatesPageViewModel>();
+        CurrentPage.BackLink = this;
+    }
+
+    [RelayCommand]
+    private void GotoQuoteLog()
+    {
+        CurrentPage = _pageFactory.GetPageViewModel<QuoteLogPageViewModel>();
+        CurrentPage.BackLink = this;
     }
 }

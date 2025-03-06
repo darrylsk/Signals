@@ -4,13 +4,14 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Signals.CoreLayer.Abstract.Base;
+using Signals.InfrastructureLayer.Abstract;
 
 namespace Signals.InfrastructureLayer.QuotationService.FinnhubQuotationService;
 
 public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject?, FinnhubCompanyProfileClientObject?>,
     IFinnhubQuotationService
 {
-    public FinnhubQuotationService()
+    public FinnhubQuotationService(IConfigurationService configurationService) : base(configurationService)
     {
         SuspensionTimeLimit = TimeSpan.FromDays(1);
         Uri = "https://finnhub.io/api/v1";
@@ -50,6 +51,7 @@ public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject
     /// </summary>
     public override async Task<FinnhubCompanyProfileClientObject?> GetProfileAsync(string symbol)
     {
+        if (string.IsNullOrEmpty(symbol) || string.IsNullOrEmpty(Token)) return null;
         var query = $"{Uri}/profile2?symbol={symbol}&token={Token}";
         HttpResponseMessage response = await Client.GetAsync(query);
         var content = await response.Content.ReadAsStringAsync();
