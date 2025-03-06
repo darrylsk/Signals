@@ -7,7 +7,7 @@ using Signals.Factories;
 
 namespace Signals.ViewModels;
 
-public partial class AddItemViewModel : PageViewModel
+public partial class AddItemPageViewModel : PageViewModel
 {
     public IWatchlistService WatchlistService { get; }
     public PageFactory PageFactory { get; }
@@ -15,11 +15,11 @@ public partial class AddItemViewModel : PageViewModel
     /// <summary>
     /// Design constructor
     /// </summary>
-    public AddItemViewModel() : base(PageNames.AddItem, "AddItem",
+    public AddItemPageViewModel() : base(PageNames.AddItem, "AddItem",
         "Add item")
     { }
 
-    public AddItemViewModel(
+    public AddItemPageViewModel(
         IWatchlistService watchlistService, 
         PageFactory pageFactory)
         : base(PageNames.AddItem, "AddItem", "Add item")
@@ -39,9 +39,11 @@ public partial class AddItemViewModel : PageViewModel
     /// Add a new symbol to the list of tracked stock items.
     /// </summary>
     [RelayCommand]
-    public async Task AddSymbol()
+    public async Task AddSymbol(PageViewModel viewModel)
     {
         await WatchlistService.AddSymbol(Symbol);
-        MainMenu.CurrentPage = PageFactory.GetPageViewModel<WatchlistPageViewModel>();
+        
+        // Navigate back to the list.
+        BackLink.CurrentPage = viewModel?? PageFactory.GetPageViewModel<WatchlistPageViewModel>();
     }
 }

@@ -50,6 +50,12 @@ public class WatchlistService : BusinessService<WatchlistItem>, IWatchlistServic
 
     public async Task<int> Add(WatchlistItem model)
     {
+        // Create the company profile.
+        // Get the profile information from the quotation service.
+        var profile = await QuotationService.GetProfileAsync(model.Symbol);
+        
+        // Get the first quote.
+        // Get 
         //return await Repository.AddAsync(model);
         return await Task.FromResult(1);
     }

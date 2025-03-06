@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+using System.Threading;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
@@ -30,6 +32,11 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        var culture = new CultureInfo("fr-CA");
+        Thread.CurrentThread.CurrentCulture = culture;
+        Thread.CurrentThread.CurrentUICulture = culture;
+        // Lang.Resources.Culture = new CultureInfo("fil-PH");
+
         var services = new ServiceCollection();
         services.AddSingleton<MainViewModel>();
         
@@ -38,13 +45,17 @@ public partial class App : Application
         services.AddTransient<SettingsPageViewModel>();
         services.AddTransient<WatchlistPageViewModel>();
         services.AddTransient<WatchlistItemPageViewModel>();
-        services.AddTransient<AddItemViewModel>();
+        services.AddTransient<AddItemPageViewModel>();
+        services.AddTransient<AboutPageViewModel>();
+        services.AddTransient<UpdatesPageViewModel>();
+        services.AddTransient<QuoteLogPageViewModel>();
 
         services.AddTransient<IWatchlistService, WatchlistService>();
         services.AddTransient<IHoldingService, HoldingService>();
         services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
         services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
         services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
+        services.AddTransient<IConfigurationService, ConfigurationService>();
         services.AddTransient<IFileService, FileService>();
         services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
         services.AddTransient<IHoldingRepository, HoldingRepository>();
@@ -61,7 +72,10 @@ public partial class App : Application
             _ when type == typeof(HoldingsPageViewModel) => x.GetRequiredService<HoldingsPageViewModel>(),
             _ when type == typeof(SettingsPageViewModel)  => x.GetRequiredService<SettingsPageViewModel>(),
             _ when type == typeof(WatchlistItemPageViewModel)  => x.GetRequiredService<WatchlistItemPageViewModel>(),
-            _ when type == typeof(AddItemViewModel)  => x.GetRequiredService<AddItemViewModel>(),
+            _ when type == typeof(AddItemPageViewModel)  => x.GetRequiredService<AddItemPageViewModel>(),
+            _ when type == typeof(AboutPageViewModel)  => x.GetRequiredService<AboutPageViewModel>(),
+            _ when type == typeof(UpdatesPageViewModel)  => x.GetRequiredService<UpdatesPageViewModel>(),
+            _ when type == typeof(QuoteLogPageViewModel)  => x.GetRequiredService<QuoteLogPageViewModel>(),
             _ => throw new NotImplementedException(),
         });
 

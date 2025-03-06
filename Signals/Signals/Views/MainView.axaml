@@ -1,31 +1,56 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:lang="clr-namespace:Signals.Resources"
              x:Class="Signals.Views.MainView"
              x:DataType="vm:MainViewModel">
+
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons -->
+    <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons 
 
+                            CommandParameter="{Binding$parent[UserControl].((vm:MainViewModel)).CurrentPage, FallbackValue=null
+-->
     <Grid RowDefinitions="Auto, *, Auto" Margin="20">
         <!-- Top Bar: Contains App Title and subtitle -->
         <StackPanel Grid.Row="0">
+            <TextBlock Classes="title" Text="{x:Static lang:Resources.AppTitle}" />
+            <TextBlock Classes="tag-line" Text="{x:Static lang:Resources.TagLine}" />
+            <!--
             <TextBlock Classes="title" Text="{Binding AppTitle}" />
             <TextBlock Classes="tag-line" Text="{Binding TagLine}" />
+            -->
             <Border Classes="header">
                 <Grid ColumnDefinitions="*, Auto">
                     <TextBlock Grid.Column="0" Classes="page-title" FontSize="24" Text="{Binding PageTitle}" />
-                    <Button Grid.Column="1" Classes="main-navigation" Background="Transparent" HorizontalAlignment="Right" 
-                            Command="{Binding GoToAddItemCommand}">
-                        <StackPanel>
-                            <Label Classes="icon add-item" FontSize="24" Content="&#xe3D6;"></Label>
-                        </StackPanel>
-                    </Button>
-
+                    <!-- Add button - brings up the dialog to add a new StockItem -->
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button Grid.Column="1" Classes="navigation" Background="Transparent"
+                                HorizontalAlignment="Right"
+                                Command="{Binding GoToAddItemCommand}">
+                            <StackPanel>
+                                <Label Classes="icon" FontSize="24" Content="&#xe3D6;"></Label>
+                            </StackPanel>
+                        </Button>
+                        <Menu>
+                            <MenuItem Background="Transparent">
+                                <MenuItem.Header>
+                                    <StackPanel>
+                                        <Label Classes="icon navigation" FontSize="24" Content="&#xe206;" 
+                                               Background="Transparent">
+                                        </Label>
+                                    </StackPanel>
+                                </MenuItem.Header>
+                                <MenuItem Header="About" Command="{Binding GotoAboutCommand}"></MenuItem>
+                                <MenuItem Header="Updates" Command="{Binding GotoUpdatesCommand}"></MenuItem>
+                                <MenuItem Header="Log" Command="{Binding GotoQuoteLogCommand}"></MenuItem>
+                            </MenuItem>
+                        </Menu>
+                    </StackPanel>
                 </Grid>
             </Border>
         </StackPanel>
@@ -33,10 +58,13 @@
         <!-- Main part -->
         <Border Grid.Row="1" Background="{DynamicResource MainSectionBackground}">
             <StackPanel>
-                <ContentControl Content="{Binding CurrentPage}"
-                                Foreground="{DynamicResource PrimaryForeground}"
-                                VerticalAlignment="Stretch">
-                </ContentControl>
+                <ScrollViewer>
+                    <ContentControl Content="{Binding CurrentPage}"
+                                    Foreground="{DynamicResource PrimaryForeground}"
+                                    VerticalAlignment="Stretch">
+                    </ContentControl>
+
+                </ScrollViewer>
             </StackPanel>
         </Border>
 
@@ -45,21 +73,21 @@
             <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
                 <!-- Navigation Buttons -->
                 <StackPanel Orientation="Horizontal">
-                    <Button Classes="main-navigation" Command="{Binding GoToHomeCommand}">
+                    <Button Classes="navigation" Command="{Binding GoToHomeCommand}">
                         <StackPanel>
                             <Label Classes="icon" Content="&#xe2c6;">
                             </Label>
                             <Label Content="Home"></Label>
                         </StackPanel>
                     </Button>
-                    <Button Classes="main-navigation" Command="{Binding GoToWatchlistCommand}">
+                    <Button Classes="navigation" Command="{Binding GoToWatchlistCommand}">
                         <StackPanel>
                             <Label Classes="icon" Content="&#xe220;">
                             </Label>
                             <Label Content="Watchlist"></Label>
                         </StackPanel>
                     </Button>
-                    <Button Classes="main-navigation" Command="{Binding GoToHoldingsCommand}">
+                    <Button Classes="navigation" Command="{Binding GoToHoldingsCommand}">
                         <StackPanel>
                             <Label Classes="icon" Content="&#xea8c;"></Label>
                             <Label Content="Holdings"></Label>
@@ -68,7 +96,7 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <!-- Settings Button -->
-                    <Button Classes="main-navigation" Background="Transparent" Command="{Binding GoToSettingsCommand}">
+                    <Button Classes="navigation" Background="Transparent" Command="{Binding GoToSettingsCommand}">
                         <StackPanel>
                             <Label Classes="icon" Content="&#xe272;"></Label>
                             <Label Content="Settings"></Label>
