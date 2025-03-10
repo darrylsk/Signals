@@ -66,7 +66,8 @@ public partial class MainViewModel : ViewModelBase
     [RelayCommand]
     private void GoToSettings()
     {
-        CurrentPage = _pageFactory.GetPageViewModel<SettingsPageViewModel>();
+        CurrentPage = _pageFactory.GetPageViewModel<SettingsPageViewModel>(async vm 
+            => await vm.LoadSettings());
         PageTitle = "Settings";
     }
 

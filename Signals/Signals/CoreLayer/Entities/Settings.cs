@@ -16,7 +16,7 @@ namespace Signals.CoreLayer.Entities
         /// <summary>
         /// Default setting for whether or not to alert when a holding has doubled in value.
         /// </summary>
-        public bool DefaultUseHighGainIndicator { get; set; }
+        public bool DefaultUseHighGainMultiplier { get; set; }
 
         /// <summary>
         /// Default setting for the gain threshold as a multiple of entry price.

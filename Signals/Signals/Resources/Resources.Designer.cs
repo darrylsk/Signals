@@ -69,7 +69,7 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can use this application right now, just as it is, to track a couple of items  but to get the most from it, you&apos;ll want to set up an account with data provider Finnhub.  Fortunately, this is easy to do.  Click the button below to visit Finnhub and get your free API key right now.  You don&apos;t have to give a lot of information (just an email address) and they don&apos;t spam you.  Once you have your key, enter it in the application&apos;s Settings page..
+        ///   Looks up a localized string similar to You&apos;ll need to set up a free account with data provider Finnhub.  Fortunately, this is easy to do (and as mentioned, costs nothing for  basic service).  Click the button below to visit Finnhub and get your free API key right now.  You don&apos;t have to give a lot of information (just an email address) and they don&apos;t spam you.  Once you have your key, enter it in the application&apos;s Settings page..
         /// </summary>
         public static string AboutParagraph2 {
             get {
@@ -137,6 +137,51 @@ namespace Signals.Resources {
         public static string BtnRestoreDatabaseContent {
             get {
                 return ResourceManager.GetString("BtnRestoreDatabaseContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default High Gain Multiplier.
+        /// </summary>
+        public static string SettingsDefaultHighGainMultiplierLabel {
+            get {
+                return ResourceManager.GetString("SettingsDefaultHighGainMultiplierLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Trailing Stop.
+        /// </summary>
+        public static string SettingsDefaultTrailingStopLabel {
+            get {
+                return ResourceManager.GetString("SettingsDefaultTrailingStopLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Use High Gain Multiplier.
+        /// </summary>
+        public static string SettingsDefaultUseHighGainMultiplierLabel {
+            get {
+                return ResourceManager.GetString("SettingsDefaultUseHighGainMultiplierLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Use Trailing Stop.
+        /// </summary>
+        public static string SettingsDefaultUseTrailingStopLabel {
+            get {
+                return ResourceManager.GetString("SettingsDefaultUseTrailingStopLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metadata version.
+        /// </summary>
+        public static string SettingsMetadataVersionLabel {
+            get {
+                return ResourceManager.GetString("SettingsMetadataVersionLabel", resourceCulture);
             }
         }
         

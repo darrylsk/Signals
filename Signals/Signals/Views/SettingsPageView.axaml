@@ -4,9 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:lang="clr-namespace:Signals.Resources"
              x:DataType="vm:SettingsPageViewModel"
              x:Class="Signals.Views.SettingsPageView">
 
-    <Label Content="{Binding PageSubtitle}"></Label>
-    
+    <StackPanel>
+        <Label Content="{Binding PageSubtitle}"></Label>
+
+        <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
+        <TextBlock Text="{Binding MetadataVersion}"></TextBlock>
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>
+        <CheckBox IsChecked="{Binding DefaultUseHighGainMultiplier}"></CheckBox>
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultHighGainMultiplierLabel}"></Label>
+        <TextBox Text="{Binding DefaultHighGainMultiplier}"></TextBox>
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultUseTrailingStopLabel}"></Label>
+        <CheckBox IsChecked="{Binding DefaultUseTrailingStop}"></CheckBox>
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultTrailingStopLabel}"></Label>
+        <TextBox Text="{Binding DefaultTrailingStop}"></TextBox>
+        
+    </StackPanel>
+
 </UserControl>

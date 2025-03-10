@@ -6,6 +6,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Signals.ApplicationLayer.Abstract;
 using Signals.ApplicationLayer.Services;
 using Signals.CoreLayer.Abstract;
@@ -55,7 +56,8 @@ public partial class App : Application
         services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
         services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
         services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
-        services.AddTransient<IConfigurationService, ConfigurationService>();
+        services.AddTransient<ISignalsConfigurationService, SignalsConfigurationService>();
+        services.AddTransient<ISettingsService, SettingsService>();
         services.AddTransient<IFileService, FileService>();
         services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
         services.AddTransient<IHoldingRepository, HoldingRepository>();

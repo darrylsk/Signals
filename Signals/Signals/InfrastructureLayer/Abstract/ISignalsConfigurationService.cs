@@ -1,6 +1,6 @@
 ﻿namespace Signals.InfrastructureLayer.Abstract;
 
-public interface IConfigurationService : IFileService
+public interface ISignalsConfigurationService
 {
     public AppConfig LoadConfig();
 

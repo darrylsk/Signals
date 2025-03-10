@@ -26,9 +26,10 @@ public class SignalsContext : ISignalsDbContext
         if (result != CreateTableResult.Created) return;
         var settings = new Settings
         {
+            MetadataVersion = 1,
             DefaultUseTrailingStop = true,
             DefaultTrailingStop = .25,
-            DefaultUseHighGainIndicator = true,
+            DefaultUseHighGainMultiplier = true,
             DefaultHighGainMultiplier = 1.5
         };
         Connection.InsertAsync(settings).Wait();
