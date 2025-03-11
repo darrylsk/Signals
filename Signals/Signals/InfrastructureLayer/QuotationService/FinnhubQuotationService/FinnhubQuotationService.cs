@@ -11,7 +11,7 @@ namespace Signals.InfrastructureLayer.QuotationService.FinnhubQuotationService;
 public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject?, FinnhubCompanyProfileClientObject?>,
     IFinnhubQuotationService
 {
-    public FinnhubQuotationService(IConfigurationService configurationService) : base(configurationService)
+    public FinnhubQuotationService(ISignalsConfigurationService signalsConfigurationService) : base(signalsConfigurationService)
     {
         SuspensionTimeLimit = TimeSpan.FromDays(1);
         Uri = "https://finnhub.io/api/v1";

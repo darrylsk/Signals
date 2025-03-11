@@ -61,7 +61,7 @@
                 <ScrollViewer>
                     <ContentControl Content="{Binding CurrentPage}"
                                     Foreground="{DynamicResource PrimaryForeground}"
-                                    VerticalAlignment="Stretch">
+                                    VerticalAlignment="Stretch" Margin="5">
                     </ContentControl>
 
                 </ScrollViewer>

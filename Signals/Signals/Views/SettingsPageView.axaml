@@ -4,9 +4,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:lang="clr-namespace:Signals.Resources"
              x:DataType="vm:SettingsPageViewModel"
              x:Class="Signals.Views.SettingsPageView">
 
-    <Label Content="{Binding PageSubtitle}"></Label>
-    
+    <StackPanel>
+        <Label Content="{Binding PageSubtitle}"></Label>
+
+        <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
+        <TextBlock Text="{Binding MetadataVersion}"></TextBlock>
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>
+        <CheckBox IsChecked="{Binding DefaultUseHighGainMultiplier}"></CheckBox>
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultHighGainMultiplierLabel}" />
+        <TextBox Text="{Binding DefaultHighGainMultiplier}" />
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultUseTrailingStopLabel}" />
+        <CheckBox IsChecked="{Binding DefaultUseTrailingStop}" />
+        
+        <Label Content="{x:Static lang:Resources.SettingsDefaultTrailingStopLabel}" />
+        <TextBox Text="{Binding DefaultTrailingStop}" />
+
+        <Button Content="{x:Static lang:Resources.BtnSaveSettingsText}" 
+                Command="{Binding SaveSettingsCommand}"
+                CommandParameter="{Binding}"/>
+
+        <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
+        <TextBox Text="{Binding Key}"
+                 IsEnabled="{Binding KeyIsInEditMode}"
+                 />
+        
+        <Button Content="{x:Static lang:Resources.BtnEditKeyText}"
+                Command="{Binding EditKeyCommand}"
+                IsVisible="{Binding !KeyIsInEditMode}"
+                />
+        
+        <Button Content="{x:Static lang:Resources.BtnSaveKeyText}"
+                Command="{Binding SaveKeyCommand}"
+                IsVisible="{Binding KeyIsInEditMode}"
+                />
+        
+        <Button Content="{x:Static lang:Resources.BtnCancelSaveKeyText}"
+                Command="{Binding CancelSaveKeyCommand}"
+                IsVisible="{Binding KeyIsInEditMode}"
+                />
+    </StackPanel>
+
 </UserControl>

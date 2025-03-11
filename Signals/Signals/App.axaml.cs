@@ -6,6 +6,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Signals.ApplicationLayer.Abstract;
 using Signals.ApplicationLayer.Services;
 using Signals.CoreLayer.Abstract;
@@ -32,9 +33,9 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        var culture = new CultureInfo("fr-CA");
-        Thread.CurrentThread.CurrentCulture = culture;
-        Thread.CurrentThread.CurrentUICulture = culture;
+        // var culture = new CultureInfo("fr-CA");
+        // Thread.CurrentThread.CurrentCulture = culture;
+        // Thread.CurrentThread.CurrentUICulture = culture;
         // Lang.Resources.Culture = new CultureInfo("fil-PH");
 
         var services = new ServiceCollection();
@@ -55,7 +56,8 @@ public partial class App : Application
         services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
         services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
         services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
-        services.AddTransient<IConfigurationService, ConfigurationService>();
+        services.AddTransient<ISignalsConfigurationService, SignalsConfigurationService>();
+        services.AddTransient<ISettingsService, SettingsService>();
         services.AddTransient<IFileService, FileService>();
         services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
         services.AddTransient<IHoldingRepository, HoldingRepository>();

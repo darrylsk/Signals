@@ -18,6 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    
     <data name="AppTitle" xml:space="preserve">
         <value>$ignal$</value>
     </data>
@@ -34,16 +35,46 @@
         <value>Check for a new version of Signals</value>
     </data>
     <data name="BtnGetKeyContent" xml:space="default">Get Key</data>
+    
+    <data name="BtnSaveSettingsText" xml:space="default">Save Settings</data>
+
     <data name="AboutParagraph1" xml:space="default">
         <value>Signals tracks the performance of your investments and alerts you to significant events such as a double in price or a large percentage drop.</value>
     </data>
     <data name="AboutParagraph2" xml:space="preserve">
-        <value>You can use this application right now, just as it is, to track a couple of items  but to get the most from it, you'll want to set up an account with data provider Finnhub.  Fortunately, this is easy to do.  Click the button below to visit Finnhub and get your free API key right now.  You don't have to give a lot of information (just an email address) and they don't spam you.  Once you have your key, enter it in the application's Settings page.</value>
+        <value>You'll need to set up a free account with data provider Finnhub.  Fortunately, this is easy to do (and as mentioned, costs nothing for  basic service).  Click the button below to visit Finnhub and get your free API key right now.  You don't have to give a lot of information (just an email address) and they don't spam you.  Once you have your key, enter it in the application's Settings page.</value>
     </data>
     <data name="AboutParagraph3" xml:space="preserve">
         <value>Signals does not provide investment advice.  By using this application, you are accepting full responsibility for making your own investment decisions and for the performance of your investments.</value>
     </data>
     <data name="ApplicationVersionStatement" xml:space="preserve">
         <value>Current version is 1.0 released 2025</value>
+    </data>
+    <data name="SettingsMetadataVersionLabel" xml:space="preserve">
+        <value>Metadata version</value>
+    </data>
+    <data name="SettingsDefaultUseHighGainMultiplierLabel" xml:space="preserve">
+        <value>Default Use High Gain Multiplier</value>
+    </data>
+    <data name="SettingsDefaultHighGainMultiplierLabel" xml:space="preserve">
+        <value>Default High Gain Multiplier</value>
+    </data>
+    <data name="SettingsDefaultUseTrailingStopLabel" xml:space="preserve">
+        <value>Default Use Trailing Stop</value>
+    </data>
+    <data name="SettingsDefaultTrailingStopLabel" xml:space="preserve">
+        <value>Default Trailing Stop</value>
+    </data>
+    <data name="KeyLabel" xml:space="preserve">
+        <value>Key</value>
+    </data>
+    <data name="BtnEditKeyText" xml:space="preserve">
+        <value>Edit Key</value>
+    </data>
+    <data name="BtnSaveKeyText" xml:space="preserve">
+        <value>Save Key</value>
+    </data>
+    <data name="BtnCancelSaveKeyText" xml:space="preserve">
+        <value>Cancel Edit</value>
     </data>
 </root>

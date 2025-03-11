@@ -8,7 +8,7 @@ public partial class HoldingsPageViewModel : PageViewModel
 {
     [ObservableProperty] private List<Holding> _holdings;
 
-    public HoldingsPageViewModel() : base(PageNames.Holdings, "Holdings",
+    public HoldingsPageViewModel() : base("Holdings",
         "Items that I own in my portfolio")
     {
         

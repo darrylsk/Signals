@@ -1,4 +1,5 @@
 ﻿using System;
+using SQLite;
 
 namespace Signals.CoreLayer.Entities;
 
@@ -11,7 +12,7 @@ public class Holding : StockItem
 
     public Holding(string symbol, string exchange, string name, string currency) : base(symbol, exchange, name, currency)
     { }
-
+    
     public int QuantityHeld { get; set; }
     public DateTime? WhenPurchased { get; set; }
     public decimal? PeakPriceSincePurchase { get; set; }

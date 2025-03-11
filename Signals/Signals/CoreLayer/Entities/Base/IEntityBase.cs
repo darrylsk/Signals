@@ -1,6 +1,9 @@
-﻿namespace Signals.CoreLayer.Entities.Base;
+﻿using SQLite;
+
+namespace Signals.CoreLayer.Entities.Base;
 
         public interface IEntityBase<TId>
     {
-        TId Id { get; }
+        [PrimaryKey]
+        TId Id { get; set; }
     }

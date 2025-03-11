@@ -25,7 +25,7 @@ public partial class WatchlistPageViewModel : PageViewModel
     /// <summary>
     /// Design constructor to satisfy the previewer
     /// </summary>
-    public WatchlistPageViewModel():base(PageNames.Watchlist, "Watchlist",
+    public WatchlistPageViewModel():base("Watchlist",
         "Tracking only - not part of portfolio")
     { }
     
@@ -34,8 +34,7 @@ public partial class WatchlistPageViewModel : PageViewModel
         IWatchlistService watchlistService,
         IMapper watchlistMapper,
         PageFactory pageFactory) 
-        : base(PageNames.Watchlist,
-        "Watchlist",
+        : base("Watchlist",
         "Tracking only - not part of portfolio")
     {
         WatchlistService = watchlistService;

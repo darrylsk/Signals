@@ -1,11 +1,14 @@
-﻿using SQLite;
+﻿using System;
+using SQLite;
 
 namespace Signals.CoreLayer.Entities.Base;
 
 public abstract class EntityBase<TId> : IEntityBase<TId>
 {
     [PrimaryKey]
-    public virtual TId Id { get; protected set; }
+    public virtual  TId Id { get; set; }
+    
+    public DateTime WhenCreated { get; set; }
 
     int? _requestedHashCode;
 

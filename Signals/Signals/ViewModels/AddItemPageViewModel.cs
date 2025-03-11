@@ -15,14 +15,13 @@ public partial class AddItemPageViewModel : PageViewModel
     /// <summary>
     /// Design constructor
     /// </summary>
-    public AddItemPageViewModel() : base(PageNames.AddItem, "AddItem",
-        "Add item")
+    public AddItemPageViewModel() : base("AddItem", "Add item")
     { }
 
     public AddItemPageViewModel(
         IWatchlistService watchlistService, 
         PageFactory pageFactory)
-        : base(PageNames.AddItem, "AddItem", "Add item")
+        : base("AddItem", "Add item")
     {
         WatchlistService = watchlistService;
         PageFactory = pageFactory;

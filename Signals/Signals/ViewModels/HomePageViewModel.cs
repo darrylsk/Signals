@@ -7,7 +7,7 @@ namespace Signals.ViewModels;
 public partial class HomePageViewModel : PageViewModel
 {
 
-    public HomePageViewModel(IFileService fileService) : base(PageNames.Home, "Home",
+    public HomePageViewModel(IFileService fileService) : base("Home",
         "Main entry page (not sure if this will ever be useful - might remove)")
     {
         FileService = fileService;

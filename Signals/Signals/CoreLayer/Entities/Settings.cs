@@ -1,4 +1,6 @@
-﻿using Signals.CoreLayer.Entities.Base;
+﻿using System;
+using Signals.CoreLayer.Entities.Base;
+using SQLite;
 
 namespace Signals.CoreLayer.Entities
 {
@@ -6,6 +8,9 @@ namespace Signals.CoreLayer.Entities
     {
         private double _trailingStop;
         private double _defaultHighGainMultiplier;
+        
+        // [PrimaryKey]
+        // public Guid Id { get; set; }
 
         /// <summary>
         /// A version number for the database, in case the database structure needs to be
@@ -16,7 +21,7 @@ namespace Signals.CoreLayer.Entities
         /// <summary>
         /// Default setting for whether or not to alert when a holding has doubled in value.
         /// </summary>
-        public bool DefaultUseHighGainIndicator { get; set; }
+        public bool DefaultUseHighGainMultiplier { get; set; }
 
         /// <summary>
         /// Default setting for the gain threshold as a multiple of entry price.

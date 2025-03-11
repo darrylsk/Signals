@@ -1,8 +1,9 @@
 ﻿using System;
+using Signals.CoreLayer.Entities.Base;
 
 namespace Signals.CoreLayer.Entities;
 
-public class CompanyProfile
+public class CompanyProfile : Entity
 {
     public string Country { get; set; }
     public string Currency { get; set; }

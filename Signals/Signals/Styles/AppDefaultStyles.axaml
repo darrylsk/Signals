@@ -76,12 +76,12 @@
         <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
     </Style>
     
-    
     <Style Selector="Border.header">
         <Setter Property="Padding" Value="10"></Setter>
         <Setter Property="Background" Value="Black"></Setter>
         <Setter Property="CornerRadius" Value="10, 10, 0, 0"></Setter>
     </Style>
+    
     <Style Selector="TextBlock.page-title">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="FontSize" Value="18"></Setter>
@@ -102,8 +102,19 @@
     <Style Selector="TextBlock.price">
         <Setter Property="HorizontalAlignment" Value="Right"></Setter>
     </Style>
+    
+    <!-- Text Boxes --> 
+
+    <Style Selector="TextBox">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource MainSectionBackground}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
+        <Setter Property="BorderThickness" Value="0 0 0 1"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
 
     <Style Selector="Button">
+        <Setter Property="Margin" Value="0 5 5 0"></Setter>
         <Setter Property="FontSize" Value="16"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"></Setter>
