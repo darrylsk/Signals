@@ -12,7 +12,7 @@
         <vm:WatchlistPageViewModel />
     </Design.DataContext>
 
-    <StackPanel Margin="5">
+    <StackPanel>
         <!-- Header -->
         <controls:StocklistHeader></controls:StocklistHeader>
 

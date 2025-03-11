@@ -33,9 +33,9 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        var culture = new CultureInfo("fr-CA");
-        Thread.CurrentThread.CurrentCulture = culture;
-        Thread.CurrentThread.CurrentUICulture = culture;
+        // var culture = new CultureInfo("fr-CA");
+        // Thread.CurrentThread.CurrentCulture = culture;
+        // Thread.CurrentThread.CurrentUICulture = culture;
         // Lang.Resources.Culture = new CultureInfo("fil-PH");
 
         var services = new ServiceCollection();

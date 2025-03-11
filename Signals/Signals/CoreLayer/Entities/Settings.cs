@@ -1,4 +1,6 @@
-﻿using Signals.CoreLayer.Entities.Base;
+﻿using System;
+using Signals.CoreLayer.Entities.Base;
+using SQLite;
 
 namespace Signals.CoreLayer.Entities
 {
@@ -6,6 +8,9 @@ namespace Signals.CoreLayer.Entities
     {
         private double _trailingStop;
         private double _defaultHighGainMultiplier;
+        
+        // [PrimaryKey]
+        // public Guid Id { get; set; }
 
         /// <summary>
         /// A version number for the database, in case the database structure needs to be

@@ -114,11 +114,29 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel Edit.
+        /// </summary>
+        public static string BtnCancelSaveKeyText {
+            get {
+                return ResourceManager.GetString("BtnCancelSaveKeyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for a new version of Signals.
         /// </summary>
         public static string BtnCheckForNewVersionContent {
             get {
                 return ResourceManager.GetString("BtnCheckForNewVersionContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Key.
+        /// </summary>
+        public static string BtnEditKeyText {
+            get {
+                return ResourceManager.GetString("BtnEditKeyText", resourceCulture);
             }
         }
         
@@ -137,6 +155,33 @@ namespace Signals.Resources {
         public static string BtnRestoreDatabaseContent {
             get {
                 return ResourceManager.GetString("BtnRestoreDatabaseContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Key.
+        /// </summary>
+        public static string BtnSaveKeyText {
+            get {
+                return ResourceManager.GetString("BtnSaveKeyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Settings.
+        /// </summary>
+        public static string BtnSaveSettingsText {
+            get {
+                return ResourceManager.GetString("BtnSaveSettingsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key.
+        /// </summary>
+        public static string KeyLabel {
+            get {
+                return ResourceManager.GetString("KeyLabel", resourceCulture);
             }
         }
         

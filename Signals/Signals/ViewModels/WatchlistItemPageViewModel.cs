@@ -10,14 +10,14 @@ public partial class WatchlistItemPageViewModel : PageViewModel
     private IWatchlistService WatchlistService { get; }
     [ObservableProperty] private WatchlistItem? _watchlistItem; // = new("symbol", "NYSE", "Nvidia", "USD") { };
 
-    public WatchlistItemPageViewModel():base(PageNames.WatchlistItemDetail,
+    public WatchlistItemPageViewModel():base(
         "Watchlist Item Detail", "Watchlist Item Detail")
     {
     }
 
     /// <inheritdoc/>
-    public WatchlistItemPageViewModel(IWatchlistService watchlistService) : base(PageNames.WatchlistItemDetail,
-        "Watchlist Item Detail", "Watchlist Item Detail")
+    public WatchlistItemPageViewModel(IWatchlistService watchlistService) 
+        : base("Watchlist Item Detail", "Watchlist Item Detail")
     {
         WatchlistService = watchlistService;
     }

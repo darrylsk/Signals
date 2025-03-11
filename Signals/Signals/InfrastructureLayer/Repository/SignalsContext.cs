@@ -22,6 +22,7 @@ public class SignalsContext : ISignalsDbContext
         Connection.CreateTableAsync<Holding>().Wait();
 
         var result = Connection.CreateTableAsync<Settings>().Result;
+        var def = Connection.GetTableInfoAsync(result.ToString());
         // Guard: Insert the initial settings record only on creation.
         if (result != CreateTableResult.Created) return;
         var settings = new Settings
@@ -33,6 +34,7 @@ public class SignalsContext : ISignalsDbContext
             DefaultHighGainMultiplier = 1.5
         };
         Connection.InsertAsync(settings).Wait();
+        Connection.UpdateAsync(settings).Wait();
     }
 
     public SQLiteAsyncConnection Connection { get; }

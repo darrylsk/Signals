@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Signals.ApplicationLayer.Abstract;
 using Signals.CoreLayer.Entities;
 using Signals.InfrastructureLayer.Abstract;
@@ -39,6 +41,7 @@ public partial class SettingsPageViewModel : PageViewModel
     private void InitializeConfiguration()
     {
         SignalsConfiguration = SignalsConfigurationService.LoadConfig();
+        Key = SignalsConfiguration.Token;
     }
 
     public void SaveConfiguration()
@@ -55,6 +58,7 @@ public partial class SettingsPageViewModel : PageViewModel
         WatchlistMapper.Map(settings, this);
     }
 
+    [RelayCommand]
     public async Task SaveSettings()
     {
         var settings = WatchlistMapper.Map<Settings>(this);
@@ -62,11 +66,35 @@ public partial class SettingsPageViewModel : PageViewModel
         await SettingsService.Update(settings);
     }
 
+    [ObservableProperty] private Guid _id;
     [ObservableProperty] private int _metadataVersion;
     [ObservableProperty] private bool _defaultUseHighGainMultiplier;
     [ObservableProperty] private double _defaultHighGainMultiplier;
     [ObservableProperty] private bool _defaultUseTrailingStop;
     [ObservableProperty] private double _defaultTrailingStop;
+    [ObservableProperty] private bool _keyIsInEditMode;
+    
+    public string Key { get; set; }
+    
+    [RelayCommand]
+    public void EditKey()
+    {
+        KeyIsInEditMode = true;
+    }
+
+    [RelayCommand]
+    public async Task SaveKey()
+    {
+        SignalsConfiguration.Token = Key;
+        SignalsConfigurationService.SaveConfig(SignalsConfiguration);
+        KeyIsInEditMode = false;
+    }
+
+    [RelayCommand]
+    public async Task CancelSaveKey()
+    {
+        KeyIsInEditMode = false;
+    }
 
     #endregion
 }

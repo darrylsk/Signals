@@ -76,6 +76,7 @@ public partial class MainViewModel : ViewModelBase
     {
         CurrentPage = _pageFactory.GetPageViewModel<WatchlistItemPageViewModel>(async vm 
             => await vm.LoadData(symbol));
+        PageTitle = "Watchlist Item";
     }
 
     [RelayCommand]
@@ -83,6 +84,7 @@ public partial class MainViewModel : ViewModelBase
     {
         CurrentPage = _pageFactory.GetPageViewModel<AddItemPageViewModel>();
         CurrentPage.BackLink = this;
+        PageTitle="Add Item";
     }
 
     [RelayCommand]
@@ -90,6 +92,7 @@ public partial class MainViewModel : ViewModelBase
     {
         CurrentPage = _pageFactory.GetPageViewModel<AboutPageViewModel>();
         CurrentPage.BackLink = this;
+        PageTitle = "About";
     }
 
     [RelayCommand]
@@ -97,6 +100,7 @@ public partial class MainViewModel : ViewModelBase
     {
         CurrentPage = _pageFactory.GetPageViewModel<UpdatesPageViewModel>();
         CurrentPage.BackLink = this;
+        PageTitle = "Updates";
     }
 
     [RelayCommand]
@@ -104,5 +108,6 @@ public partial class MainViewModel : ViewModelBase
     {
         CurrentPage = _pageFactory.GetPageViewModel<QuoteLogPageViewModel>();
         CurrentPage.BackLink = this;
+        PageTitle = "Log";
     }
 }
