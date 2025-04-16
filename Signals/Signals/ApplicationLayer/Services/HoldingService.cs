@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Signals.ApplicationLayer.Abstract;
+using Signals.ApplicationLayer.Services.Base;
+using Signals.CoreLayer.Abstract;
 using Signals.CoreLayer.Entities;
 
 namespace Signals.ApplicationLayer.Services;
 
-public class HoldingService : IHoldingService
+public class HoldingService : BusinessService<Holding>, IHoldingService
 {
-    public HoldingService()
-    {
+    public IHoldingRepository Repository { get; }
+    
+    public HoldingService(IHoldingRepository repository) : base(repository)
+    { 
+        Repository = repository;
         
     }
-    public Task<IEnumerable<Holding>> GetAll()
+    public async Task<IEnumerable<Holding>> GetAll()
     {
-        throw new NotImplementedException();
+        return await Repository.GetAllAsync();
     }
 
     public Task<Holding> GetById(Guid id)
@@ -22,28 +28,15 @@ public class HoldingService : IHoldingService
         throw new NotImplementedException();
     }
 
-    public async Task<Holding> GetBySymbol(string symbol)
+    public async Task<Holding?> GetBySymbol(string symbol)
     {
-        throw new NotImplementedException();
+        var holding = (await Repository.GetAsync(x => x.Symbol == symbol)).FirstOrDefault();
+        return holding;
     }
 
-    public Task<int> Add(Holding model)
+    public new async Task<int> Add(Holding model)
     {
-        throw new NotImplementedException();
+        return await Repository.AddAsync(model);
     }
 
-    public async Task<int> AddSymbol(string symbol)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<int> Update(Holding model)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<int> Delete(Holding model)
-    {
-        throw new NotImplementedException();
-    }
 }

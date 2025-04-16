@@ -53,6 +53,7 @@ public partial class App : Application
 
         services.AddTransient<IWatchlistService, WatchlistService>();
         services.AddTransient<IHoldingService, HoldingService>();
+        services.AddTransient<ICompanyProfileService, CompanyProfileService>();
         services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
         services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
         services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
@@ -62,6 +63,7 @@ public partial class App : Application
         services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
         services.AddTransient<IHoldingRepository, HoldingRepository>();
         services.AddTransient<ISettingsRepository, SettingsRepository>();
+        services.AddTransient<ICompanyProfileRepository, CompanyProfileRepository>();
 
         services.AddSingleton<ISignalsDbContext, SignalsContext>();
 

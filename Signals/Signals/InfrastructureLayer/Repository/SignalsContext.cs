@@ -20,7 +20,8 @@ public class SignalsContext : ISignalsDbContext
         // Create the tables if they don't already exist.
         Connection.CreateTableAsync<WatchlistItem>().Wait();
         Connection.CreateTableAsync<Holding>().Wait();
-
+        Connection.CreateTableAsync<CompanyProfile>().Wait();
+        
         var result = Connection.CreateTableAsync<Settings>().Result;
         var def = Connection.GetTableInfoAsync(result.ToString());
         // Guard: Insert the initial settings record only on creation.

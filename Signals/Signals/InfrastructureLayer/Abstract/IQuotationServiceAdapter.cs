@@ -10,7 +10,7 @@ public interface IQuotationServiceAdapter
     /// </summary>
     /// <param name="symbol"></param>
     /// <returns></returns>
-    Task<WatchlistItem?> GetQuoteAsync(string symbol);
+    Task<StockItem?> GetQuoteAsync(string symbol);
     
     /// <summary>
     /// Retrieve an organisation profile from a selected quotation service

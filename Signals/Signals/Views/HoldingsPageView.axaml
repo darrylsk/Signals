@@ -11,23 +11,29 @@
     <Design.DataContext>
         <vm:HoldingsPageViewModel />
     </Design.DataContext>
-    
-    <StackPanel Margin="5">
-        <!-- Header -->
-        <controls:StocklistHeader></controls:StocklistHeader>
 
-        <ItemsControl ItemsSource="{Binding Holdings}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <controls:StockItemHeader
-                        Symbol="{Binding Symbol}"
-                        Name="{Binding Name}"
-                        ColourByTrend="{Binding ColourByTrend}"
-                        LatestQuotedPrice="{Binding LatestQuotedPrice}"
-                        WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
-                        CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </StackPanel>
+    <Grid RowDefinitions="Auto, *">
+        <!-- Header -->
+        <controls:StocklistHeader Grid.Row="0"></controls:StocklistHeader>
+
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding Holdings}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <controls:StockItemHeader
+                                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+                                CommandParameter="{Binding Symbol}"
+                                Symbol="{Binding Symbol}"
+                                Name="{Binding Name}"
+                                ColourByTrend="{Binding ColourByTrend}"
+                                LatestQuotedPrice="{Binding LatestQuotedPrice}"
+                                WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                                CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

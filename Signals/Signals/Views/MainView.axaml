@@ -40,7 +40,7 @@
                             <MenuItem Background="Transparent">
                                 <MenuItem.Header>
                                     <StackPanel>
-                                        <Label Classes="icon navigation" FontSize="24" Content="&#xe206;" 
+                                        <Label Classes="icon navigation" FontSize="24" Content="&#xe206;"
                                                Background="Transparent">
                                         </Label>
                                     </StackPanel>
@@ -57,15 +57,12 @@
 
         <!-- Main part -->
         <Border Grid.Row="1" Background="{DynamicResource MainSectionBackground}">
-            <StackPanel>
-                <ScrollViewer>
-                    <ContentControl Content="{Binding CurrentPage}"
-                                    Foreground="{DynamicResource PrimaryForeground}"
-                                    VerticalAlignment="Stretch" Margin="5">
-                    </ContentControl>
-
-                </ScrollViewer>
-            </StackPanel>
+            <Grid>
+                <ContentControl Content="{Binding CurrentPage}"
+                                Foreground="{DynamicResource PrimaryForeground}"
+                                VerticalAlignment="Stretch" Margin="5">
+                </ContentControl>
+            </Grid>
         </Border>
 
         <!-- Bottom Bar -->

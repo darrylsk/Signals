@@ -5,42 +5,58 @@ using System.Threading.Tasks;
 using Signals.ApplicationLayer.Abstract;
 using Signals.ApplicationLayer.Services.Base;
 using Signals.CoreLayer.Abstract;
+using Signals.CoreLayer.Abstract.Base;
 using Signals.CoreLayer.Entities;
-using Signals.InfrastructureLayer.Abstract;
 using Signals.InfrastructureLayer.QuotationService.FinnhubQuotationService;
+using Signals.InfrastructureLayer.Repository.Base;
 
 namespace Signals.ApplicationLayer.Services;
 
 public class WatchlistService : BusinessService<WatchlistItem>, IWatchlistService
 {
-    public IQuotationServiceAdapter QuotationService { get; }
+    // public IQuotationServiceAdapter QuotationService { get; }
     public IWatchlistItemRepository Repository { get; }
 
-    public WatchlistService(
-        IQuotationServiceAdapter quotationService,
-        IWatchlistItemRepository repository): base(repository)
+    public WatchlistService(IWatchlistItemRepository repository): base(repository)
     {
-        QuotationService = quotationService;
+        // QuotationService = quotationService;
         Repository = repository;
     }
+    
+    /*
     public async Task<IEnumerable<WatchlistItem>> GetAll()
     {
-        // return await Repository.GetAllAsync();
+        return await Repository.GetAllAsync();
         
+        /*
         return await Task.FromResult(new List<WatchlistItem>()
             {
-                new("NVDA", "NYSE", "Nvidia", "USD"),
                 new("AAPL", "NYSE", "Apple", "USD"),
+                new("NVDA", "NYSE", "Nvidia", "USD"),
                 new("MSFT", "NYSE", "Microsoft", "USD"),
+                new("AMZN", "NYSE", "Amazon", "USD"),
+                new("META", "NYSE", "Meta", "USD"),
+                new("BRK-B", "NYSE", "Birkshire Hatheway", "USD"),
+                new("TSM", "NYSE", "Taiwan Semiconductor", "USD"),
+                new("AVGO", "NYSE", "Broadcom", "USD"),
+                new("TSLA", "NYSE", "Tesla", "USD"),
+                new("LLY", "NYSE", "Eli Lilly", "USD"),
+                new("WMT", "NYSE", "Walmart", "USD"),
+                new("JPM", "NYSE", "JP Morgan", "USD"),
+                new("V", "NYSE", "Visa", "USD"),
+                new("TCEHY", "NYSE", "Tencent", "USD"),
+                new("MA", "NYSE", "Mastercard", "USD"),
                 new("RUM", "NYSE", "Rumble", "USD"),
                 new("REGN", "NYSE", "Regeneron Pharmaceuticals Inc", "USD"),
             });
+    #1#
     }
+    */
 
-    public Task<WatchlistItem?> GetById(Guid id)
-    {
-        return Repository.GetByIdAsync(id);
-    }
+    // public Task<WatchlistItem?> GetById(Guid id)
+    // {
+    //     return Repository.GetByIdAsync(id);
+    // }
 
     public async Task<WatchlistItem?> GetBySymbol(string symbol)
     {
@@ -48,39 +64,18 @@ public class WatchlistService : BusinessService<WatchlistItem>, IWatchlistServic
         return watchlistItem;
     }
 
-    public async Task<int> Add(WatchlistItem model)
-    {
-        // Create the company profile.
-        // Get the profile information from the quotation service.
-        var profile = await QuotationService.GetProfileAsync(model.Symbol);
-        
-        // Get the first quote.
-        // Get 
-        //return await Repository.AddAsync(model);
-        return await Task.FromResult(1);
-    }
+    // public async Task<int> Add(WatchlistItem model)
+    // {
+    //     return await Repository.AddAsync(model);
+    // }
 
-    /// <summary>
-    /// Add a new profile to the app given its ticker symbol.
-    /// </summary>
-    /// <param name="symbol"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    public override async Task<int> AddSymbol(string symbol)
-    {
-        // Get profile from web service using symbol, then add it to the database.
-        var profile = await QuotationService.GetProfileAsync(symbol);
-        Console.WriteLine($"{profile?.Name}, with ticker symbol {profile?.Symbol} has been added.");
-        return 1;
-    }
+    // public Task<int> Update(WatchlistItem model)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
-    public Task<int> Update(WatchlistItem model)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<int> Delete(WatchlistItem model)
-    {
-        throw new NotImplementedException();
-    }
+    // public Task<int> Delete(WatchlistItem model)
+    // {
+    //     throw new NotImplementedException();
+    // }
 }

@@ -7,7 +7,7 @@ public class StockItem : Entity
 {
     public StockItem()
     {
-
+        WhenCreated = DateTime.UtcNow;
     }
     protected StockItem(string symbol, string exchange, string name, string currency)
     {
@@ -21,8 +21,8 @@ public class StockItem : Entity
         CurrentDayOpeningPrice = (decimal)Random.Shared.NextDouble() * 1_000M;
         CurrentDayHighPrice = CurrentDayOpeningPrice + (decimal)Random.Shared.NextDouble() * 100M;
         CurrentDayLowPrice = CurrentDayOpeningPrice - (decimal)Random.Shared.NextDouble() * 100M;
-        var togler = Random.Shared.NextDouble();
-        var switcher = togler > 0.5 ? 1 : -1;
+        var toggler = Random.Shared.NextDouble();
+        var switcher = toggler > 0.5 ? 1 : -1;
         var variation = (decimal)(Random.Shared.NextDouble() * 50.0D * switcher);
         LatestQuotedPrice = CurrentDayOpeningPrice + variation;
         WhenLatestQuoteReceived = DateTime.UtcNow;
@@ -31,7 +31,6 @@ public class StockItem : Entity
     public string Symbol { get; set; }
     public string Name { get; set; }
     public string ExchangeName { get; set; }
-    public DateTime WhenCreated { get; set; }
     public string CurrencyCode { get; set; }
     public decimal? PreviousDayClosingPrice { get; set; }
     public decimal? CurrentDayOpeningPrice { get; set; }

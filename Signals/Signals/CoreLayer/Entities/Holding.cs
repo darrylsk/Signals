@@ -8,10 +8,15 @@ public class Holding : StockItem
     private double _trailingStop;
 
     public Holding()
-    { }
+    {
+        WhenPurchased = DateTime.UtcNow;
+    }
 
-    public Holding(string symbol, string exchange, string name, string currency) : base(symbol, exchange, name, currency)
-    { }
+    public Holding(string symbol, string exchange, string name, string currency) : base(symbol, exchange, name,
+        currency)
+    {
+        WhenPurchased = DateTime.UtcNow;
+    }
     
     public int QuantityHeld { get; set; }
     public DateTime? WhenPurchased { get; set; }

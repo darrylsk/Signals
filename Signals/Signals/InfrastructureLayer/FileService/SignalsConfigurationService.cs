@@ -20,7 +20,7 @@ public class SignalsConfigurationService : FileService, ISignalsConfigurationSer
         _configPath = Path.Combine(appFolder, "config.json");
     }
 
-    public AppConfig LoadConfig()
+    public AppConfig GetConfig()
     {
         try
         {
@@ -38,7 +38,7 @@ public class SignalsConfigurationService : FileService, ISignalsConfigurationSer
         // Return default config if file doesn’t exist or fails to load
         return new AppConfig();
     }
-
+    
     public void SaveConfig(AppConfig config)
     {
         try

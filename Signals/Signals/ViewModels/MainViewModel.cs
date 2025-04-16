@@ -14,18 +14,6 @@ public partial class MainViewModel : ViewModelBase
     private string _tagLine = $"Watch what happens";
     [ObservableProperty] private string _pageTitle;
 
-    // [ObservableProperty]
-    // [NotifyPropertyChangedFor(nameof(HomePageIsActive))]
-    // [NotifyPropertyChangedFor(nameof(WatchlistPageIsActive))]
-    // [NotifyPropertyChangedFor(nameof(HoldingsPageIsActive))]
-    // [NotifyPropertyChangedFor(nameof(SettingsPageIsActive))]
-    // private PageViewModel _currentPage;
-
-    // public bool HomePageIsActive => CurrentPage.PageName == PageNames.Home;
-    // public bool WatchlistPageIsActive => CurrentPage.PageName == PageNames.Watchlist;
-    // public bool HoldingsPageIsActive => CurrentPage.PageName == PageNames.Holdings;
-    // public bool SettingsPageIsActive => CurrentPage.PageName == PageNames.Settings;
-
     /// <summary>
     /// Design-time only constructor
     /// </summary>
@@ -45,7 +33,7 @@ public partial class MainViewModel : ViewModelBase
     private void GoToHome()
     {
         CurrentPage = _pageFactory.GetPageViewModel<HomePageViewModel>(
-            afterCreation => afterCreation.PageSubtitle = "After-creation executed.");
+            vm => vm.PageSubtitle = "Home page");
         PageTitle = "Home";
     }
 

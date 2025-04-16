@@ -8,47 +8,87 @@
              x:DataType="vm:SettingsPageViewModel"
              x:Class="Signals.Views.SettingsPageView">
 
-    <StackPanel>
-        <Label Content="{Binding PageSubtitle}"></Label>
+    <Design.DataContext>
+        <vm:SettingsPageViewModel />
+    </Design.DataContext>
 
-        <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
-        <TextBlock Text="{Binding MetadataVersion}"></TextBlock>
-        
-        <Label Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>
-        <CheckBox IsChecked="{Binding DefaultUseHighGainMultiplier}"></CheckBox>
-        
-        <Label Content="{x:Static lang:Resources.SettingsDefaultHighGainMultiplierLabel}" />
-        <TextBox Text="{Binding DefaultHighGainMultiplier}" />
-        
-        <Label Content="{x:Static lang:Resources.SettingsDefaultUseTrailingStopLabel}" />
-        <CheckBox IsChecked="{Binding DefaultUseTrailingStop}" />
-        
-        <Label Content="{x:Static lang:Resources.SettingsDefaultTrailingStopLabel}" />
-        <TextBox Text="{Binding DefaultTrailingStop}" />
+    <Grid RowDefinitions="Auto, *">
+        <Label Grid.Row="0" Classes="heading" Content="{Binding PageSubtitle}"></Label>
 
-        <Button Content="{x:Static lang:Resources.BtnSaveSettingsText}" 
-                Command="{Binding SaveSettingsCommand}"
-                CommandParameter="{Binding}"/>
+        <Grid Grid.Row="1" RowDefinitions="Auto, Auto, *, Auto" ColumnDefinitions="Auto, *">
+            
+            <StackPanel Classes="formfield" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
+                <TextBlock Text="{Binding MetadataVersion}"></TextBlock>
+            </StackPanel>
 
-        <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
-        <TextBox Text="{Binding Key}"
-                 IsEnabled="{Binding KeyIsInEditMode}"
-                 />
-        
-        <Button Content="{x:Static lang:Resources.BtnEditKeyText}"
-                Command="{Binding EditKeyCommand}"
-                IsVisible="{Binding !KeyIsInEditMode}"
-                />
-        
-        <Button Content="{x:Static lang:Resources.BtnSaveKeyText}"
-                Command="{Binding SaveKeyCommand}"
-                IsVisible="{Binding KeyIsInEditMode}"
-                />
-        
-        <Button Content="{x:Static lang:Resources.BtnCancelSaveKeyText}"
-                Command="{Binding CancelSaveKeyCommand}"
-                IsVisible="{Binding KeyIsInEditMode}"
-                />
-    </StackPanel>
+            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="0">
+                <Label Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>
+                <CheckBox IsChecked="{Binding DefaultUseHighGainMultiplier}"></CheckBox>
+            </StackPanel>
+
+            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
+                <Label Content="{x:Static lang:Resources.SettingsDefaultHighGainMultiplierLabel}" />
+                <TextBox Classes="number-field" Text="{Binding DefaultHighGainMultiplier}" />
+            </StackPanel>
+
+            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="0">
+                <Label Content="{x:Static lang:Resources.SettingsDefaultUseTrailingStopLabel}" />
+                <CheckBox IsChecked="{Binding DefaultUseTrailingStop}" />
+            </StackPanel>
+
+            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch">
+                <Label Content="{x:Static lang:Resources.SettingsDefaultTrailingStopLabel}" />
+                <TextBox Classes="number-field" Text="{Binding DefaultTrailingStop}" />
+            </StackPanel>
+
+            <StackPanel Classes="formfield" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel.Styles>
+                    <Style Selector="TextBox">
+                        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
+                        <Setter Property="BorderThickness" Value="1 1 0 1"></Setter>
+                    </Style>
+                </StackPanel.Styles>
+                <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
+                <Grid ColumnDefinitions="*, Auto" Classes="formfield">
+                    <TextBox Name="TokenInput" Text="{Binding Key}"
+                             IsEnabled="{Binding  KeyIsInEditMode}"
+                             HorizontalAlignment="Stretch" MaxLength="25" />
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                        <Button Classes="decorator"
+                                Command="{Binding EditKeyCommand}"
+                                IsVisible="{Binding !KeyIsInEditMode}">
+                            <StackPanel>
+                                <Label Classes="icon" Content="&#xe3B4;"></Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="decorator"
+                                Command="{Binding SaveKeyCommand}"
+                                IsVisible="{Binding KeyIsInEditMode}">
+                            <StackPanel>
+                                <Label Classes="icon" Content="&#xe182;"></Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="decorator"
+                                Command="{Binding CancelSaveKeyCommand}"
+                                IsVisible="{Binding KeyIsInEditMode}"
+                                BorderBrush="{DynamicResource PrimaryForeground}"
+                                BorderThickness="0 1 1 1">
+                            <StackPanel>
+                                <Label Classes="icon" Content="&#xe038;"></Label>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Button Content="{x:Static lang:Resources.BtnSaveSettingsText}"
+                        Command="{Binding SaveSettingsCommand}"
+                        CommandParameter="{Binding}"
+                        Classes="command" />
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
 
 </UserControl>

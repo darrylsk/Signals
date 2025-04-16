@@ -3,12 +3,19 @@
     <Design.PreviewWith>
         <Border Padding="20">
             <!-- Add Controls for Previewer Here -->
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Label Classes="icon" Content="&#xea8c;"></Label>
-                    <Label Content="Holdings"></Label>
-                </StackPanel>
-            </Button>
+            <StackPanel>
+                <Button>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Classes="icon" Content="&#xea8c;"></Label>
+                        <Label Content=" Button"></Label>
+                    </StackPanel>
+                </Button>
+                <Button Classes="command">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content=" Button"></Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
@@ -32,6 +39,9 @@
         <Setter Property="Background" Value="{DynamicResource WindowBackground}"></Setter>
     </Style>
 
+    <Style Selector="Label">
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
     <Style Selector="Label.icon">
         <Setter Property="FontFamily" Value="{DynamicResource Phosphor}"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -41,7 +51,7 @@
         <Setter Property="FontSize" Value="16"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
     </Style>
-    
+
     <Style Selector="Label.navigation">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Transitions">
@@ -75,13 +85,13 @@
         <Setter Property="HorizontalAlignment" Value="Right"></Setter>
         <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
     </Style>
-    
+
     <Style Selector="Border.header">
         <Setter Property="Padding" Value="10"></Setter>
         <Setter Property="Background" Value="Black"></Setter>
         <Setter Property="CornerRadius" Value="10, 10, 0, 0"></Setter>
     </Style>
-    
+
     <Style Selector="TextBlock.page-title">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="FontSize" Value="18"></Setter>
@@ -102,22 +112,42 @@
     <Style Selector="TextBlock.price">
         <Setter Property="HorizontalAlignment" Value="Right"></Setter>
     </Style>
-    
-    <!-- Text Boxes --> 
+
+    <!-- Text Boxes -->
 
     <Style Selector="TextBox">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Background" Value="{DynamicResource MainSectionBackground}"></Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
-        <Setter Property="BorderThickness" Value="0 0 0 1"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
         <Setter Property="CornerRadius" Value="0"></Setter>
     </Style>
-
+    
+    <Style Selector="TextBox:disabled /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
+        <Setter Property="BorderThickness" Value="1 1 0 1"></Setter>
+    </Style>
+    
+    <Style Selector="TextBox.number-field">
+        <Setter Property="Width" Value="50"></Setter>
+        <Setter Property="TextAlignment" Value="Right"></Setter>
+    </Style>
+    
+    <Style Selector="CheckBox">
+        <Setter Property="IsVisible" Value="True"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="BorderBrush" Value="Blue"></Setter>
+    </Style>
+    
     <Style Selector="Button">
         <Setter Property="Margin" Value="0 5 5 0"></Setter>
         <Setter Property="FontSize" Value="16"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"></Setter>
+    </Style>
+    
+    <Style Selector="Button:disabled /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource SystemChromeGrayColor}"></Setter>
     </Style>
 
     <Style Selector="Button /template/ ContentPresenter">
@@ -132,6 +162,20 @@
 
     <Style Selector="Button:pointerover /template/ ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"></Setter>
+        <Setter Property="Background" Value="LightSteelBlue"></Setter>
+    </Style>
+
+    <Style Selector="Button.decorator">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource ButtonBackground}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
+        <Setter Property="Margin" Value="0 0 0 0"></Setter>
+    </Style>
+
+    <Style Selector="Button.decorator:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource ButtonBackground}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
     </Style>
 
     <Style Selector="Button.navigation">
@@ -143,17 +187,24 @@
         <Setter Property="RenderTransform" Value="scale(1.2)"></Setter>
     </Style>
 
+    <Style Selector="Button.command">
+        <Setter Property="Padding" Value="5  20 0 20"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch" ></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+    </Style>
+
     <Style Selector="Border.item-border">
         <Setter Property="BorderBrush" Value="{DynamicResource ItemBorder}"></Setter>
         <Setter Property="BorderThickness" Value="0, 0, 0, 1"></Setter>
         <Setter Property="Padding" Value="0,0,0,5"></Setter>
     </Style>
-    
+
     <Style Selector="Border.heading">
         <Setter Property="Background" Value="LightGray"></Setter>
         <Setter Property="Padding" Value="5"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
     </Style>
+    
     <Style Selector="Border.footer">
         <Setter Property="CornerRadius" Value="0, 0, 10, 10"></Setter>
     </Style>
@@ -161,7 +212,12 @@
     <Style Selector="Grid.heading">
         <Setter Property="Background" Value="LightGray"></Setter>
     </Style>
-    
+
+    <Style Selector="StackPanel.formfield">
+        <Setter Property="Margin" Value="0 5 0 0"></Setter>
+    </Style>
+
+
     <!--<Style Selector="Grid">
         <Setter Property="ShowGridLines" Value="True"></Setter>
     </Style>-->

@@ -1,13 +1,12 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
 namespace Signals.Views;
 
-public partial class SettingsPageView : UserControl
+public partial class SettingsPageView3 : UserControl
 {
-    public SettingsPageView()
+    public SettingsPageView3()
     {
         InitializeComponent();
     }

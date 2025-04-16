@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.ComponentModel.__Internals;
 using CommunityToolkit.Mvvm.Input;
 using Signals.ApplicationLayer.Abstract;
 using Signals.CoreLayer.Entities;
@@ -15,7 +15,6 @@ public partial class WatchlistPageViewModel : PageViewModel
 {
     public IWatchlistService WatchlistService { get; }
     public IMapper WatchlistMapper { get; }
-    public IMapper Mapper { get; }
     public PageFactory PageFactory { get; }
 
     [ObservableProperty] private IEnumerable<WatchlistItem> _watchlist;
@@ -34,8 +33,7 @@ public partial class WatchlistPageViewModel : PageViewModel
         IWatchlistService watchlistService,
         IMapper watchlistMapper,
         PageFactory pageFactory) 
-        : base("Watchlist",
-        "Tracking only - not part of portfolio")
+        : base("Watchlist", "Tracking only - not part of portfolio")
     {
         WatchlistService = watchlistService;
         WatchlistMapper = watchlistMapper;
@@ -43,15 +41,15 @@ public partial class WatchlistPageViewModel : PageViewModel
         LoadData();
     }
 
-    public async Task LoadData()
+    private async Task LoadData()
     {
         Watchlist = await WatchlistService.GetAll();
+        Console.WriteLine(Watchlist.Count());
     }
     
     [RelayCommand]
     private async Task GoToWatchlistDetail(string symbol)
     {
-        Console.WriteLine(symbol);
         var watchlistItem = await WatchlistService.GetBySymbol(symbol);
         // var watchlistItem = await WatchlistService.GetById(new Guid());
         

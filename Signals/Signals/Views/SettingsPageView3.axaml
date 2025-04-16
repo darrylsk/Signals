@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:lang="clr-namespace:Signals.Resources"
+             x:DataType="vm:SettingsPageViewModel"
+             x:Class="Signals.Views.SettingsPageView3">
+    
+    <Design.DataContext>
+        <vm:SettingsPageViewModel />
+    </Design.DataContext>
+    
+    <Border BorderThickness="1" BorderBrush="Blue">
+        <Border.Styles>
+            <Style Selector="TextBox">
+                <Setter Property="BorderThickness" Value="1"></Setter>
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style>
+            <Style Selector="TextBox:disabled /template/ Border#PART_BorderElement">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
+                <Setter Property="BorderThickness" Value="1"></Setter>
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </Style>
+        </Border.Styles>
+        <Grid RowDefinitions="Auto, *, Auto">
+            <StackPanel>
+                <TextBlock>One</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <TextBlock>Two</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <TextBox></TextBox>
+                <TextBox IsEnabled="False"></TextBox>
+                <TextBlock>Three</TextBlock>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
