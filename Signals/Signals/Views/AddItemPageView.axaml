@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:lang="clr-namespace:Signals.Resources"
              x:DataType="vm:AddItemPageViewModel"   
              x:Class="Signals.Views.AddItemPageView">
 
@@ -16,9 +17,21 @@
      -->
     
     <StackPanel>
-        <Label Content="Symbol"></Label>
-        <TextBox Text="{Binding Symbol, Converter={StaticResource UpperCaseConverter}}"></TextBox>
+        <StackPanel>
+            <Label Content="{x:Static lang:Resources.SymbolLabel}"></Label>
+            <TextBox Text="{Binding Symbol, Converter={StaticResource UpperCaseConverter}}"></TextBox>
+        </StackPanel>
         
+        <StackPanel Classes="formfield" Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding AddToWatchlist}"></CheckBox>
+            <Label Content="{x:Static lang:Resources.AddToWatchlistLabel}"></Label>
+        </StackPanel>
+        
+        <StackPanel Classes="formfield" Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding AddToHoldings}"></CheckBox>
+            <Label Content="{x:Static lang:Resources.AddToHoldingsLabel}"></Label>
+        </StackPanel>
+
         <Button Content="Save" Command="{Binding AddSymbolCommand}"
                 CommandParameter="{Binding $parent[UserControl].((vm:AddItemPageViewModel)DataContext).BackLink, FallbackValue=null}"
                 IsEnabled="{Binding SaveIsEnabled}"></Button>

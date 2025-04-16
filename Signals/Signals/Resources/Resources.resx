@@ -54,16 +54,16 @@
         <value>Metadata version</value>
     </data>
     <data name="SettingsDefaultUseHighGainMultiplierLabel" xml:space="preserve">
-        <value>Default Use High Gain Multiplier</value>
+        <value>Use</value>
     </data>
     <data name="SettingsDefaultHighGainMultiplierLabel" xml:space="preserve">
-        <value>Default High Gain Multiplier</value>
+        <value>High Gain Multiplier</value>
     </data>
     <data name="SettingsDefaultUseTrailingStopLabel" xml:space="preserve">
-        <value>Default Use Trailing Stop</value>
+        <value>Use</value>
     </data>
     <data name="SettingsDefaultTrailingStopLabel" xml:space="preserve">
-        <value>Default Trailing Stop</value>
+        <value>Trailing Stop</value>
     </data>
     <data name="KeyLabel" xml:space="preserve">
         <value>Key</value>
@@ -76,5 +76,14 @@
     </data>
     <data name="BtnCancelSaveKeyText" xml:space="preserve">
         <value>Cancel Edit</value>
+    </data>
+    <data name="SymbolLabel" xml:space="preserve">
+        <value>Symbol</value>
+    </data>
+    <data name="AddToWatchlistLabel" xml:space="preserve">
+        <value>Add to watchlist</value>
+    </data>
+    <data name="AddToHoldingsLabel" xml:space="preserve">
+        <value>Add to holdings</value>
     </data>
 </root>

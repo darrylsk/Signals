@@ -6,7 +6,8 @@ namespace Signals.Controls;
 
 public class StockItemDetail : TemplatedControl
 {
-    public static readonly StyledProperty<string> SymbolProperty = AvaloniaProperty.Register<StockItemDetail, string>(
+    public static readonly StyledProperty<string> SymbolProperty 
+        = AvaloniaProperty.Register<StockItemDetail, string>(
         nameof(Symbol));
 
     public string Symbol

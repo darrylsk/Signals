@@ -52,9 +52,11 @@ public abstract class QuotationService<T1, T2> : IQuotationService<T1, T2>, IDis
     /// <summary>
     /// <inheritdoc />
     /// </summary>
-    public bool RequiresKey { get; set; }
+    public bool RequiresToken { get; set; }
 
-    protected string Token { get; set; }
+    public abstract bool HasValidToken { get; }
+
+    public string Token { get;  set; }
 
     /// <summary>
     /// Composes and executes a REST based request for a quotation.

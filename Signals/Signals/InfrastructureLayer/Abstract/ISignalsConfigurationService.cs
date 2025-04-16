@@ -2,7 +2,7 @@
 
 public interface ISignalsConfigurationService
 {
-    public AppConfig LoadConfig();
+    public AppConfig GetConfig();
 
     public void SaveConfig(AppConfig appConfig);
 }

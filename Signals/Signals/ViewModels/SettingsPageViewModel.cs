@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -20,7 +21,7 @@ public partial class SettingsPageViewModel : PageViewModel
     /// Design-time view model
     /// </summary>
     public SettingsPageViewModel() : base("Settings",
-        "Configure settings and preferences")
+        "Defaults")
     { }
 
     public SettingsPageViewModel(
@@ -40,7 +41,7 @@ public partial class SettingsPageViewModel : PageViewModel
 
     private void InitializeConfiguration()
     {
-        SignalsConfiguration = SignalsConfigurationService.LoadConfig();
+        SignalsConfiguration = SignalsConfigurationService.GetConfig();
         Key = SignalsConfiguration.Token;
     }
 
@@ -73,13 +74,14 @@ public partial class SettingsPageViewModel : PageViewModel
     [ObservableProperty] private bool _defaultUseTrailingStop;
     [ObservableProperty] private double _defaultTrailingStop;
     [ObservableProperty] private bool _keyIsInEditMode;
-    
-    public string Key { get; set; }
+    [ObservableProperty] private string _key;
+    // public string Key { get; set; }
     
     [RelayCommand]
     public void EditKey()
     {
         KeyIsInEditMode = true;
+        
     }
 
     [RelayCommand]
@@ -93,6 +95,7 @@ public partial class SettingsPageViewModel : PageViewModel
     [RelayCommand]
     public async Task CancelSaveKey()
     {
+        Key = SignalsConfiguration.Token;
         KeyIsInEditMode = false;
     }
 

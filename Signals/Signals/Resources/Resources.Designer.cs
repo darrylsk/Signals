@@ -87,6 +87,24 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to holdings.
+        /// </summary>
+        public static string AddToHoldingsLabel {
+            get {
+                return ResourceManager.GetString("AddToHoldingsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add to watchlist.
+        /// </summary>
+        public static string AddToWatchlistLabel {
+            get {
+                return ResourceManager.GetString("AddToWatchlistLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current version is 1.0 released 2025.
         /// </summary>
         public static string ApplicationVersionStatement {
@@ -186,7 +204,7 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default High Gain Multiplier.
+        ///   Looks up a localized string similar to High Gain Multiplier.
         /// </summary>
         public static string SettingsDefaultHighGainMultiplierLabel {
             get {
@@ -195,7 +213,7 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default Trailing Stop.
+        ///   Looks up a localized string similar to Trailing Stop.
         /// </summary>
         public static string SettingsDefaultTrailingStopLabel {
             get {
@@ -204,7 +222,7 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default Use High Gain Multiplier.
+        ///   Looks up a localized string similar to Use.
         /// </summary>
         public static string SettingsDefaultUseHighGainMultiplierLabel {
             get {
@@ -213,7 +231,7 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default Use Trailing Stop.
+        ///   Looks up a localized string similar to Use.
         /// </summary>
         public static string SettingsDefaultUseTrailingStopLabel {
             get {
@@ -227,6 +245,15 @@ namespace Signals.Resources {
         public static string SettingsMetadataVersionLabel {
             get {
                 return ResourceManager.GetString("SettingsMetadataVersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Symbol.
+        /// </summary>
+        public static string SymbolLabel {
+            get {
+                return ResourceManager.GetString("SymbolLabel", resourceCulture);
             }
         }
         

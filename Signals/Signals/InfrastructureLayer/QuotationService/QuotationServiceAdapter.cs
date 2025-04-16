@@ -27,18 +27,17 @@ public class QuotationServiceAdapter : IQuotationServiceAdapter
 
     public QuotationServiceOptions ServiceOptionType { get; set; }
 
-    public async Task<WatchlistItem?> GetQuoteAsync(string symbol)
+    public async Task<StockItem?> GetQuoteAsync(string symbol)
     {
         switch (ServiceOptionType)
         {
             case QuotationServiceOptions.Finnhub:
-                if (FinnhubQuotationService.ServiceSuspended)
-                    return null;
+                if (FinnhubQuotationService.ServiceSuspended || !FinnhubQuotationService.HasValidToken) return null;
                 var quote = await FinnhubQuotationService.GetQuoteAsync(symbol);
-                var watchlistItem =
+                var stockItem =
                     QuoteServiceMapper
-                        .Map<WatchlistItem>(quote); // Todo: need to verify this mapping in mapping profile
-                return watchlistItem;
+                        .Map<StockItem>(quote); // Todo: need to verify this mapping in mapping profile
+                return stockItem;
             case QuotationServiceOptions.Tiingo:
                 throw new NotImplementedException();
             default:
@@ -51,8 +50,9 @@ public class QuotationServiceAdapter : IQuotationServiceAdapter
         switch (ServiceOptionType)
         {
             case QuotationServiceOptions.Finnhub:
-                var profile = await FinnhubQuotationService.GetProfileAsync(symbol);
-                var companyProfile = QuoteServiceMapper.Map<CompanyProfile>(profile);
+                if (FinnhubQuotationService.ServiceSuspended || !FinnhubQuotationService.HasValidToken) return null;
+                FinnhubCompanyProfileClientObject? profile = await FinnhubQuotationService.GetProfileAsync(symbol);
+                CompanyProfile? companyProfile = QuoteServiceMapper.Map<CompanyProfile>(profile);
                 return companyProfile;
             case QuotationServiceOptions.Tiingo:
                 throw new NotImplementedException();

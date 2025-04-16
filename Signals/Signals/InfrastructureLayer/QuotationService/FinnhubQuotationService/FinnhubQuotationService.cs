@@ -15,14 +15,20 @@ public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject
     {
         SuspensionTimeLimit = TimeSpan.FromDays(1);
         Uri = "https://finnhub.io/api/v1";
-        Token = "";
+        var config = SignalsConfigurationService.GetConfig();
+        Token = config.Token;
     }
+
+    public override bool HasValidToken => string.IsNullOrEmpty(Token) == false && Token != "dummy";
 
     /// <summary>
     /// <inheritdoc />
     /// </summary>
     public override async Task<FinnhubQuoteClientObject?> GetQuoteAsync(string symbol)
     {
+        ArgumentNullException.ThrowIfNull(symbol);
+        if (HasValidToken == false) return null;
+        
         var query = $"{Uri}/quote?symbol={symbol}&token={Token}";
         HttpResponseMessage response = await Client.GetAsync(query);
         var content = await response.Content.ReadAsStringAsync();
@@ -51,8 +57,10 @@ public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject
     /// </summary>
     public override async Task<FinnhubCompanyProfileClientObject?> GetProfileAsync(string symbol)
     {
-        if (string.IsNullOrEmpty(symbol) || string.IsNullOrEmpty(Token)) return null;
-        var query = $"{Uri}/profile2?symbol={symbol}&token={Token}";
+        ArgumentNullException.ThrowIfNull(symbol);
+        if (HasValidToken == false) return null;
+
+        var query = $"{Uri}/stock/profile2?symbol={symbol}&token={Token}";
         HttpResponseMessage response = await Client.GetAsync(query);
         var content = await response.Content.ReadAsStringAsync();
 
@@ -71,7 +79,15 @@ public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject
 
     private static FinnhubCompanyProfileClientObject? GetCompanyProfileClientData(string content)
     {
-        var data = JsonSerializer.Deserialize<FinnhubCompanyProfileClientObject>(content);
-        return data;
+        try
+        {
+            var data = JsonSerializer.Deserialize<FinnhubCompanyProfileClientObject>(content);
+            return data;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw;
+        }
     }
 }
