@@ -43,6 +43,7 @@ public partial class App : Application
         
         services.AddTransient<HomePageViewModel>();
         services.AddTransient<HoldingsPageViewModel>();
+        services.AddTransient<HoldingsItemPageViewModel>();
         services.AddTransient<SettingsPageViewModel>();
         services.AddTransient<WatchlistPageViewModel>();
         services.AddTransient<WatchlistItemPageViewModel>();
@@ -70,12 +71,12 @@ public partial class App : Application
         services.AddSingleton<Func<Type, PageViewModel>>( x => type
             => type switch
         {
-            //_ when type == typeof(MainViewModel)  => x.GetRequiredService<MainViewModel>(),
             _ when type == typeof(HomePageViewModel)  => x.GetRequiredService<HomePageViewModel>(),
             _ when type == typeof(WatchlistPageViewModel) => x.GetRequiredService<WatchlistPageViewModel>(),
             _ when type == typeof(HoldingsPageViewModel) => x.GetRequiredService<HoldingsPageViewModel>(),
             _ when type == typeof(SettingsPageViewModel)  => x.GetRequiredService<SettingsPageViewModel>(),
             _ when type == typeof(WatchlistItemPageViewModel)  => x.GetRequiredService<WatchlistItemPageViewModel>(),
+            _ when type == typeof(HoldingsItemPageViewModel)  => x.GetRequiredService<HoldingsItemPageViewModel>(),
             _ when type == typeof(AddItemPageViewModel)  => x.GetRequiredService<AddItemPageViewModel>(),
             _ when type == typeof(AboutPageViewModel)  => x.GetRequiredService<AboutPageViewModel>(),
             _ when type == typeof(UpdatesPageViewModel)  => x.GetRequiredService<UpdatesPageViewModel>(),

@@ -13,6 +13,9 @@ namespace Signals.ViewModels;
 
 public partial class AddItemPageViewModel : PageViewModel
 {
+    public AddItemPageViewModel(): base("AddItem", "Add item")
+    { }
+    
     public IQuotationServiceAdapter QuotationService { get; }
     public ICompanyProfileService CompanyProfileService { get; }
     public IWatchlistService WatchlistService { get; }
@@ -136,6 +139,13 @@ public partial class AddItemPageViewModel : PageViewModel
             throw;
         }
 
+        // Navigate back to the list.
+        BackLink.CurrentPage = viewModel ?? PageFactory.GetPageViewModel<WatchlistPageViewModel>();
+    }
+
+    [RelayCommand]
+    private void Cancel(PageViewModel viewModel)
+    {
         // Navigate back to the list.
         BackLink.CurrentPage = viewModel ?? PageFactory.GetPageViewModel<WatchlistPageViewModel>();
     }

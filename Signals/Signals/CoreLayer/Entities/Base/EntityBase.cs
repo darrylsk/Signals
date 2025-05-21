@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using SQLite;
 
 namespace Signals.CoreLayer.Entities.Base;
@@ -6,20 +7,20 @@ namespace Signals.CoreLayer.Entities.Base;
 public abstract class EntityBase<TId> : IEntityBase<TId>
 {
     [PrimaryKey]
-    public virtual  TId Id { get; set; }
+    public abstract TId Id { get; set; }
     
     public DateTime WhenCreated { get; set; }
 
     int? _requestedHashCode;
 
-    public bool IsTransient()
+    protected bool IsTransient()
     {
         return Id.Equals(default(TId));
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        if (obj == null || !(obj is EntityBase<TId>))
+        if (obj! == null! || !(obj is EntityBase<TId>))
             return false;
 
         if (ReferenceEquals(this, obj))

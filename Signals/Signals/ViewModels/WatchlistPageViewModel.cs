@@ -44,18 +44,6 @@ public partial class WatchlistPageViewModel : PageViewModel
     private async Task LoadData()
     {
         Watchlist = await WatchlistService.GetAll();
-        Console.WriteLine(Watchlist.Count());
-    }
-    
-    [RelayCommand]
-    private async Task GoToWatchlistDetail(string symbol)
-    {
-        var watchlistItem = await WatchlistService.GetBySymbol(symbol);
-        // var watchlistItem = await WatchlistService.GetById(new Guid());
-        
-        // var viewModel = WatchlistMapper.Map<WatchlistItem,WatchlistItemPageViewModel>(watchlistItem);
-        // CurrentPage = _pageFactory.GetPageViewModel(PageNames.WatchlistItemDetail);
-        CurrentPage = PageFactory.GetPageViewModel<WatchlistItemPageViewModel>(
-               async vm => await vm.LoadData(symbol));
+        PageTitle = "Watchlist";
     }
 }

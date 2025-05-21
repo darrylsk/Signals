@@ -10,6 +10,7 @@ public partial class PageViewModel : ViewModelBase
         _pageTitle = pageTitle;
         _pageSubtitle = pageSubtitle;
     }
+    
     // public PageViewModel(PageNames pageName, string pageTitle, string pageSubtitle)
     // {
     //     _pageName = pageName;

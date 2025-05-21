@@ -58,6 +58,6 @@ public partial class HoldingsPageViewModel : PageViewModel
     {
         var holding = await HoldingService.GetBySymbol(symbol);
         CurrentPage = PageFactory.GetPageViewModel<HoldingsItemPageViewModel>();
-
+    
     }
 }

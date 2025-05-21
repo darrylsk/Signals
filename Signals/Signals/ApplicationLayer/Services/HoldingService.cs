@@ -18,15 +18,15 @@ public class HoldingService : BusinessService<Holding>, IHoldingService
         Repository = repository;
         
     }
-    public async Task<IEnumerable<Holding>> GetAll()
-    {
-        return await Repository.GetAllAsync();
-    }
+    // public async Task<IEnumerable<Holding>> GetAll()
+    // {
+    //     return await Repository.GetAllAsync();
+    // }
 
-    public Task<Holding> GetById(Guid id)
-    {
-        throw new NotImplementedException();
-    }
+    // public Task<Holding> GetById(Guid id)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
     public async Task<Holding?> GetBySymbol(string symbol)
     {
