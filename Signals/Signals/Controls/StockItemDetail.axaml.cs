@@ -28,11 +28,11 @@ public class StockItemDetail : TemplatedControl
     public new static readonly StyledProperty<string> NameProperty = AvaloniaProperty.Register<StockItemDetail, string>(
         nameof(Name));
 
-    public string Name
-    {
-        get => GetValue(NameProperty);
-        set => SetValue(NameProperty, value);
-    }
+    // public string Name
+    // {
+    //     get => GetValue(NameProperty);
+    //     set => SetValue(NameProperty, value);
+    // }
 
     public static readonly StyledProperty<string> ExchangeNameProperty = AvaloniaProperty.Register<StockItemDetail, string>(
         nameof(ExchangeName));

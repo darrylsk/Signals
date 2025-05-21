@@ -22,7 +22,7 @@
                     <DataTemplate>
                         <StackPanel>
                             <controls:StockItemHeader
-                                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+                                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToHoldingDetailCommand, FallbackValue=null}"
                                 CommandParameter="{Binding Symbol}"
                                 Symbol="{Binding Symbol}"
                                 Name="{Binding Name}"

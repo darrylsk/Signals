@@ -19,7 +19,8 @@
                         <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *, Auto">
                             <StackPanel Grid.Row="0" Grid.Column="0" Width="80">
                                 <TextBlock Text="{TemplateBinding Symbol}"
-                                           Foreground="{TemplateBinding ColourByTrend}" Classes="item-heading" />
+                                           Foreground="{TemplateBinding ColourByTrend}" 
+                                           Classes="item-heading" />
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="1">
                                 <TextBlock Text="{TemplateBinding Name}" Classes="item-heading" />

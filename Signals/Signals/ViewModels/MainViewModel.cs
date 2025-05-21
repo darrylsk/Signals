@@ -19,13 +19,16 @@ public partial class MainViewModel : ViewModelBase
     /// </summary>
     public MainViewModel()
     {
+        _pageFactory = new PageFactory(type => new PageViewModel("Main", "main page"));
         CurrentPage = _pageFactory.GetPageViewModel<HomePageViewModel>();
+        PageTitle = "Main";
     }
 
     public MainViewModel(PageFactory pageFactory)
     {
         _pageFactory = pageFactory;
         CurrentPage = pageFactory.GetPageViewModel<HomePageViewModel>();
+        PageTitle = "Main";
         GoToWatchlist();
     }
 
@@ -64,7 +67,17 @@ public partial class MainViewModel : ViewModelBase
     {
         CurrentPage = _pageFactory.GetPageViewModel<WatchlistItemPageViewModel>(async vm 
             => await vm.LoadData(symbol));
+        CurrentPage.BackLink = this;
         PageTitle = "Watchlist Item";
+    }
+
+    [RelayCommand]
+    private void GoToHoldingDetail(string symbol)
+    {
+        CurrentPage = _pageFactory.GetPageViewModel<HoldingsItemPageViewModel>(async vm 
+            => await vm.LoadData(symbol));
+        CurrentPage.BackLink = this;
+        PageTitle = "Holding";
     }
 
     [RelayCommand]
