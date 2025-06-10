@@ -15,34 +15,41 @@
     <Grid RowDefinitions="Auto, *">
         <Label Grid.Row="0" Classes="heading" Content="{Binding PageSubtitle}"></Label>
 
-        <Grid Grid.Row="1" RowDefinitions="Auto, Auto, *, Auto" ColumnDefinitions="Auto, *">
+        <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *, Auto" ColumnDefinitions="Auto, *"
+              ShowGridLines="True">
             
             <StackPanel Classes="formfield" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
                 <TextBlock Text="{Binding MetadataVersion}"></TextBlock>
             </StackPanel>
 
-            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="0">
-                <Label Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>
-                <CheckBox IsChecked="{Binding DefaultUseHighGainMultiplier}"></CheckBox>
-            </StackPanel>
-
-            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
+             <!-- Default Gain Alert Level -->
+            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
                 <Label Content="{x:Static lang:Resources.SettingsDefaultHighGainMultiplierLabel}" />
-                <TextBox Classes="number-field" Text="{Binding DefaultHighGainMultiplier}" />
+                <TextBox Classes="number-field" Text="{Binding SettingsDefaultHighGainMultiplier}" />
             </StackPanel>
 
-            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="0">
-                <Label Content="{x:Static lang:Resources.SettingsDefaultUseTrailingStopLabel}" />
-                <CheckBox IsChecked="{Binding DefaultUseTrailingStop}" />
+            <!-- Use Gain Alert -->
+            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <CheckBox IsChecked="{Binding SettingsDefaultUseHighGainMultiplier}"></CheckBox>
+                <Label Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>
             </StackPanel>
 
-            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch">
+             <!-- Default Trailing Stop --> 
+            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch">
                 <Label Content="{x:Static lang:Resources.SettingsDefaultTrailingStopLabel}" />
-                <TextBox Classes="number-field" Text="{Binding DefaultTrailingStop}" />
+                <TextBox Classes="number-field" Text="{Binding SettingsDefaultTrailingStop}" />
             </StackPanel>
 
-            <StackPanel Classes="formfield" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+             <!-- Use Trailing Stop --> 
+            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <CheckBox IsChecked="{Binding SettingsDefaultUseTrailingStop}" />
+                <Label Content="{x:Static lang:Resources.SettingsDefaultUseTrailingStopLabel}" />
+            </StackPanel>
+             
+             <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></StackPanel>
+
+            <StackPanel Classes="formfield" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                 <StackPanel.Styles>
                     <Style Selector="TextBox">
                         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>

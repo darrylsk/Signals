@@ -16,6 +16,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="Resources/AppResources.axaml"></ResourceInclude>
+                <ResourceInclude Source="Controls/IconButton.axaml"></ResourceInclude>
             </ResourceDictionary.MergedDictionaries>
             <converters:UpperCaseConverter x:Key="UpperCaseConverter" />
         </ResourceDictionary>
