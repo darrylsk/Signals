@@ -13,66 +13,106 @@
         <vm:HoldingsItemPageViewModel />
     </Design.DataContext>
 
-    <StackPanel>
-        <ContentControl Content="{Binding HoldingItem}">
+    <Grid RowDefinitions="*, Auto">
+        <ContentControl Content="{Binding HoldingItem}" Height="475">
             <ContentControl.ContentTemplate>
                 <DataTemplate DataType="entities:Holding">
-                    <Grid RowDefinitions="*, Auto">
+                    <Grid RowDefinitions="Auto, *">
                         <StackPanel Grid.Row="0">
                             <Button Classes="navigation" Background="Transparent"
                                     HorizontalAlignment="Left"
-                                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToHoldingsCommand, FallbackValue=null}"
-                                    >
+                                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToHoldingsCommand, FallbackValue=null}">
                                 <StackPanel>
                                     <Label Classes="icon" FontSize="24" Content="&#xe058;"></Label>
                                 </StackPanel>
                             </Button>
-                            <TextBlock Text="{Binding  Symbol}" />
-                            <TextBlock Text="Name" />
-                            <TextBlock Text="{Binding  Name}" />
-                            <TextBlock Text="Exchange" />
-                            <TextBlock Text="{Binding  ExchangeName}" />
-                            <TextBlock Text="Quote Received" />
-                            <TextBlock
-                                Text="{Binding  WhenLatestQuoteReceived, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
-
-                            <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*,*">
-
-                                <StackPanel Grid.Row="0" Grid.Column="0">
-                                    <TextBlock Text="Latest Quote" />
-                                    <TextBlock Text="{Binding  LatestQuotedPrice, StringFormat={}{0:C}}" />
-                                </StackPanel>
-
-                                <StackPanel Grid.Row="0" Grid.Column="1">
-                                    <TextBlock Text="% Change" />
-                                    <TextBlock Text="{Binding  CurrentDayPercentChange, StringFormat={}{0:#0.0%}}" />
-                                </StackPanel>
-
-                                <StackPanel Grid.Row="1" Grid.Column="0">
-                                    <TextBlock Text="Previous Close" />
-                                    <TextBlock Text="{Binding  PreviousDayClosingPrice, StringFormat={}{0:C}}" />
-                                </StackPanel>
-
-                                <StackPanel Grid.Row="1" Grid.Column="1">
-                                    <TextBlock Text="Today's Open" />
-                                    <TextBlock Text="{Binding  CurrentDayOpeningPrice, StringFormat={}{0:C}}" />
-                                </StackPanel>
-
-                                <StackPanel Grid.Row="2" Grid.Column="0">
-                                    <TextBlock Text="Daily Low" />
-                                    <TextBlock Text="{Binding  CurrentDayLowPrice, StringFormat={}{0:C}}" />
-                                </StackPanel>
-
-                                <StackPanel Grid.Row="2" Grid.Column="1">
-                                    <TextBlock Text="Daily High" />
-                                    <TextBlock Text="{Binding  CurrentDayHighPrice, StringFormat={}{0:C}}" />
-                                </StackPanel>
-
-                            </Grid>
                         </StackPanel>
+                        <ScrollViewer Grid.Row="1" IsEnabled="True">
+                            <StackPanel>
+                                <TextBlock Text="{Binding  Symbol}" />
+                                <Label Content="Name" />
+                                <TextBlock Text="{Binding  Name}" />
+                                <Label Content="Exchange" />
+                                <TextBlock Text="{Binding  ExchangeName}" />
+                                <Label Content="Quote Received" />
+                                <TextBlock
+                                    Text="{Binding  WhenLatestQuoteReceived, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
+
+                                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,*">
+
+                                    <StackPanel Grid.Row="0" Grid.Column="0">
+                                        <Label Content="Latest Quote" />
+                                        <TextBlock Text="{Binding  LatestQuotedPrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="0" Grid.Column="1">
+                                        <Label Content="% Change" />
+                                        <TextBlock
+                                            Text="{Binding  CurrentDayPercentChange, StringFormat={}{0:#0.0%}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="0">
+                                        <Label Content="Previous Close" />
+                                        <TextBlock Text="{Binding  PreviousDayClosingPrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="1">
+                                        <Label Content="Today's Open" />
+                                        <TextBlock Text="{Binding  CurrentDayOpeningPrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2" Grid.Column="0">
+                                        <Label Content="Daily Low" />
+                                        <TextBlock Text="{Binding  CurrentDayLowPrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="2" Grid.Column="1">
+                                        <Label Content="Daily High" />
+                                        <TextBlock Text="{Binding  CurrentDayHighPrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="3" Grid.Column="0">
+                                        <Label Content="When Purchased" />
+                                        <TextBox
+                                            Text="{Binding  WhenPurchased, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="3" Grid.Column="1">
+                                        <Label Content="Number of Units Held" />
+                                        <TextBox Text="{Binding  QuantityHeld, StringFormat={}{0:#0}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="4" Grid.Column="0">
+                                        <Label Content="Peak Price Since Purchase" />
+                                        <TextBox Text="{Binding  PeakPriceSincePurchase, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="5" Grid.Column="0">
+                                        <Label Content="High Target Price" />
+                                        <TextBox Text="{Binding  HighTargetPrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="5" Grid.Column="1">
+                                        <Label Content="Low Target Price" />
+                                        <TextBox Text="{Binding  LowTargetPrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+                                </Grid>
+                                <StackPanel>
+                                    <Label Content="Use Trailing Stop"></Label>
+                                    <CheckBox IsChecked="{Binding UseTrailingStop}"></CheckBox>
+                                    <Label Content="Trailing Stop"></Label>
+                                    <Slider Value="{Binding TrailingStop}"></Slider>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </ScrollViewer>
                     </Grid>
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>
-    </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button>Buy</Button>
+            <Button>Sell</Button>
+        </StackPanel>
+    </Grid>
 </UserControl>

@@ -1,16 +1,13 @@
 using System;
-using System.Globalization;
-using System.Threading;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Avalonia.Metadata;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Signals.ApplicationLayer.Abstract;
 using Signals.ApplicationLayer.Services;
 using Signals.CoreLayer.Abstract;
-using Signals.CoreLayer.Entities;
 using Signals.Factories;
 using Signals.InfrastructureLayer.Abstract;
 using Signals.InfrastructureLayer.FileService;
@@ -21,6 +18,10 @@ using Signals.InfrastructureLayer.Repository;
 using Signals.ViewModels;
 using Signals.Views;
 using PageViewModel = Signals.ViewModels.PageViewModel;
+
+// As specified by Luke at AnglXix to avoid having to use namespace qualifiers all the time
+// Avalonia Real World #7 (07:45 in the YT video)
+[assembly: XmlnsDefinition("https://github.com/avaloniaui", "Signals.Controls")]
 
 namespace Signals;
 

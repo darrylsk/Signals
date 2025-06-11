@@ -25,7 +25,6 @@ public class Holding : StockItem
     public decimal? LowTargetPrice { get; set; }
 
     public bool UseTrailingStop { get; set; }
-
     /// <summary>
     /// Default value for a trailing stop, if used
     /// </summary>

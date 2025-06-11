@@ -11,19 +11,13 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons 
-
-                            CommandParameter="{Binding$parent[UserControl].((vm:MainViewModel)).CurrentPage, FallbackValue=null
--->
+    <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons -->
     <Grid RowDefinitions="Auto, *, Auto" Margin="20">
+        
         <!-- Top Bar: Contains App Title and subtitle -->
         <StackPanel Grid.Row="0">
             <TextBlock Classes="title" Text="{x:Static lang:Resources.AppTitle}" />
             <TextBlock Classes="tag-line" Text="{x:Static lang:Resources.TagLine}" />
-            <!--
-            <TextBlock Classes="title" Text="{Binding AppTitle}" />
-            <TextBlock Classes="tag-line" Text="{Binding TagLine}" />
-            -->
             <Border Classes="header">
                 <Grid ColumnDefinitions="*, Auto">
                     <TextBlock Grid.Column="0" Classes="page-title" FontSize="24" Text="{Binding PageTitle}" />
@@ -33,7 +27,8 @@
                                 HorizontalAlignment="Right"
                                 Command="{Binding GoToAddItemCommand}">
                             <StackPanel>
-                                <Label Classes="icon" FontSize="24" Content="&#xe3D6;"></Label>
+                                <Label Classes="icon" FontSize="24" Content="&#xe3D6;" 
+                                       Padding="0 0 0 0"></Label>
                             </StackPanel>
                         </Button>
                         <Menu>
@@ -41,7 +36,7 @@
                                 <MenuItem.Header>
                                     <StackPanel>
                                         <Label Classes="icon navigation" FontSize="24" Content="&#xe206;"
-                                               Background="Transparent">
+                                               Background="Transparent" Padding="0 5 0 0">
                                         </Label>
                                     </StackPanel>
                                 </MenuItem.Header>

@@ -139,18 +139,19 @@
         <Setter Property="BorderBrush" Value="Blue"></Setter>
     </Style>
     
-    <Style Selector="Button">
+    <Style Selector=":is(Button)">
         <Setter Property="Margin" Value="0 5 5 0"></Setter>
         <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="CornerRadius" Value="5"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"></Setter>
     </Style>
     
-    <Style Selector="Button:disabled /template/ ContentPresenter">
+    <Style Selector=":is(Button):disabled /template/ ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource SystemChromeGrayColor}"></Setter>
     </Style>
 
-    <Style Selector="Button /template/ ContentPresenter">
+    <Style Selector=":is(Button) /template/ ContentPresenter">
         <Setter Property="Transitions">
             <Transitions>
                 <BrushTransition Property="Foreground" Duration="0:0:0.5"></BrushTransition>
@@ -160,34 +161,34 @@
         </Setter>
     </Style>
 
-    <Style Selector="Button:pointerover /template/ ContentPresenter">
+    <Style Selector=":is(Button):pointerover /template/ ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"></Setter>
         <Setter Property="Background" Value="LightSteelBlue"></Setter>
     </Style>
 
-    <Style Selector="Button.decorator">
+    <Style Selector=":is(Button).decorator">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}"></Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Margin" Value="0 0 0 0"></Setter>
     </Style>
 
-    <Style Selector="Button.decorator:pointerover /template/ ContentPresenter">
+    <Style Selector=":is(Button).decorator:pointerover /template/ ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"></Setter>
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}"></Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
     </Style>
 
-    <Style Selector="Button.navigation">
+    <Style Selector=":is(Button).navigation">
         <Setter Property="Background" Value="Transparent"></Setter>
     </Style>
 
-    <Style Selector="Button.navigation:pointerover /template/ ContentPresenter">
+    <Style Selector=":is(Button).navigation:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="RenderTransform" Value="scale(1.2)"></Setter>
     </Style>
 
-    <Style Selector="Button.command">
+    <Style Selector=":is(Button).command">
         <Setter Property="Padding" Value="5  20 0 20"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch" ></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>

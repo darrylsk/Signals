@@ -69,10 +69,10 @@ public partial class SettingsPageViewModel : PageViewModel
 
     [ObservableProperty] private Guid _id;
     [ObservableProperty] private int _metadataVersion;
-    [ObservableProperty] private bool _defaultUseHighGainMultiplier;
-    [ObservableProperty] private double _defaultHighGainMultiplier;
-    [ObservableProperty] private bool _defaultUseTrailingStop;
-    [ObservableProperty] private double _defaultTrailingStop;
+    [ObservableProperty] private bool _settingsDefaultUseHighGainMultiplier;
+    [ObservableProperty] private double _settingsDefaultHighGainMultiplier;
+    [ObservableProperty] private bool _settingsDefaultUseTrailingStop;
+    [ObservableProperty] private double _settingsDefaultTrailingStop;
     [ObservableProperty] private bool _keyIsInEditMode;
     [ObservableProperty] private string _key;
     // public string Key { get; set; }

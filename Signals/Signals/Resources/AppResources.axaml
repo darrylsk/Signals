@@ -26,7 +26,7 @@
     <FontFamily x:Key="DefaultFontFamily">/Assets/Fonts/NotoSans/NotoSansJp.ttf</FontFamily>
     <!--
     <FontFamily x:Key="Nunito">/Assets/Fonts/Nunito</FontFamily>
-    Luke wrote it in this way:  Did he make a mistake?
+    Luke wrote it in this way:  Alternate method: Font name not necessary since same as file name ?
     <FontFamily x:Key="Nunito">/Assets/Fonts#Nunito</FontFamily>
     -->
 
