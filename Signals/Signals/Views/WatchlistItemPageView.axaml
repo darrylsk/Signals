@@ -71,8 +71,8 @@
                             </Grid>
                         </StackPanel>
                         <StackPanel Grid.Row="1"  Orientation="Horizontal">
-                            <Button>Delete</Button>
-                            <Button>Buy</Button>
+                            <IconButton IconText="&#xE4A6;" Content="Delete"></IconButton>
+                            <IconButton IconText="&#xEB48;" Content="Buy"></IconButton>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
