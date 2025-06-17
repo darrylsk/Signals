@@ -111,8 +111,8 @@
             </ContentControl.ContentTemplate>
         </ContentControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button>Buy</Button>
-            <Button>Sell</Button>
+            <IconButton IconText="&#xeb48;" Content="Buy"></IconButton>
+            <IconButton IconText="&#xe478;" Content="Sell"></IconButton>
         </StackPanel>
     </Grid>
 </UserControl>
