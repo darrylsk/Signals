@@ -1,21 +1,42 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Padding="20">
-            <!-- Add Controls for Previewer Here -->
-            <StackPanel>
-                <Button>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Classes="icon" Content="&#xea8c;"></Label>
-                        <Label Content=" Button"></Label>
+        <Border Padding="20" Width="400">
+            <!-- Background="{DynamicResource MainSectionBackground} -->
+            <Border Classes="main-section" >
+                <Grid ColumnDefinitions="*, *">
+                    <!-- Add Controls for Previewer Here -->
+                    <StackPanel>
+                        <Button>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Classes="icon" Content="&#xea8c;"></Label>
+                                <Label Content=" Button"></Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="command">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content=" Button"></Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="buy">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content=" Buy"></Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="sell">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content=" Sell"></Label>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
-                </Button>
-                <Button Classes="command">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content=" Button"></Label>
+                    <StackPanel Grid.Column="1" Spacing="15">
+                        <CheckBox></CheckBox>
+                        <CheckBox>Has Content</CheckBox>
+                        <Label Foreground="{DynamicResource PrimaryForeground}">Label</Label>
+                        <TextBox>Text</TextBox>
                     </StackPanel>
-                </Button>
-            </StackPanel>
+                </Grid>
+            </Border>
         </Border>
     </Design.PreviewWith>
 
@@ -38,6 +59,8 @@
         <Setter Property="FontFamily" Value="{DynamicResource  DefaultFontFamily}"></Setter>
         <Setter Property="Background" Value="{DynamicResource WindowBackground}"></Setter>
     </Style>
+
+    <!-- Label Styles -->
 
     <Style Selector="Label">
         <Setter Property="FontWeight" Value="SemiBold"></Setter>
@@ -68,6 +91,8 @@
         <Setter Property="RenderTransform" Value="scale(1.2)"></Setter>
     </Style>
 
+    <!-- TextBlock Styles -->
+
     <Style Selector="TextBlock">
         <Setter Property="Padding" Value="5,5,5,0"></Setter>
         <Setter Property="TextWrapping" Value="Wrap"></Setter>
@@ -84,12 +109,6 @@
         <Setter Property="Foreground" Value="Black"></Setter>
         <Setter Property="HorizontalAlignment" Value="Right"></Setter>
         <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
-    </Style>
-
-    <Style Selector="Border.header">
-        <Setter Property="Padding" Value="10"></Setter>
-        <Setter Property="Background" Value="Black"></Setter>
-        <Setter Property="CornerRadius" Value="10, 10, 0, 0"></Setter>
     </Style>
 
     <Style Selector="TextBlock.page-title">
@@ -113,7 +132,7 @@
         <Setter Property="HorizontalAlignment" Value="Right"></Setter>
     </Style>
 
-    <!-- Text Boxes -->
+    <!-- TextBox Styles -->
 
     <Style Selector="TextBox">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
@@ -122,31 +141,28 @@
         <Setter Property="BorderThickness" Value="1"></Setter>
         <Setter Property="CornerRadius" Value="0"></Setter>
     </Style>
-    
+
     <Style Selector="TextBox:disabled /template/ Border#PART_BorderElement">
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="BorderThickness" Value="1 1 0 1"></Setter>
     </Style>
-    
+
     <Style Selector="TextBox.number-field">
-        <Setter Property="Width" Value="50"></Setter>
+        <!--<Setter Property="Width" Value="50"></Setter>-->
+        <Setter Property="Margin" Value="5 0"></Setter>
         <Setter Property="TextAlignment" Value="Right"></Setter>
     </Style>
-    
-    <Style Selector="CheckBox">
-        <Setter Property="IsVisible" Value="True"></Setter>
-        <Setter Property="BorderThickness" Value="1"></Setter>
-        <Setter Property="BorderBrush" Value="Blue"></Setter>
-    </Style>
-    
-    <Style Selector=":is(Button)">
+
+    <!-- Button Styles -->
+
+    <Style Selector=":is(Button):not(CheckBox)">
         <Setter Property="Margin" Value="0 5 5 0"></Setter>
         <Setter Property="FontSize" Value="16"></Setter>
         <Setter Property="CornerRadius" Value="5"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"></Setter>
     </Style>
-    
+
     <Style Selector=":is(Button):disabled /template/ ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource SystemChromeGrayColor}"></Setter>
     </Style>
@@ -154,14 +170,14 @@
     <Style Selector=":is(Button) /template/ ContentPresenter">
         <Setter Property="Transitions">
             <Transitions>
-                <BrushTransition Property="Foreground" Duration="0:0:0.5"></BrushTransition>
-                <BrushTransition Property="Background" Duration="0:0:0.5"></BrushTransition>
+                <BrushTransition Property="Foreground" Duration="0:0:0.3"></BrushTransition>
+                <BrushTransition Property="Background" Duration="0:0:0.3"></BrushTransition>
                 <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"></TransformOperationsTransition>
             </Transitions>
         </Setter>
     </Style>
 
-    <Style Selector=":is(Button):pointerover /template/ ContentPresenter">
+    <Style Selector=":is(Button):not(CheckBox):pointerover /template/ ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"></Setter>
         <Setter Property="Background" Value="LightSteelBlue"></Setter>
     </Style>
@@ -171,6 +187,7 @@
         <Setter Property="Background" Value="{DynamicResource ButtonBackground}"></Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="Margin" Value="0 0 0 0"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
     </Style>
 
     <Style Selector=":is(Button).decorator:pointerover /template/ ContentPresenter">
@@ -189,11 +206,58 @@
     </Style>
 
     <Style Selector=":is(Button).command">
-        <Setter Property="Padding" Value="5  20 0 20"></Setter>
-        <Setter Property="HorizontalAlignment" Value="Stretch" ></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource CommandButtonForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource CommandButtonBackgroundGradient}"></Setter>
     </Style>
 
+    <Style Selector=":is(Button).command:pointerover /template/ ContentPresenter">
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource CommandButtonHoverForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource CommandButtonHoverBackground}"></Setter>
+    </Style>
+
+    <Style Selector=":is(Button).buy">
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource BuyButtonForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource BuyButtonBackgroundGradient}"></Setter>
+    </Style>
+
+    <Style Selector=":is(Button).buy:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource BuyButtonHoverForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource BuyButtonHoverBackground}"></Setter>
+    </Style>
+
+    <Style Selector=":is(Button).sell">
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Background" Value="{DynamicResource SellButtonBackgroundGradient}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource SellButtonForeground}"></Setter>
+    </Style>
+
+    <Style Selector=":is(Button).sell:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource SellButtonHoverForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource SellButtonHoverBackground}"></Setter>
+    </Style>
+
+    <!--Border Styles-->
+    
+    <Style Selector="Border.app-header">
+        <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="CornerRadius" Value="10, 10, 0, 0"></Setter>
+    </Style>
+
+    <Style Selector="Border.main-section">
+        <!-- a bit of margin to correct for an apparent rendering bug (or perhaps an optical illusion) due to the coloring -->
+        <Setter Property="Margin" Value="0.9 0 0.9 0"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="Background" Value="{DynamicResource MainSectionBackground}"></Setter>
+    </Style>
+    
     <Style Selector="Border.item-border">
         <Setter Property="BorderBrush" Value="{DynamicResource ItemBorder}"></Setter>
         <Setter Property="BorderThickness" Value="0, 0, 0, 1"></Setter>
@@ -205,16 +269,18 @@
         <Setter Property="Padding" Value="5"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
     </Style>
-    
+
     <Style Selector="Border.footer">
         <Setter Property="CornerRadius" Value="0, 0, 10, 10"></Setter>
     </Style>
 
+    <!--Grid Styles-->
     <Style Selector="Grid.heading">
         <Setter Property="Background" Value="LightGray"></Setter>
     </Style>
 
-    <Style Selector="StackPanel.formfield">
+    <!--StackPanel Styles-->
+    <Style Selector="StackPanel.formField">
         <Setter Property="Margin" Value="0 5 0 0"></Setter>
     </Style>
 
