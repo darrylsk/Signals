@@ -11,91 +11,98 @@
     <Design.DataContext>
         <vm:SettingsPageViewModel />
     </Design.DataContext>
-
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions="Auto, *, Auto">
         <Label Grid.Row="0" Classes="heading" Content="{Binding PageSubtitle}"></Label>
 
-        <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *, Auto" ColumnDefinitions="Auto, *"
-              ShowGridLines="True">
-            
-            <StackPanel Classes="formfield" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
-                <TextBlock Text="{Binding MetadataVersion}"></TextBlock>
-            </StackPanel>
+        <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *, Auto" ColumnDefinitions="Auto, 16, *">
 
-             <!-- Default Gain Alert Level -->
-            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
+            <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding MetadataVersion}"></TextBlock>
+
+            <!-- Default Gain Alert Level -->
+            <StackPanel Classes="formField" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
                 <Label Content="{x:Static lang:Resources.SettingsDefaultHighGainMultiplierLabel}" />
                 <TextBox Classes="number-field" Text="{Binding SettingsDefaultHighGainMultiplier}" />
             </StackPanel>
 
             <!-- Use Gain Alert -->
-            <StackPanel Classes="formfield" Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
-                <CheckBox IsChecked="{Binding SettingsDefaultUseHighGainMultiplier}"></CheckBox>
-                <Label Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>
+            <StackPanel Classes="formField" Grid.Row="1" Grid.Column="2" Orientation="Horizontal"
+                        VerticalAlignment="Bottom">
+                <CheckBox Content="{x:Static lang:Resources.Use}"
+                          IsChecked="{Binding SettingsDefaultUseHighGainMultiplier}">
+                </CheckBox>
+                <!--<Label 
+                    Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>-->
             </StackPanel>
 
-             <!-- Default Trailing Stop --> 
-            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch">
+            <!-- Default Trailing Stop -->
+            <StackPanel Classes="formField" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch">
                 <Label Content="{x:Static lang:Resources.SettingsDefaultTrailingStopLabel}" />
                 <TextBox Classes="number-field" Text="{Binding SettingsDefaultTrailingStop}" />
             </StackPanel>
 
-             <!-- Use Trailing Stop --> 
-            <StackPanel Classes="formfield" Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
-                <CheckBox IsChecked="{Binding SettingsDefaultUseTrailingStop}" />
-                <Label Content="{x:Static lang:Resources.SettingsDefaultUseTrailingStopLabel}" />
-            </StackPanel>
-             
-             <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></StackPanel>
-
-            <StackPanel Classes="formfield" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                <StackPanel.Styles>
-                    <Style Selector="TextBox">
-                        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
-                        <Setter Property="BorderThickness" Value="1 1 0 1"></Setter>
-                    </Style>
-                </StackPanel.Styles>
-                <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
-                <Grid ColumnDefinitions="*, Auto" Classes="formfield">
-                    <TextBox Name="TokenInput" Text="{Binding Key}"
-                             IsEnabled="{Binding  KeyIsInEditMode}"
-                             HorizontalAlignment="Stretch" MaxLength="25" />
-                    <StackPanel Grid.Column="1" Orientation="Horizontal">
-
-                        <Button Classes="decorator"
-                                Command="{Binding EditKeyCommand}"
-                                IsVisible="{Binding !KeyIsInEditMode}">
-                            <StackPanel>
-                                <Label Classes="icon" Content="&#xe3B4;"></Label>
-                            </StackPanel>
-                        </Button>
-                        <Button Classes="decorator"
-                                Command="{Binding SaveKeyCommand}"
-                                IsVisible="{Binding KeyIsInEditMode}">
-                            <StackPanel>
-                                <Label Classes="icon" Content="&#xe182;"></Label>
-                            </StackPanel>
-                        </Button>
-                        <Button Classes="decorator"
-                                Command="{Binding CancelSaveKeyCommand}"
-                                IsVisible="{Binding KeyIsInEditMode}"
-                                BorderBrush="{DynamicResource PrimaryForeground}"
-                                BorderThickness="0 1 1 1">
-                            <StackPanel>
-                                <Label Classes="icon" Content="&#xe038;"></Label>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-                <Button Content="{x:Static lang:Resources.BtnSaveSettingsText}"
-                        Command="{Binding SaveSettingsCommand}"
-                        CommandParameter="{Binding}"
-                        Classes="command" />
+            <!-- Use Trailing Stop -->
+            <StackPanel Classes="formField" Grid.Row="2" Grid.Column="2" Orientation="Horizontal"
+                        VerticalAlignment="Bottom">
+                <CheckBox Content="{x:Static lang:Resources.Use}"
+                          IsChecked="{Binding SettingsDefaultUseTrailingStop}" />
             </StackPanel>
 
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></StackPanel>
         </Grid>
 
+        <StackPanel Grid.Row="2" Classes="formField" HorizontalAlignment="Stretch">
+            <StackPanel.Styles>
+                <Style Selector="TextBox">
+                    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
+                    <Setter Property="BorderThickness" Value="1 1 0 1"></Setter>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                </Style>
+            </StackPanel.Styles>
+            <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
+            <StackPanel Classes="formField" Orientation="Horizontal">
+                <TextBox Name="TokenInput" Text="{Binding Key}"
+                         IsEnabled="{Binding  KeyIsInEditMode}"
+                         HorizontalAlignment="Stretch" />
+                <!--Edit-->
+                <Button Classes="decorator"
+                        Command="{Binding EditKeyCommand}"
+                        IsVisible="{Binding !KeyIsInEditMode}">
+                    <StackPanel>
+                        <!--pencil-->
+                        <Label Classes="icon" Content="&#xe3B4;"></Label>
+                    </StackPanel>
+                </Button>
+
+                <!--Save changes-->
+                <Button Classes="decorator"
+                        Command="{Binding SaveKeyCommand}"
+                        IsVisible="{Binding KeyIsInEditMode}">
+                    <StackPanel>
+                        <!--check mark-->
+                        <Label Classes="icon" Content="&#xe182;"></Label>
+                    </StackPanel>
+                </Button>
+
+                <!--Discard changes-->
+                <Button Classes="decorator"
+                        Command="{Binding CancelSaveKeyCommand}"
+                        IsVisible="{Binding KeyIsInEditMode}"
+                        BorderBrush="{DynamicResource PrimaryForeground}"
+                        BorderThickness="0 1 1 1">
+                    <StackPanel>
+                        <!--circle with ccw arrow-->
+                        <!--<Label Classes="icon" Content="&#xe038;"></Label>-->
+                        <Label Classes="icon" Content="&#xe4F6;"></Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <Button Content="{x:Static lang:Resources.BtnSaveSettingsText}"
+                    Command="{Binding SaveSettingsCommand}"
+                    CommandParameter="{Binding}"
+                    HorizontalAlignment="Stretch"
+                    Classes="command" />
+        </StackPanel>
     </Grid>
 
 </UserControl>

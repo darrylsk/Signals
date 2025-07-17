@@ -22,12 +22,12 @@
             <TextBox Text="{Binding Symbol, Converter={StaticResource UpperCaseConverter}}"></TextBox>
         </StackPanel>
         
-        <StackPanel Classes="formfield" Orientation="Horizontal">
+        <StackPanel Classes="formField" Orientation="Horizontal">
             <CheckBox IsChecked="{Binding AddToWatchlist}"></CheckBox>
             <Label Content="{x:Static lang:Resources.AddToWatchlistLabel}"></Label>
         </StackPanel>
         
-        <StackPanel Classes="formfield" Orientation="Horizontal">
+        <StackPanel Classes="formField" Orientation="Horizontal">
             <CheckBox IsChecked="{Binding AddToHoldings}"></CheckBox>
             <Label Content="{x:Static lang:Resources.AddToHoldingsLabel}"></Label>
         </StackPanel>

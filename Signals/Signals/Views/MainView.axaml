@@ -14,11 +14,13 @@
     <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons -->
     <Grid RowDefinitions="Auto, *, Auto" Margin="20">
         
-        <!-- Top Bar: Contains App Title and subtitle -->
+        <!-- Top Bar: Contains App Title and tagline ($ignalS Watch what happens) -->
         <StackPanel Grid.Row="0">
             <TextBlock Classes="title" Text="{x:Static lang:Resources.AppTitle}" />
             <TextBlock Classes="tag-line" Text="{x:Static lang:Resources.TagLine}" />
-            <Border Classes="header">
+            
+            <!-- App Content Container Border -->
+            <Border Classes="app-header">
                 <Grid ColumnDefinitions="*, Auto">
                     <TextBlock Grid.Column="0" Classes="page-title" FontSize="24" Text="{Binding PageTitle}" />
                     <!-- Add button - brings up the dialog to add a new StockItem -->
@@ -51,7 +53,7 @@
         </StackPanel>
 
         <!-- Main part -->
-        <Border Grid.Row="1" Background="{DynamicResource MainSectionBackground}">
+        <Border Grid.Row="1" Classes="main-section">
             <Grid>
                 <ContentControl Content="{Binding CurrentPage}"
                                 Foreground="{DynamicResource PrimaryForeground}"

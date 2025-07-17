@@ -265,5 +265,14 @@ namespace Signals.Resources {
                 return ResourceManager.GetString("TagLine", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use.
+        /// </summary>
+        public static string Use {
+            get {
+                return ResourceManager.GetString("Use", resourceCulture);
+            }
+        }
     }
 }

@@ -2,20 +2,58 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Add Resources Here -->
-    
-    <Color x:Key="PrimaryForeground">CadetBlue</Color>
-    <Color x:Key="PrimaryBackground">Black</Color>
-    
-    <Color x:Key="MainSectionBackground">WhiteSmoke</Color>
-    <Color x:Key="WindowBackground">SteelBlue</Color>
-    <Color x:Key="WindowBackground1">#FFA9BCCF</Color>
     <!--
     <Color x:Key="WindowBackgroundp00">#EFAABED0</Color>
     -->
-    <Color x:Key="PrimaryPageForeground">Black</Color>
     
+    <Color x:Key="PrimaryForeground">CadetBlue</Color>
+    <Color x:Key="PrimaryBackground">Black</Color>
     <Color x:Key="PrimaryHoverForeground">DodgerBlue</Color>
     <Color x:Key="PrimaryHoverBackground">WhiteSmoke</Color>
+
+    <Color x:Key="BuyButtonForeground">WhiteSmoke</Color>
+    <Color x:Key="BuyButtonBackground">Green</Color>
+    <Color x:Key="BuyButtonHoverForeground">Black</Color>
+    <Color x:Key="BuyButtonHoverBackground">LightGreen</Color>
+
+    <Color x:Key="SellButtonForeground">WhiteSmoke</Color>
+    <Color x:Key="SellButtonBackground">Red</Color>
+    <Color x:Key="SellButtonHoverForeground">Black</Color>
+    <Color x:Key="SellButtonHoverBackground"> LightPink</Color>
+
+    <Color x:Key="CommandButtonForeground">WhiteSmoke</Color>
+    <Color x:Key="CommandButtonBackground">Black</Color>
+    <Color x:Key="CommandButtonHoverForeground">Black</Color>
+    <Color x:Key="CommandButtonHoverBackground"> LightSlateGray</Color>
+    
+    <Color x:Key="CheckBoxBorderColor">Black</Color>
+    <Thickness x:Key="CheckBoxBorderThickness">3</Thickness>
+    <CornerRadius x:Key="CheckBoxCornerRadius">30</CornerRadius>
+    
+    <Color x:Key="MainSectionBackground">AntiqueWhite</Color>
+    <Color x:Key="WindowBackground">SteelBlue</Color>
+    <Color x:Key="WindowBackground1">#FFA9BCCF</Color>
+    <Color x:Key="PrimaryPageForeground">Black</Color>
+    
+    <LinearGradientBrush x:Key="CheckBoxBorderGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="Black"></GradientStop>
+        <GradientStop Offset="1" Color="DimGray"></GradientStop>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="CommandButtonBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="Black"></GradientStop>
+        <GradientStop Offset="1" Color="LightSlateGray"></GradientStop>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="BuyButtonBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="Green"></GradientStop>
+        <GradientStop Offset="1" Color="LightGreen"></GradientStop>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="SellButtonBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="Red"></GradientStop>
+        <GradientStop Offset="1" Color="LightPink"></GradientStop>
+    </LinearGradientBrush>
     
     <Color x:Key="ItemBorder"> DarkGray</Color>
     <Color x:Key="NumericColor">#7777ee</Color>

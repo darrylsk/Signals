@@ -25,6 +25,9 @@
     <data name="TagLine" xml:space="preserve">
         <value>Watch what happens</value>
     </data>
+    <data name="Use" xml:space="preserve">
+        <value>Use</value>
+    </data>
     <data name="BtnBackupDatabaseContent" xml:space="preserve">
         <value>Backup Database</value>
     </data>
