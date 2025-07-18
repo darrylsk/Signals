@@ -51,6 +51,7 @@
             <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></StackPanel>
         </Grid>
 
+        <!-- Grid bottom row: This section contains the controls for setting the API key for the quotation service -->
         <StackPanel Grid.Row="2" Classes="formField" HorizontalAlignment="Stretch">
             <StackPanel.Styles>
                 <Style Selector="TextBox">
@@ -60,12 +61,14 @@
                 </Style>
             </StackPanel.Styles>
             <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
-            <StackPanel Classes="formField" Orientation="Horizontal">
+
+            <!-- Grid containing the controls for setting the API key for the quotation service-->
+            <Grid ColumnDefinitions="*, Auto">
                 <TextBox Name="TokenInput" Text="{Binding Key}"
                          IsEnabled="{Binding  KeyIsInEditMode}"
                          HorizontalAlignment="Stretch" />
-                <!--Edit-->
-                <Button Classes="decorator"
+                <!-- Edit the key -->
+                <Button Grid.Column="1" Classes="decorator"
                         Command="{Binding EditKeyCommand}"
                         IsVisible="{Binding !KeyIsInEditMode}">
                     <StackPanel>
@@ -74,33 +77,37 @@
                     </StackPanel>
                 </Button>
 
-                <!--Save changes-->
-                <Button Classes="decorator"
-                        Command="{Binding SaveKeyCommand}"
-                        IsVisible="{Binding KeyIsInEditMode}">
-                    <StackPanel>
-                        <!--check mark-->
-                        <Label Classes="icon" Content="&#xe182;"></Label>
-                    </StackPanel>
-                </Button>
+                <!-- Save updated key value -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Classes="decorator"
+                            Command="{Binding SaveKeyCommand}"
+                            IsVisible="{Binding KeyIsInEditMode}">
+                        <StackPanel>
+                            <!--check mark icon-->
+                            <Label Classes="icon" Content="&#xe182;"></Label>
+                        </StackPanel>
+                    </Button>
 
-                <!--Discard changes-->
-                <Button Classes="decorator"
-                        Command="{Binding CancelSaveKeyCommand}"
-                        IsVisible="{Binding KeyIsInEditMode}"
-                        BorderBrush="{DynamicResource PrimaryForeground}"
-                        BorderThickness="0 1 1 1">
-                    <StackPanel>
-                        <!--circle with ccw arrow-->
-                        <!--<Label Classes="icon" Content="&#xe038;"></Label>-->
-                        <Label Classes="icon" Content="&#xe4F6;"></Label>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+                    <!-- Discard changes, restoring previous value -->
+                    <Button Classes="decorator"
+                            Command="{Binding CancelSaveKeyCommand}"
+                            IsVisible="{Binding KeyIsInEditMode}"
+                            BorderBrush="{DynamicResource PrimaryForeground}"
+                            BorderThickness="0 1 1 1">
+                        <StackPanel>
+                            <!-- Label with X icon -->
+                            <Label Classes="icon" Content="&#xe4F6;"></Label>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!-- Save Settings Button -->
             <Button Content="{x:Static lang:Resources.BtnSaveSettingsText}"
                     Command="{Binding SaveSettingsCommand}"
                     CommandParameter="{Binding}"
                     HorizontalAlignment="Stretch"
+                    Margin="0 5 0 0"
                     Classes="command" />
         </StackPanel>
     </Grid>

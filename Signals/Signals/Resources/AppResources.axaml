@@ -55,6 +55,26 @@
         <GradientStop Offset="1" Color="LightPink"></GradientStop>
     </LinearGradientBrush>
     
+    <LinearGradientBrush x:Key="SuccessGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="#00FF00"></GradientStop>
+        <GradientStop Offset="1" Color="#00AA00"></GradientStop>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="WarningGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="#FFFF00"></GradientStop>
+        <GradientStop Offset="1" Color="#AAAA00"></GradientStop>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="ErrorGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="#FF0000"></GradientStop>
+        <GradientStop Offset="1" Color="#AA0000"></GradientStop>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="InfoGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="#0000FF"></GradientStop>
+        <GradientStop Offset="1" Color="#0000AA"></GradientStop>
+    </LinearGradientBrush>
+    
     <Color x:Key="ItemBorder"> DarkGray</Color>
     <Color x:Key="NumericColor">#7777ee</Color>
     
