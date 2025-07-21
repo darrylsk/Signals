@@ -45,7 +45,7 @@
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}" />
         <Setter Property="Background" Value="{DynamicResource CheckBoxBackgroundUnchecked}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxBorderGradient}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderGradient}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid x:Name="RootGrid" ColumnDefinitions="25,*">
@@ -63,7 +63,7 @@
 
                     <Grid VerticalAlignment="Center">
                         <Border x:Name="NormalRectangle"
-                                BorderBrush="{DynamicResource CheckBoxBorderGradient}"
+                                BorderBrush="{DynamicResource PrimaryBorderGradient}"
                                 Background="Transparent"
                                 BorderThickness="{DynamicResource CheckBoxBorderThickness}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
@@ -274,7 +274,7 @@
             <Style Selector="^ /template/ Border#NormalRectangle">
                 <Setter Property="BorderBrush"
                         Value="#FF888888" />
-                <!--Value="{DynamicResource CheckBoxBorderGradient}"-->
+                <!--Value="{DynamicResource PrimaryBorderGradient}"-->
                 <Setter Property="Background" Value="{DynamicResource CheckBoxCheckBackgroundFillIndeterminate}" />
             </Style>
 

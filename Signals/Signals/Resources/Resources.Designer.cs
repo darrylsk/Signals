@@ -195,11 +195,56 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to purchased units.
+        /// </summary>
+        public static string BuyEventHandler_Handle_purchased_units {
+            get {
+                return ResourceManager.GetString("BuyEventHandler_Handle_purchased_units", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key.
         /// </summary>
         public static string KeyLabel {
             get {
                 return ResourceManager.GetString("KeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New quote operation cancelled.
+        /// </summary>
+        public static string NewQuoteReceivedEventHandler_Handle_New_quote_operation_cancelled {
+            get {
+                return ResourceManager.GetString("NewQuoteReceivedEventHandler_Handle_New_quote_operation_cancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New quote received.
+        /// </summary>
+        public static string NewQuoteReceivedEventHandler_Handle_New_quote_received {
+            get {
+                return ResourceManager.GetString("NewQuoteReceivedEventHandler_Handle_New_quote_received", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price updated.
+        /// </summary>
+        public static string PriceUpdatedEventHandler_Handle_Price_updated {
+            get {
+                return ResourceManager.GetString("PriceUpdatedEventHandler_Handle_Price_updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sold units.
+        /// </summary>
+        public static string SellEventHandler_Handle_Sold_units {
+            get {
+                return ResourceManager.GetString("SellEventHandler_Handle_Sold_units", resourceCulture);
             }
         }
         

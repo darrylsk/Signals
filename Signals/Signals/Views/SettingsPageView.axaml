@@ -22,14 +22,14 @@
             <!-- Default Gain Alert Level -->
             <StackPanel Classes="formField" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
                 <Label Content="{x:Static lang:Resources.SettingsDefaultHighGainMultiplierLabel}" />
-                <TextBox Classes="number-field" Text="{Binding SettingsDefaultHighGainMultiplier}" />
+                <TextBox Classes="number-field" Text="{Binding DefaultHighGainMultiplier}" />
             </StackPanel>
 
             <!-- Use Gain Alert -->
             <StackPanel Classes="formField" Grid.Row="1" Grid.Column="2" Orientation="Horizontal"
                         VerticalAlignment="Bottom">
                 <CheckBox Content="{x:Static lang:Resources.Use}"
-                          IsChecked="{Binding SettingsDefaultUseHighGainMultiplier}">
+                          IsChecked="{Binding DefaultUseHighGainMultiplier}">
                 </CheckBox>
                 <!--<Label 
                     Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>-->
@@ -38,14 +38,14 @@
             <!-- Default Trailing Stop -->
             <StackPanel Classes="formField" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch">
                 <Label Content="{x:Static lang:Resources.SettingsDefaultTrailingStopLabel}" />
-                <TextBox Classes="number-field" Text="{Binding SettingsDefaultTrailingStop}" />
+                <TextBox Classes="number-field" Text="{Binding DefaultTrailingStop}" />
             </StackPanel>
 
             <!-- Use Trailing Stop -->
             <StackPanel Classes="formField" Grid.Row="2" Grid.Column="2" Orientation="Horizontal"
                         VerticalAlignment="Bottom">
                 <CheckBox Content="{x:Static lang:Resources.Use}"
-                          IsChecked="{Binding SettingsDefaultUseTrailingStop}" />
+                          IsChecked="{Binding DefaultUseTrailingStop}" />
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></StackPanel>

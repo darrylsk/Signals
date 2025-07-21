@@ -10,6 +10,9 @@ namespace Signals.CoreLayer.Entities
         private double _defaultHighGainMultiplier;
         
         // [PrimaryKey]
+        // public Guid SettingsId { get; set; }
+        
+        // [PrimaryKey]
         // public Guid Id { get; set; }
 
         /// <summary>
