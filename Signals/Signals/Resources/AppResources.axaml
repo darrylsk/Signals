@@ -35,8 +35,8 @@
     <Color x:Key="WindowBackground1">#FFA9BCCF</Color>
     <Color x:Key="PrimaryPageForeground">Black</Color>
     
-    <LinearGradientBrush x:Key="CheckBoxBorderGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
-        <GradientStop Offset="0" Color="Black"></GradientStop>
+    <LinearGradientBrush x:Key="PrimaryBorderGradient" StartPoint="0%, 0%" EndPoint="100%, 0%">
+        <GradientStop Offset="0" Color="{DynamicResource PrimaryForeground}"></GradientStop>
         <GradientStop Offset="1" Color="DimGray"></GradientStop>
     </LinearGradientBrush>
     

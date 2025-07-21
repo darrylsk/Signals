@@ -9,7 +9,12 @@ namespace Signals.InfrastructureLayer.Repository;
 public class SignalsContext : ISignalsDbContext
 {
     public SignalsContext(IFileService fileService)
-    {
+    { 
+        // The file service functions return the locations of the user data files on whatever device
+        // the application is running on.
+        // On Windows: C:\Users\[user]\AppData 
+        // On Android: 
+        // On iOS (iPhone): 
         var localAppData = fileService.GetLocalAppDataFolder();
         var databaseFolder = fileService.CreateFolder(Path.Combine(localAppData, "Signals"));
         var dbPath = Path.Combine(
@@ -21,11 +26,20 @@ public class SignalsContext : ISignalsDbContext
         Connection.CreateTableAsync<WatchlistItem>().Wait();
         Connection.CreateTableAsync<Holding>().Wait();
         Connection.CreateTableAsync<CompanyProfile>().Wait();
+        // Connection.CreateTableAsync<TradingJournal>().Wait();
         
         var result = Connection.CreateTableAsync<Settings>().Result;
-        var def = Connection.GetTableInfoAsync(result.ToString());
-        // Guard: Insert the initial settings record only on creation.
+        
+        var settingsDef = Connection.GetTableInfoAsync("Settings").Result;
+        var watchlistItemDef = Connection.GetTableInfoAsync("WatchListItem").Result;
+        var holdingDef = Connection.GetTableInfoAsync("Holding").Result;
+        var companyProfileDef = Connection.GetTableInfoAsync("CompanyProfile").Result;
+        
+        // Guard: Continue beyond here only on database creation.
+        
         if (result != CreateTableResult.Created) return;
+        
+        // Insert the initial settings record.
         var settings = new Settings
         {
             MetadataVersion = 1,

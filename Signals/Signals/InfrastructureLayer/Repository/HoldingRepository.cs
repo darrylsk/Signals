@@ -27,3 +27,20 @@ public class HoldingRepository(ISignalsDbContext dbContext)
         return await Context.Connection.Table<Holding>().FirstOrDefaultAsync(x => x.Id == id);
     }
 }
+public class TradingJournalRepository(ISignalsDbContext dbContext) : Repository<TradingJournal>(dbContext), ITradingJournalRepository
+{
+    public override async Task<IReadOnlyList<TradingJournal>> GetAllAsync()
+    {
+        return await Context.Connection.Table<TradingJournal>().ToListAsync();
+    }
+
+    public override async Task<IReadOnlyList<TradingJournal>> GetAsync(Expression<Func<TradingJournal, bool>> predicate)
+    {
+        return await Context.Connection.Table<TradingJournal>().Where(predicate).ToListAsync();
+    }
+
+    public override async Task<TradingJournal> GetByIdAsync(Guid id)
+    {
+        return await Context.Connection.Table<TradingJournal>().FirstOrDefaultAsync(x => x.Id == id);
+    }
+}

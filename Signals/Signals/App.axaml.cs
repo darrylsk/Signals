@@ -19,7 +19,7 @@ using Signals.ViewModels;
 using Signals.Views;
 using PageViewModel = Signals.ViewModels.PageViewModel;
 
-// As specified by Luke at AnglXix to avoid having to use namespace qualifiers all the time
+// As specified by Luke at AngelSix to avoid having to use namespace qualifiers all the time
 // Avalonia Real World #7 (07:45 in the YT video)
 [assembly: XmlnsDefinition("https://github.com/avaloniaui", "Signals.Controls")]
 

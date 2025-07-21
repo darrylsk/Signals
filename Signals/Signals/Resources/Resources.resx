@@ -89,4 +89,19 @@
     <data name="AddToHoldingsLabel" xml:space="preserve">
         <value>Add to holdings</value>
     </data>
+    <data name="PriceUpdatedEventHandler_Handle_Price_updated" xml:space="preserve">
+        <value>Price updated</value>
+    </data>
+    <data name="NewQuoteReceivedEventHandler_Handle_New_quote_received" xml:space="preserve">
+        <value>New quote received</value>
+    </data>
+    <data name="NewQuoteReceivedEventHandler_Handle_New_quote_operation_cancelled" xml:space="preserve">
+        <value>New quote operation cancelled</value>
+    </data>
+    <data name="BuyEventHandler_Handle_purchased_units" xml:space="preserve">
+        <value>purchased units</value>
+    </data>
+    <data name="SellEventHandler_Handle_Sold_units" xml:space="preserve">
+        <value>Sold units</value>
+    </data>
 </root>

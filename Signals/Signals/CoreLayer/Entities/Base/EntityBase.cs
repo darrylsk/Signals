@@ -6,7 +6,7 @@ namespace Signals.CoreLayer.Entities.Base;
 
 public abstract class EntityBase<TId> : IEntityBase<TId>
 {
-    [PrimaryKey]
+    //[PrimaryKey]
     public abstract TId Id { get; set; }
     
     public DateTime WhenCreated { get; set; }

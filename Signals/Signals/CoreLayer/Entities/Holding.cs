@@ -42,3 +42,9 @@ public class Holding : StockItem
         }
     }
 }
+
+public enum TransactionTypes
+{
+    Purchase,
+    Sale
+}
