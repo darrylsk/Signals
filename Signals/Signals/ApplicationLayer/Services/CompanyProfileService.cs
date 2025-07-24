@@ -22,4 +22,14 @@ public class CompanyProfileService : BusinessService<CompanyProfile>, ICompanyPr
         return companyProfile;
     }
 
+    public async Task<int> Add(CompanyProfile model)
+    {
+        return await Repository.AddAsync(model); 
+
+    }
+
+    public async Task<int> Delete(CompanyProfile model)
+    {
+        return await Repository.DeleteAsync(model);
+    }
 }

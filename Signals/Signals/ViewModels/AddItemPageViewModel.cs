@@ -128,7 +128,7 @@ public partial class AddItemPageViewModel : PageViewModel
                 holding.CurrencyCode = profile.Currency;
                 
                 // Save to holdings list
-                await HoldingService.Add(holding);
+                await HoldingService.Buy(holding);
 
                 BackLink.CurrentPage = PageFactory.GetPageViewModel<HoldingsPageViewModel>();
             }

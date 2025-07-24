@@ -53,29 +53,20 @@ public class WatchlistService : BusinessService<WatchlistItem>, IWatchlistServic
     }
     */
 
-    // public Task<WatchlistItem?> GetById(Guid id)
-    // {
-    //     return Repository.GetByIdAsync(id);
-    // }
-
     public async Task<WatchlistItem?> GetBySymbol(string symbol)
     {
         var watchlistItem = (await Repository.GetAsync(x => x.Symbol == symbol)).FirstOrDefault();
         return watchlistItem;
     }
 
-    // public async Task<int> Add(WatchlistItem model)
-    // {
-    //     return await Repository.AddAsync(model);
-    // }
+    public async Task<int> Add(WatchlistItem model)
+    {
+        return await Repository.AddAsync(model); 
+    }
 
-    // public Task<int> Update(WatchlistItem model)
-    // {
-    //     throw new NotImplementedException();
-    // }
-
-    // public Task<int> Delete(WatchlistItem model)
-    // {
-    //     throw new NotImplementedException();
-    // }
+    public async Task<int> Delete(WatchlistItem model)
+    {
+        return await Repository.DeleteAsync(model);
+    }
+    
 }

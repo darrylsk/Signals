@@ -7,7 +7,7 @@ public class StockItem : Entity
 {
     public StockItem()
     {
-        WhenCreated = DateTime.UtcNow;
+        //WhenCreated = DateTime.UtcNow;
     }
     protected StockItem(string symbol, string exchange, string name, string currency)
     {
@@ -33,10 +33,10 @@ public class StockItem : Entity
     public string ExchangeName { get; set; }
     public string CurrencyCode { get; set; }
     public decimal? PreviousDayClosingPrice { get; set; }
-    public decimal? CurrentDayOpeningPrice { get; set; }
+    public decimal CurrentDayOpeningPrice { get; set; }
     public decimal? CurrentDayHighPrice { get; set; }
     public decimal? CurrentDayLowPrice { get; set; }
-    public decimal? LatestQuotedPrice { get; set; }
+    public decimal LatestQuotedPrice { get; set; }
     public DateTime? WhenLatestQuoteReceived { get; set; }
 
 

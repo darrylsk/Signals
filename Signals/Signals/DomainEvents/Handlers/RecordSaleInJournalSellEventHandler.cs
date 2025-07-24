@@ -9,7 +9,7 @@ using Signals.DomainEvents.Events;
 namespace Signals.DomainEvents.Handlers;
 
 public class RecordSaleInJournalSellEventHandler(ITradingJournalRepository repository) 
-    : INotificationHandler<SellEvent>
+    : INotificationHandler<HoldingSold>
 {
     private ITradingJournalRepository Repository { get; } = repository;
 
@@ -18,11 +18,11 @@ public class RecordSaleInJournalSellEventHandler(ITradingJournalRepository repos
     /// </summary>
     /// <param name="notification"></param>
     /// <param name="cancellationToken"></param>
-    public async Task Handle(SellEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(HoldingSold notification, CancellationToken cancellationToken)
     {
         // Console.WriteLine(Resources.Resources.SellEventHandler_Handle_Sold_units);
-        var journalEntry = new TradingJournal(notification.Symbol, notification.WhenSold,
-            notification.Quantity, TransactionTypes.Sale, notification.SalePrice);
+        var journalEntry = new TradingJournal(notification.Holding.Symbol, notification.TimeOfEvent, 
+            notification.UnitsSold, TransactionTypes.Sale, notification.SalePrice);
         await Repository.AddAsync(journalEntry);
     }
 }

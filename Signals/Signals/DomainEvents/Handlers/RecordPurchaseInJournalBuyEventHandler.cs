@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Signals.CoreLayer.Abstract;
@@ -9,7 +8,7 @@ using Signals.DomainEvents.Events;
 namespace Signals.DomainEvents.Handlers;
 
 public class RecordPurchaseInJournalBuyEventHandler(ITradingJournalRepository repository)
-    : INotificationHandler<BuyEvent>
+    : INotificationHandler<HoldingPurchased>
 {
     private ITradingJournalRepository Repository { get; } = repository;
 
@@ -18,11 +17,11 @@ public class RecordPurchaseInJournalBuyEventHandler(ITradingJournalRepository re
     /// </summary>
     /// <param name="notification"></param>
     /// <param name="cancellationToken"></param>
-    public async Task Handle(BuyEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(HoldingPurchased notification, CancellationToken cancellationToken)
     {
         // Console.WriteLine(Resources.Resources.BuyEventHandler_Handle_purchased_units);
-        var journalEntry = new TradingJournal(notification.Symbol, notification.WhenPurchased,
-            notification.Quantity, TransactionTypes.Purchase, notification.PurchasePrice);
+        var journalEntry = new TradingJournal(notification.Holding.Symbol, notification.TimeOfEvent,
+            notification.Holding.QuantityHeld, TransactionTypes.Purchase, notification.Holding.LatestQuotedPrice);
         await Repository.AddAsync(journalEntry);
     }
 }
