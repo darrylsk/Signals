@@ -9,7 +9,10 @@ public class Holding : StockItem
 
     public Holding()
     {
-        WhenPurchased = DateTime.UtcNow;
+        if (IsTransient())
+        {
+            WhenPurchased = DateTime.UtcNow;
+        }
     }
 
     public Holding(string symbol, string exchange, string name, string currency) : base(symbol, exchange, name,
@@ -17,14 +20,15 @@ public class Holding : StockItem
     {
         WhenPurchased = DateTime.UtcNow;
     }
-    
+
     public int QuantityHeld { get; set; }
-    public DateTime? WhenPurchased { get; set; }
+    public DateTime WhenPurchased { get; set; }
     public decimal? PeakPriceSincePurchase { get; set; }
     public decimal? HighTargetPrice { get; set; }
     public decimal? LowTargetPrice { get; set; }
 
     public bool UseTrailingStop { get; set; }
+
     /// <summary>
     /// Default value for a trailing stop, if used
     /// </summary>

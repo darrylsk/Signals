@@ -8,12 +8,6 @@ namespace Signals.CoreLayer.Entities
     {
         private double _trailingStop;
         private double _defaultHighGainMultiplier;
-        
-        // [PrimaryKey]
-        // public Guid SettingsId { get; set; }
-        
-        // [PrimaryKey]
-        // public Guid Id { get; set; }
 
         /// <summary>
         /// A version number for the database, in case the database structure needs to be
@@ -22,7 +16,7 @@ namespace Signals.CoreLayer.Entities
         public int MetadataVersion { get; set; }
 
         /// <summary>
-        /// Default setting for whether or not to alert when a holding has doubled in value.
+        /// Default setting for whether to alert when a holding has doubled in value.
         /// </summary>
         public bool DefaultUseHighGainMultiplier { get; set; }
 

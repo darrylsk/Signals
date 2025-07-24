@@ -11,13 +11,13 @@ public abstract class BusinessService<T>(IRepository<T> repository)
 {
     private IRepository<T> Repository { get; } = repository;
 
-    public async Task<int> Add(T model)
-    {
-        return await Repository.AddAsync(model); 
-    }
-
-    public async Task<int> Delete(T model)
-    {
-        return await Repository.DeleteAsync(model);
-    }
+    // public async Task<int> Add(T model)
+    // {
+    //     return await Repository.AddAsync(model); 
+    // }
+    //
+    // public async Task<int> Delete(T model)
+    // {
+    //     return await Repository.DeleteAsync(model);
+    // }
 }

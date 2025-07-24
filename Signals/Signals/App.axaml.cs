@@ -5,6 +5,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Metadata;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Signals.ApplicationLayer.Abstract;
 using Signals.ApplicationLayer.Services;
 using Signals.CoreLayer.Abstract;
@@ -66,6 +67,7 @@ public partial class App : Application
         services.AddTransient<IHoldingRepository, HoldingRepository>();
         services.AddTransient<ISettingsRepository, SettingsRepository>();
         services.AddTransient<ICompanyProfileRepository, CompanyProfileRepository>();
+        services.AddTransient<ITradingJournalRepository, TradingJournalRepository>();
 
         services.AddSingleton<ISignalsDbContext, SignalsContext>();
 
@@ -85,7 +87,7 @@ public partial class App : Application
             _ => throw new NotImplementedException(),
         });
 
-        // services.AddSingleton<Func<PageNames, string, PageViewModel>>(x => (names, s) 
+        // services.AddSingleton<Func<PageNames, string, PageViewModel>>(x => (names, s)  
         //     => names switch
         // {
         //     PageNames.WatchlistItemDetail => x.GetRequiredService<WatchlistItemPageViewModel>()
@@ -93,6 +95,10 @@ public partial class App : Application
         
         services.AddSingleton<PageFactory>();
         services.AddAutoMapper(typeof(MappingProfile));
+        
+        services.AddSingleton<ILoggerFactory, LoggerFactory>();
+        //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(App).Assembly));
         
         var provider = services.BuildServiceProvider();
         

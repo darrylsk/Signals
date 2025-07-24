@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using MediatR;
 using Signals.CoreLayer.Abstract;
 using Signals.CoreLayer.Abstract.Base;
 using Signals.CoreLayer.Entities;
@@ -9,8 +10,8 @@ using Signals.InfrastructureLayer.Repository.Base;
 
 namespace Signals.InfrastructureLayer.Repository;
 
-public class WatchlistItemRepository(ISignalsDbContext dbContext)
-    : Repository<WatchlistItem>(dbContext), IWatchlistItemRepository
+public class WatchlistItemRepository(ISignalsDbContext dbContext, IMediator mediator)
+    : Repository<WatchlistItem>(dbContext, mediator), IWatchlistItemRepository
 {
     public override async Task<IReadOnlyList<WatchlistItem>> GetAllAsync()
     {
