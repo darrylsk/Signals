@@ -25,6 +25,26 @@
     <data name="TagLine" xml:space="preserve">
         <value>Watch what happens</value>
     </data>
+
+    <data name="PriceLabel" xml:space="preserve">
+        <value>Price</value>
+    </data>
+    <data name="UnitsLabel" xml:space="preserve">
+        <value>Units</value>
+    </data>
+    <data name="DateLabel" xml:space="preserve">
+        <value>Date</value>
+    </data>
+    <data name="TimeLabel" xml:space="preserve">
+        <value>Time</value>
+    </data>
+    <data name="HourLabel" xml:space="preserve">
+        <value>Hour</value>
+    </data>
+    <data name="MinuteLabel" xml:space="preserve">
+        <value>Minute</value>
+    </data>
+    
     <data name="Use" xml:space="preserve">
         <value>Use</value>
     </data>

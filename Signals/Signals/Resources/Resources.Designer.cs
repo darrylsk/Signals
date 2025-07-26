@@ -204,11 +204,38 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string DateLabel {
+            get {
+                return ResourceManager.GetString("DateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hour.
+        /// </summary>
+        public static string HourLabel {
+            get {
+                return ResourceManager.GetString("HourLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key.
         /// </summary>
         public static string KeyLabel {
             get {
                 return ResourceManager.GetString("KeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minute.
+        /// </summary>
+        public static string MinuteLabel {
+            get {
+                return ResourceManager.GetString("MinuteLabel", resourceCulture);
             }
         }
         
@@ -227,6 +254,15 @@ namespace Signals.Resources {
         public static string NewQuoteReceivedEventHandler_Handle_New_quote_received {
             get {
                 return ResourceManager.GetString("NewQuoteReceivedEventHandler_Handle_New_quote_received", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string PriceLabel {
+            get {
+                return ResourceManager.GetString("PriceLabel", resourceCulture);
             }
         }
         
@@ -308,6 +344,24 @@ namespace Signals.Resources {
         public static string TagLine {
             get {
                 return ResourceManager.GetString("TagLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string TimeLabel {
+            get {
+                return ResourceManager.GetString("TimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Units.
+        /// </summary>
+        public static string UnitsLabel {
+            get {
+                return ResourceManager.GetString("UnitsLabel", resourceCulture);
             }
         }
         

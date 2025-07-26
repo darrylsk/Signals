@@ -38,7 +38,7 @@
                                 <TextBlock
                                     Text="{Binding  WhenLatestQuoteReceived, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
 
-                                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,5,*">
+                                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,5,*">
                                     <Grid.Styles>
                                         <Style Selector="TextBlock">
                                             <Setter Property="Margin" Value="0 0 8 0"></Setter>
@@ -90,16 +90,31 @@
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="4" Grid.Column="0">
+                                        <Label Content="Average Purchase Price" />
+                                        <TextBox Text="{Binding  AveragePurchasePrice, StringFormat={}{0:C}}" />
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Row="4" Grid.Column="2">
                                         <Label Content="Peak Price Since Purchase" />
                                         <TextBox Text="{Binding  PeakPriceSincePurchase, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
-                                    <StackPanel Grid.Row="5" Grid.Column="0">
+                                    <!--<StackPanel Grid.Row="5" Grid.Column="0">
+                                        <Label Content="Gain/Loss" />
+                                        <TextBox Text="{Binding  GainOrLoss, StringFormat={}{0:C}}" />
+                                    </StackPanel>-->
+
+                                    <!--<StackPanel Grid.Row="5" Grid.Column="2">
+                                        <Label Content="Peak Price Since Purchase" />
+                                        <TextBox Text="{Binding  PeakPriceSincePurchase, StringFormat={}{0:C}}" />
+                                    </StackPanel>-->
+
+                                    <StackPanel Grid.Row="6" Grid.Column="0">
                                         <Label Content="High Target Price" />
                                         <TextBox Text="{Binding  HighTargetPrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
-                                    <StackPanel Grid.Row="5" Grid.Column="2">
+                                    <StackPanel Grid.Row="6" Grid.Column="2">
                                         <Label Content="Low Target Price" />
                                         <TextBox Text="{Binding  LowTargetPrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
@@ -117,8 +132,11 @@
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>
+        
+        <!-- Buy and Sell buttons ;-->
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <IconButton Classes="buy" IconText="&#xeb48;" Content="Buy"></IconButton>
+            <IconButton Classes="buy" IconText="&#xeb48;" Content="Buy"
+                        Command="{Binding BuyCommand}"></IconButton>
             <IconButton Classes="sell" IconText="&#xe478;" Content="Sell"></IconButton>
         </StackPanel>
     </Grid>

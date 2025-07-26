@@ -3,7 +3,7 @@ using Signals.CoreLayer.Entities;
 
 namespace Signals.ViewModels;
 
-public partial class PageViewModel : ViewModelBase
+public partial class PageViewModel : Abstract.ViewModelBase
 {
     public PageViewModel(string pageTitle, string pageSubtitle)
     {

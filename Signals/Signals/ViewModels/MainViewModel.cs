@@ -4,7 +4,7 @@ using Signals.Factories;
 
 namespace Signals.ViewModels;
 
-public partial class MainViewModel : ViewModelBase 
+public partial class MainViewModel : Abstract.ViewModelBase 
 {
     private readonly PageFactory _pageFactory;
 

@@ -23,6 +23,12 @@ public partial class AddItemPageViewModel : PageViewModel
     public IMapper Mapper { get; }
     public PageFactory PageFactory { get; }
 
+    public decimal PurchasePrice { get; set; }
+    public int UnitsPurchased { get; set; }
+    public DateTime DatePurchased { get; set; }
+    public int HourPurchased { get; set; }
+    public int MinutePurchased { get; set; }
+    
     /// <summary>
     /// Design constructor
     /// </summary>
@@ -55,7 +61,7 @@ public partial class AddItemPageViewModel : PageViewModel
 
     [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))]
     private bool _addToHoldings;
-
+    
     public bool SaveIsEnabled
         => !string.IsNullOrEmpty(Symbol) && (AddToWatchlist || AddToHoldings);
 
@@ -126,6 +132,12 @@ public partial class AddItemPageViewModel : PageViewModel
                 holding.Name = profile.Name;
                 holding.ExchangeName = profile.Exchange;
                 holding.CurrencyCode = profile.Currency;
+                
+                // Grab the values entered on the view 
+                holding.AveragePurchasePrice = PurchasePrice;
+                holding.PeakPriceSincePurchase = PurchasePrice;
+                holding.QuantityHeld += UnitsPurchased;
+                holding.WhenPurchased = DatePurchased + TimeSpan.FromHours(HourPurchased) +  TimeSpan.FromMinutes(MinutePurchased);
                 
                 // Save to holdings list
                 await HoldingService.Buy(holding);

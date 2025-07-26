@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Signals.ViewModels;
+namespace Signals.ViewModels.Abstract;
 
 public abstract partial class ViewModelBase : ObservableObject
 {

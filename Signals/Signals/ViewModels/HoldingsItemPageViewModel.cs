@@ -12,6 +12,8 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     public PageFactory PageFactory { get; }
     public IHoldingService HoldingService { get; }
     [ObservableProperty] private Holding? _holdingItem;
+
+    public decimal? GainOrLoss => HoldingItem?.PeakPriceSincePurchase - HoldingItem?.LatestQuotedPrice; 
     
     public HoldingsItemPageViewModel()
         : base("Holdings Item Detail", "Holdings Item Detail")
@@ -31,5 +33,17 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     {
         HoldingItem = await HoldingService.GetBySymbol(symbol);
     }
-    
+
+    [RelayCommand]
+    public async Task Buy(Holding entity)
+    {
+        await HoldingService.Buy(entity);
+    }
+
+    [RelayCommand]
+    public async Task Sell(Holding entity)
+    {
+        await HoldingService.Sell(entity, 10.00M, 5.0M);
+    }
+
 }
