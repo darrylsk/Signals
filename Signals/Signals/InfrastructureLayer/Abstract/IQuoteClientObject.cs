@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Signals.InfrastructureLayer.Abstract;
+﻿namespace Signals.InfrastructureLayer.Abstract;
 
 public interface IQuoteClientObject
 {

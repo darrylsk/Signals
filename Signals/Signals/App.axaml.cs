@@ -94,14 +94,17 @@ public partial class App : Application
         // });
         
         services.AddSingleton<PageFactory>();
-        services.AddAutoMapper(typeof(MappingProfile));
+        services.AddSingleton<DialogService>();
         
+        services.AddAutoMapper(typeof(MappingProfile)); 
         services.AddSingleton<ILoggerFactory, LoggerFactory>();
+        
         //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(App).Assembly));
         
         var provider = services.BuildServiceProvider();
         
+        // Alternative to including ViewLocator in the App.axaml file.
         // var viewLocator = new ViewLocator();
         // viewLocator.RegisterViewModelFactory(typeof(WatchlistItemPageViewModel), vm => 
         //     new WatchlistItemPageViewModel(provider.GetRequiredService<IBusinessService<WatchlistItem>>()));

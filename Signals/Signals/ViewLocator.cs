@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Signals.ViewModels;
+using ViewModelBase = Signals.ViewModels.Abstract.ViewModelBase;
 
 namespace Signals;
 

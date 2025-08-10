@@ -18,6 +18,10 @@
                 <ResourceInclude Source="Resources/AppResources.axaml"></ResourceInclude>
                 <ResourceInclude Source="Controls/IconButton.axaml"></ResourceInclude>
                 <ResourceInclude Source="Controls/CheckBox.axaml"></ResourceInclude>
+                <!--<ResourceInclude Source="Controls/ConfirmDialogView.axaml"></ResourceInclude>-->
+                <!--Can't include the ConfirmDialogView user control, because of the following
+                 error: "Inheritor of the ResourceDictionary is expected"
+                -->
             </ResourceDictionary.MergedDictionaries>
             <converters:UpperCaseConverter x:Key="UpperCaseConverter" />
         </ResourceDictionary>

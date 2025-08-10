@@ -1,5 +1,6 @@
 ﻿using System;
 using Signals.CoreLayer.Entities.Base;
+using Signals.CoreLayer.Enums;
 
 namespace Signals.CoreLayer.Entities;
 

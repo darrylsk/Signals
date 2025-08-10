@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Signals.ViewModels;
+namespace Signals.ViewModels.Abstract;
 
 public abstract partial class ViewModelBase : ObservableObject
 {
@@ -8,4 +8,6 @@ public abstract partial class ViewModelBase : ObservableObject
     private PageViewModel _currentPage;
 
     public ViewModelBase BackLink { get; set; }
+    
+ 
 }

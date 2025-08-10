@@ -39,6 +39,8 @@ public class StockItem : Entity
     public decimal LatestQuotedPrice { get; set; }
     public DateTime? WhenLatestQuoteReceived { get; set; }
 
+    public decimal AveragePurchasePrice { get; set; }
+    public DateTime WhenLastPurchased { get; set; }
 
     #region Non data members
 

@@ -55,7 +55,7 @@ public class HoldingService : BusinessService<Holding>, IHoldingService
         model.Events.Add(new HoldingPurchased(model));
         int ct;
         var currentHolding = await GetBySymbol(model.Symbol);
-        if (currentHolding != null)
+        if (currentHolding! != null!)
         {
             currentHolding.QuantityHeld += model.QuantityHeld;
             ct = await Repository.UpdateAsync(currentHolding);

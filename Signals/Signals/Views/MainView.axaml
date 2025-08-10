@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:Signals.ViewModels"
              xmlns:lang="clr-namespace:Signals.Resources"
+             xmlns:controls="clr-namespace:Signals.Controls"
              x:Class="Signals.Views.MainView"
              x:DataType="vm:MainViewModel">
 
@@ -13,26 +14,30 @@
 
     <!-- Note: Using icon fonts from https://phosphoricons.com/ for certain icons -->
     <Grid RowDefinitions="Auto, *, Auto" Margin="20">
-        
-        <!-- Top Bar: Contains App Title and tagline ($ignalS Watch what happens) -->
+
+        <!-- Application Header: Contains App Title and tagline ($ignalS Watch what happens) -->
         <StackPanel Grid.Row="0">
             <TextBlock Classes="title" Text="{x:Static lang:Resources.AppTitle}" />
             <TextBlock Classes="tag-line" Text="{x:Static lang:Resources.TagLine}" />
-            
+
             <!-- App Content Container Border -->
             <Border Classes="app-header">
                 <Grid ColumnDefinitions="*, Auto">
                     <TextBlock Grid.Column="0" Classes="page-title" FontSize="24" Text="{Binding PageTitle}" />
-                    <!-- Add button - brings up the dialog to add a new StockItem -->
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        
+                        <!-- Add button - brings up the dialog to add a new StockItem -->
                         <Button Grid.Column="1" Classes="navigation" Background="Transparent"
                                 HorizontalAlignment="Right"
                                 Command="{Binding GoToAddItemCommand}">
                             <StackPanel>
-                                <Label Classes="icon" FontSize="24" Content="&#xe3D6;" 
-                                       Padding="0 0 0 0"></Label>
+                                <Label Classes="icon" FontSize="24" Content="&#xe3D6;"
+                                       Padding="0 0 0 0">
+                                </Label>
                             </StackPanel>
                         </Button>
+                        
+                        <!--Ellipsis Menu-->
                         <Menu>
                             <MenuItem Background="Transparent">
                                 <MenuItem.Header>
@@ -55,6 +60,7 @@
         <!-- Main part -->
         <Border Grid.Row="1" Classes="main-section">
             <Grid>
+                <!-- Content control provides the container for the view corresponding to the last selected ViewModel -->
                 <ContentControl Content="{Binding CurrentPage}"
                                 Foreground="{DynamicResource PrimaryForeground}"
                                 VerticalAlignment="Stretch" Margin="5">
@@ -99,6 +105,17 @@
                 </StackPanel>
             </Grid>
         </Border>
+         
+        <!-- Dialog Control: The standard Windows dialog won't work in a mobile app.  The standard technique is
+             to use an overlay. Placed here in the main view - Hoping it can be displayed from any page -->
+        <Grid Grid.Row="0" Grid.RowSpan="3"
+              IsVisible="{Binding Dialog.IsDialogOpen, FallbackValue=false}">
+            <Border Background="Black" Opacity="0.5" CornerRadius="10"></Border>
+            <ContentControl Content="{Binding Dialog}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            />
+        </Grid>
     </Grid>
 
 </UserControl>

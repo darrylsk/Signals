@@ -6,10 +6,22 @@
     <Color x:Key="WindowBackgroundp00">#EFAABED0</Color>
     -->
     
-    <Color x:Key="PrimaryForeground">CadetBlue</Color>
+    <Color x:Key="PrimaryForeground">Navy</Color>
+    <Color x:Key="SecondaryForeground">CadetBlue</Color>
     <Color x:Key="PrimaryBackground">Black</Color>
     <Color x:Key="PrimaryHoverForeground">DodgerBlue</Color>
     <Color x:Key="PrimaryHoverBackground">WhiteSmoke</Color>
+    
+    <Color x:Key="PrimaryDialogBackground"> DarkGray</Color>
+    <Color x:Key="PrimaryDialogDropShadow">WhiteSmoke</Color>
+    
+    <Color x:Key="WarningColour">Yellow</Color>
+    <Color x:Key="DangerColour">Red</Color>
+
+    <Color x:Key="TitleBarForeground">White</Color>
+    <Color x:Key="TitleBarBackground"> #555555</Color>
+    <Color x:Key="TitleBarHoverForeground">White</Color>
+    <Color x:Key="TitleBarHoverBackground">Gray</Color>
 
     <Color x:Key="BuyButtonForeground">WhiteSmoke</Color>
     <Color x:Key="BuyButtonBackground">Green</Color>

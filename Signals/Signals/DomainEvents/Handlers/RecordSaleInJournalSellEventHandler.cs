@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Signals.CoreLayer.Abstract;
 using Signals.CoreLayer.Entities;
+using Signals.CoreLayer.Enums;
 using Signals.DomainEvents.Events;
 
 namespace Signals.DomainEvents.Handlers;

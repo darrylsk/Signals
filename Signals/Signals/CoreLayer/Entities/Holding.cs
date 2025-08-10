@@ -21,7 +21,7 @@ public class Holding : StockItem
         WhenPurchased = DateTime.UtcNow;
     }
 
-    public int QuantityHeld { get; set; }
+    public decimal QuantityHeld { get; set; }
     public DateTime WhenPurchased { get; set; }
     public decimal? PeakPriceSincePurchase { get; set; }
     public decimal? HighTargetPrice { get; set; }
@@ -45,10 +45,4 @@ public class Holding : StockItem
             };
         }
     }
-}
-
-public enum TransactionTypes
-{
-    Purchase,
-    Sale
 }

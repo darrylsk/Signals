@@ -1,6 +1,4 @@
 ﻿using System;
-using Avalonia.Media;
-using Signals.CoreLayer.Entities;
 using PageViewModel = Signals.ViewModels.PageViewModel;
 
 namespace Signals.Factories;

@@ -14,6 +14,7 @@
     </Design.DataContext>
 
     <StackPanel>
+        <Grid>
         <ContentControl Content="{Binding  WatchlistItem}">
             <ContentControl.ContentTemplate>
                 <DataTemplate DataType="entities:WatchlistItem">
@@ -21,8 +22,7 @@
                         <StackPanel Grid.Row="0">
                             <Button Classes="navigation" Background="Transparent"
                                     HorizontalAlignment="Left"
-                                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistCommand, FallbackValue=null}"
-                                    >
+                                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistCommand, FallbackValue=null}">
                                 <StackPanel>
                                     <Label Classes="icon" FontSize="24" Content="&#xe058;"></Label>
                                 </StackPanel>
@@ -70,20 +70,30 @@
 
                             </Grid>
                         </StackPanel>
-                        <StackPanel Grid.Row="1"  Orientation="Horizontal">
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
                             <IconButton Classes="command" IconText="&#xE4A6;" Content="Delete"
                                         Command="{Binding $parent[UserControl].((vm:WatchlistItemPageViewModel)DataContext).DeleteWatchlistItemCommand, FallbackValue=null}"
-                                        ></IconButton>
+                                        CommandParameter="{Binding}">
+                            </IconButton>
                             <IconButton Classes="buy" IconText="&#xEB48;" Content="Buy"></IconButton>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>
-
-        <!--<ContentControl Content="{Binding WatchlistItem}" >-->
-        <!--
-    -->
+            <!-- Dialog Control: The standard Windows dialog won't work in a mobile app.  The standard 
+                             technique is to use an overlay. Placed here in the main view - Hoping it can be displayed 
+                             from any page -->
+            <!--
+            <Grid Grid.Row="0" Grid.RowSpan="1"
+                  IsVisible="{Binding CurrentDialog.IsDialogOpen}">
+                <Border Background="Black" Opacity="0.5"></Border>
+                <ContentControl Content="{Binding CurrentDialog}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+            </Grid>
+            -->
+        </Grid>
     </StackPanel>
 
 

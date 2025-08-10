@@ -85,7 +85,7 @@ public partial class SettingsPageViewModel : PageViewModel
     }
 
     [RelayCommand]
-    public async Task SaveKey()
+    private void SaveKey()
     {
         SignalsConfiguration.Token = Key;
         SignalsConfigurationService.SaveConfig(SignalsConfiguration);
@@ -93,7 +93,7 @@ public partial class SettingsPageViewModel : PageViewModel
     }
 
     [RelayCommand]
-    public async Task CancelSaveKey()
+    private void CancelSaveKey()
     {
         Key = SignalsConfiguration.Token;
         KeyIsInEditMode = false;
