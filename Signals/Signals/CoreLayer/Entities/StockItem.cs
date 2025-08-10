@@ -42,7 +42,6 @@ public class StockItem : Entity
     public decimal AveragePurchasePrice { get; set; }
     public DateTime WhenLastPurchased { get; set; }
 
-
     #region Non data members
 
     public decimal? CurrentDayPriceChange => LatestQuotedPrice - CurrentDayOpeningPrice;

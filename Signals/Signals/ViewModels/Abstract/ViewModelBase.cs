@@ -8,4 +8,6 @@ public abstract partial class ViewModelBase : ObservableObject
     private PageViewModel _currentPage;
 
     public ViewModelBase BackLink { get; set; }
+    
+ 
 }

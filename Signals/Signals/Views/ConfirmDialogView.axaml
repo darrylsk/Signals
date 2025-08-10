@@ -1,0 +1,68 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Signals.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Width="{Binding DialogWidth}"
+             x:Class="Signals.Views.ConfirmDialogView"
+             x:DataType="viewModels:ConfirmDialogViewModel">
+
+    <Design.DataContext>
+        <viewModels:ConfirmDialogViewModel></viewModels:ConfirmDialogViewModel>
+    </Design.DataContext>
+
+    <!-- Since the standard Windows dialog isn't suitable for a mobile app, the standard technique is to use an 
+         overlay.  This item can be used by referencing it as a Content Control in another view. -->
+
+    <!-- There's a slight conundrum with this dialog control.  I'd like to place it in the /Controls folder 
+         because that's where I feel it belongs, but it has to be here in the /Views folder in order for 
+         ViewLocater to find it.  There's probably a way around this that I may discover someday. -->
+    
+    <Border Background="{DynamicResource PrimaryDialogBackground}"
+            CornerRadius="10"
+            ClipToBounds="True"
+            Margin="10">
+
+        <Border.Effect>
+            <DropShadowEffect Color="{DynamicResource PrimaryDialogDropShadow}"
+                              Opacity=".5" />
+        </Border.Effect>
+
+        <StackPanel>
+
+            <!-- Title Bar -->
+            <Border Background="{DynamicResource TitleBarBackground}">
+                <TextBlock Text="{Binding Title}"
+                           Padding="10"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource TitleBarForeground}" />
+            </Border>
+
+            <!-- Message -->
+            <Border Padding="20">
+                <StackPanel Spacing="20">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Classes="icon"
+                               Content="{Binding IconText}"
+                               FontSize="30"
+                               Foreground="{DynamicResource WarningColour}" />
+                        <TextBlock Text="{Binding Message}"
+                                   FontSize="16" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="{Binding CancelText}"
+                                Command="{Binding  CancelCommand}"
+                                Classes="danger outline" />
+                        <Button Content="{Binding ConfirmText}"
+                                Command="{Binding  ConfirmCommand}"
+                                Classes="success" />
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Border>
+
+</UserControl>

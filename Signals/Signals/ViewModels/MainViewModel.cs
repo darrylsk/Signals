@@ -1,19 +1,23 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Signals.Factories;
+using Signals.ViewModels.Abstract;
 
 namespace Signals.ViewModels;
 
-public partial class MainViewModel : Abstract.ViewModelBase 
+public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
 {
     private readonly PageFactory _pageFactory;
 
-    [ObservableProperty]
-    private string _appTitle = $"$ignal$";
-    [ObservableProperty]
-    private string _tagLine = $"Watch what happens";
+    [ObservableProperty] private string _appTitle = $"$ignal$";
+    [ObservableProperty] private string _tagLine = $"Watch what happens";
     [ObservableProperty] private string _pageTitle;
-
+    
+    [ObservableProperty] private DialogViewModel _dialog; // = new ConfirmDialogViewModel()
+    // {
+    //     IsDialogOpen = false
+    // };
+    
     /// <summary>
     /// Design-time only constructor
     /// </summary>
@@ -36,7 +40,11 @@ public partial class MainViewModel : Abstract.ViewModelBase
     private void GoToHome()
     {
         CurrentPage = _pageFactory.GetPageViewModel<HomePageViewModel>(
-            vm => vm.PageSubtitle = "Home page");
+            vm =>
+            {
+                vm.PageSubtitle = "Home page";
+                //vm.PageTitle = "Home";
+            });
         PageTitle = "Home";
     }
 
@@ -60,7 +68,7 @@ public partial class MainViewModel : Abstract.ViewModelBase
         CurrentPage = _pageFactory.GetPageViewModel<SettingsPageViewModel>(async vm 
             => await vm.LoadSettings());
         PageTitle = "Settings";
-    }
+    } 
 
     [RelayCommand]
     private void GoToWatchlistDetail(string symbol)
@@ -68,7 +76,7 @@ public partial class MainViewModel : Abstract.ViewModelBase
         CurrentPage = _pageFactory.GetPageViewModel<WatchlistItemPageViewModel>(async vm 
             => await vm.LoadData(symbol));
         CurrentPage.BackLink = this;
-        PageTitle = "Watchlist Item";
+        this.PageTitle = "Watchlist Item";
     }
 
     [RelayCommand]

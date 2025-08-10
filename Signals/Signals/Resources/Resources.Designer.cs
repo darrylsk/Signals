@@ -373,5 +373,14 @@ namespace Signals.Resources {
                 return ResourceManager.GetString("Use", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted {0}.
+        /// </summary>
+        public static string WatchlistItemPageViewModel_DeleteWatchlistItem_Deleted__0_ {
+            get {
+                return ResourceManager.GetString("WatchlistItemPageViewModel_DeleteWatchlistItem_Deleted__0_", resourceCulture);
+            }
+        }
     }
 }
