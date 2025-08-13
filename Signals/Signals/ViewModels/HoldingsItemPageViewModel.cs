@@ -61,23 +61,8 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     public async Task LoadData(string symbol)
     {
         HoldingItem = await HoldingService.GetBySymbol(symbol);
-        
-        // Would like to be able to do this to populate the view model, but this navigation mechanism
-        // does not provide any easily discoverable way to do it.
-        // var vm = Mapper.Map<HoldingsItemPageViewModel>(HoldingItem);
-        // Alternative solution: 
-        // Mapper.Map(HoldingItem, this);
-        // This is what we'd do if we didn't have AutoMapper
-        // foreach (var propertyInfo  in GetType().GetProperties())
-        // {
-        //     if (!propertyInfo.CanWrite || propertyInfo.Name == "HoldingItem") continue;
-        //     
-        //     Console.WriteLine($"Property: {propertyInfo.Name}  Value: {propertyInfo.GetValue(vm)}");
-        //     var retrievedValue  = propertyInfo.GetValue(vm);
-        //     propertyInfo.SetValue(this, retrievedValue);
-        // }
-        // for example, the following doesn't work for obvious reasons, and there is no work-around
-        // this = vm;
+        if (HoldingItem == null) 
+            MainViewModel.GoToHoldingsCommand.Execute(null);
     }
 
     [RelayCommand]
