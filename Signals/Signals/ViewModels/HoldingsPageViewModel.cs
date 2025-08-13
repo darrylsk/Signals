@@ -52,12 +52,4 @@ public partial class HoldingsPageViewModel : PageViewModel
         Holdings = await HoldingService.GetAll();
         Console.WriteLine(Holdings.Count());
     }
-
-    [RelayCommand]
-    private async Task GoToHoldingDetail(string symbol)
-    {
-        var holding = await HoldingService.GetBySymbol(symbol);
-        CurrentPage = PageFactory.GetPageViewModel<HoldingsItemPageViewModel>();
-    
-    }
 }

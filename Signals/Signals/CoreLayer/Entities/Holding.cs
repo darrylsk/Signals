@@ -11,22 +11,23 @@ public class Holding : StockItem
     {
         if (IsTransient())
         {
-            WhenPurchased = DateTime.UtcNow;
+            WhenLastPurchased = DateTime.UtcNow;
         }
     }
 
     public Holding(string symbol, string exchange, string name, string currency) : base(symbol, exchange, name,
         currency)
     {
-        WhenPurchased = DateTime.UtcNow;
+        WhenLastPurchased = DateTime.UtcNow;
     }
 
     public decimal QuantityHeld { get; set; }
-    public DateTime WhenPurchased { get; set; }
-    public decimal? PeakPriceSincePurchase { get; set; }
+    public DateTime WhenLastPurchased { get; set; }
+    public decimal PeakPriceSincePurchase { get; set; }
     public decimal? HighTargetPrice { get; set; }
     public decimal? LowTargetPrice { get; set; }
-
+    public decimal AveragePurchasePrice { get; set; }
+    
     public bool UseTrailingStop { get; set; }
 
     /// <summary>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using Signals.CoreLayer.Attributes;
 using Signals.CoreLayer.Entities.Base;
 
 namespace Signals.CoreLayer.Entities;
@@ -39,8 +41,6 @@ public class StockItem : Entity
     public decimal LatestQuotedPrice { get; set; }
     public DateTime? WhenLatestQuoteReceived { get; set; }
 
-    public decimal AveragePurchasePrice { get; set; }
-    public DateTime WhenLastPurchased { get; set; }
 
     #region Non data members
 

@@ -375,6 +375,25 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purchased {0} units of {1} for {2} each at {3}.
+        /// </summary>
+        public static string WatchlistItemPageViewModel_Buy_Purchased__0__of__1__for__2__each_at__3_ {
+            get {
+                return ResourceManager.GetString("WatchlistItemPageViewModel_Buy_Purchased__0__of__1__for__2__each_at__3_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchased {0} units of {1} for {2:C} each on {3:MMMM dd yyyy} at {4:h:mm:ss tt zz}.
+        /// </summary>
+        public static string WatchlistItemPageViewModel_Buy_Purchased__0__units_of__1__for__2_C__each_on__3_MMMM_dd_yyyy__at__4_h_mm_ss_tt_zz_ {
+            get {
+                return ResourceManager.GetString("WatchlistItemPageViewModel_Buy_Purchased__0__units_of__1__for__2_C__each_on__3_MM" +
+                        "MM_dd_yyyy__at__4_h_mm_ss_tt_zz_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleted {0}.
         /// </summary>
         public static string WatchlistItemPageViewModel_DeleteWatchlistItem_Deleted__0_ {

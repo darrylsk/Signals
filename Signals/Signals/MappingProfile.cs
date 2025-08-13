@@ -12,11 +12,13 @@ public class MappingProfile : Profile
     {
         CreateMap<WatchlistItem, WatchlistItemPageViewModel>().ReverseMap();
         CreateMap<WatchlistItem, IQuoteClientObject>().ReverseMap();
+        CreateMap<WatchlistItem, BuyOrSellDialogViewModel>().ReverseMap();
         CreateMap<Holding, HoldingsItemPageViewModel>().ReverseMap();
         CreateMap<FinnhubCompanyProfileClientObject, CompanyProfile>();
         CreateMap<FinnhubQuoteClientObject, StockItem>();
         CreateMap<StockItem, WatchlistItem>();
         CreateMap<StockItem, Holding>();
+        CreateMap<StockItem, BuyOrSellDialogViewModel>();
         CreateMap<Settings, SettingsPageViewModel>().ReverseMap();
     }
 }
