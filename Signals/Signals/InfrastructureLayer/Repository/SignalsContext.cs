@@ -23,9 +23,9 @@ public class SignalsContext : ISignalsDbContext
         Connection = new SQLiteAsyncConnection(dbPath);
 
         // Create the tables if they don't already exist.
+        Connection.CreateTableAsync<CompanyProfile>().Wait();
         Connection.CreateTableAsync<WatchlistItem>().Wait();
         Connection.CreateTableAsync<Holding>().Wait();
-        Connection.CreateTableAsync<CompanyProfile>().Wait();
         Connection.CreateTableAsync<TradingJournal>().Wait();
         var result = Connection.CreateTableAsync<Settings>().Result;
         

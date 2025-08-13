@@ -127,4 +127,10 @@
     <data name="WatchlistItemPageViewModel_DeleteWatchlistItem_Deleted__0_" xml:space="preserve">
         <value>Deleted {0}</value>
     </data>
+    <data name="WatchlistItemPageViewModel_Buy_Purchased__0__of__1__for__2__each_at__3_" xml:space="preserve">
+        <value>Purchased {0} units of {1} for {2} each at {3}</value>
+    </data>
+    <data name="WatchlistItemPageViewModel_Buy_Purchased__0__units_of__1__for__2_C__each_on__3_MMMM_dd_yyyy__at__4_h_mm_ss_tt_zz_" xml:space="preserve">
+        <value>Purchased {0} units of {1} for {2:C} each on {3:MMMM dd yyyy} at {4:h:mm:ss tt zz}</value>
+    </data>
 </root>

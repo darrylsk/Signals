@@ -6,5 +6,5 @@ namespace Signals.ApplicationLayer.Abstract;
 public interface IHoldingService : IStockItemService<Holding>
 {
     Task<int> Buy(Holding holding);
-    Task<int> Sell(Holding model, decimal salePrice,  decimal unitsSold);
+    Task<int> Sell(Holding model);
 }

@@ -137,7 +137,7 @@ public partial class AddItemPageViewModel : PageViewModel
                 holding.AveragePurchasePrice = PurchasePrice;
                 holding.PeakPriceSincePurchase = PurchasePrice;
                 holding.QuantityHeld += UnitsPurchased;
-                holding.WhenPurchased = DatePurchased + TimeSpan.FromHours(HourPurchased) +  TimeSpan.FromMinutes(MinutePurchased);
+                holding.WhenLastPurchased = DatePurchased + TimeSpan.FromHours(HourPurchased) +  TimeSpan.FromMinutes(MinutePurchased);
                 
                 // Save to holdings list
                 await HoldingService.Buy(holding);

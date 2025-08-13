@@ -41,7 +41,7 @@ public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject
             }
         }
 
-        if (response.StatusCode == (HttpStatusCode.TooManyRequests)) ServiceSuspended = true;
+        if (response.StatusCode == HttpStatusCode.TooManyRequests) ServiceSuspended = true;
         
         return null;
     }

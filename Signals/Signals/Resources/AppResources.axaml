@@ -13,7 +13,7 @@
     <Color x:Key="PrimaryHoverBackground">WhiteSmoke</Color>
     
     <Color x:Key="PrimaryDialogBackground"> DarkGray</Color>
-    <Color x:Key="PrimaryDialogDropShadow">WhiteSmoke</Color>
+    <Color x:Key="PrimaryDialogDropShadow">Black</Color>
     
     <Color x:Key="WarningColour">Yellow</Color>
     <Color x:Key="DangerColour">Red</Color>
