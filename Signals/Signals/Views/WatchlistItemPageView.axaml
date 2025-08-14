@@ -68,7 +68,7 @@
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Classes="buttons" Grid.Row="1" Orientation="Horizontal">
                             <IconButton Classes="command" IconText="&#xE4A6;" Content="Delete"
                                         Command="{Binding $parent[UserControl].((vm:WatchlistItemPageViewModel)DataContext).DeleteWatchlistItemCommand, FallbackValue=null}"
                                         CommandParameter="{Binding}">
