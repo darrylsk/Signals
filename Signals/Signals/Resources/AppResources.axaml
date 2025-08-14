@@ -38,9 +38,13 @@
     <Color x:Key="CommandButtonHoverForeground">Black</Color>
     <Color x:Key="CommandButtonHoverBackground"> LightSlateGray</Color>
     
+    <Color x:Key="PrimaryBorderColor">LightGray</Color>
+    <Thickness x:Key="PrimaryBorderThickness">2</Thickness>
+    
     <Color x:Key="CheckBoxBorderColor">Black</Color>
-    <Thickness x:Key="CheckBoxBorderThickness">3</Thickness>
+    <Thickness x:Key="CheckBoxBorderThickness">2</Thickness>
     <CornerRadius x:Key="CheckBoxCornerRadius">30</CornerRadius>
+    <CornerRadius x:Key="TextBoxCornerRadius">3</CornerRadius>
     
     <Color x:Key="MainSectionBackground">AntiqueWhite</Color>
     <Color x:Key="WindowBackground">SteelBlue</Color>
@@ -94,6 +98,7 @@
     <FontFamily x:Key="PhosphorFill">/Assets/Fonts/Phosphor-Fill.ttf#Phosphor-Fill</FontFamily>
     
     <FontFamily x:Key="DefaultFontFamily">/Assets/Fonts/NotoSans/NotoSansJp.ttf</FontFamily>
+
     <!--
     <FontFamily x:Key="Nunito">/Assets/Fonts/Nunito</FontFamily>
     Luke wrote it in this way:  Alternate method: Font name not necessary since same as file name ?

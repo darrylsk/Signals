@@ -136,7 +136,7 @@
                             </StackPanel>
                         </ScrollViewer>
                         <!-- Buy and Sell buttons ;-->
-                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <StackPanel Classes="buttons" Grid.Row="2" Orientation="Horizontal">
                             <IconButton Classes="buy" IconText="&#xeb48;" Content="Buy"
                                         Command="{Binding $parent[UserControl].((vm:HoldingsItemPageViewModel)DataContext).BuyCommand, FallbackValue=null}"
                                         CommandParameter="{Binding}">

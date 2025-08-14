@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
              xmlns:viewModels="clr-namespace:Signals.ViewModels"
              xmlns:lang="clr-namespace:Signals.Resources"
              x:Class="Signals.Views.BuyOrSellDialogView"
@@ -22,7 +22,7 @@
                               Opacity=".5" />
         </Border.Effect>
 
-        <Grid RowDefinitions="*, *, Auto">
+        <Grid RowDefinitions="Auto, *, Auto">
 
             <!-- Title Bar -->
             <Border Background="{DynamicResource TitleBarBackground}">
@@ -41,7 +41,11 @@
                     <Label Content="{x:Static lang:Resources.DateLabel}"></Label>
                     <TextBox Text="{Binding TransactionTime}"></TextBox>
                     <Label Content="{x:Static lang:Resources.UnitsLabel}"></Label>
-                    <TextBox Text="{Binding Units}"></TextBox>
+                    <NumericUpDown Value="{Binding Units}"  
+                                   FormatString="###,###,##0"
+                                   Minimum="0" Maximum="10000000"
+                                   />
+                    <!--<TextBox Text="{Binding Units}" />-->
                     <Label Content="{x:Static lang:Resources.PriceLabel}"></Label>
                     <TextBox Text="{Binding Price}"></TextBox>
                 </StackPanel>
@@ -49,7 +53,8 @@
 
             <!-- Confirm/Cancel buttons -->
             <Border Grid.Row="2" Padding="20">
-                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Classes="buttons"
+                            Orientation="Horizontal" HorizontalAlignment="Right" >
                     <Button Content="{Binding CancelText}"
                             Command="{Binding  CancelCommand}"
                             Classes="danger outline" />

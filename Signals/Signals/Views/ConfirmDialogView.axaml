@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:Signals.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
              Width="{Binding DialogWidth}"
              x:Class="Signals.Views.ConfirmDialogView"
              x:DataType="viewModels:ConfirmDialogViewModel">
@@ -30,7 +30,6 @@
         </Border.Effect>
 
         <StackPanel>
-
             <!-- Title Bar -->
             <Border Background="{DynamicResource TitleBarBackground}">
                 <TextBlock Text="{Binding Title}"
@@ -49,9 +48,11 @@
                                FontSize="30"
                                Foreground="{DynamicResource WarningColour}" />
                         <TextBlock Text="{Binding Message}"
+                                   TextWrapping="Wrap"
                                    FontSize="16" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel Classes="buttons" Orientation="Horizontal"
+                                HorizontalAlignment="Right">
                         <Button Content="{Binding CancelText}"
                                 Command="{Binding  CancelCommand}"
                                 Classes="danger outline" />
