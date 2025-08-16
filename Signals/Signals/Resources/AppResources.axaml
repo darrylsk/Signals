@@ -46,7 +46,7 @@
     <CornerRadius x:Key="CheckBoxCornerRadius">30</CornerRadius>
     <CornerRadius x:Key="TextBoxCornerRadius">3</CornerRadius>
     
-    <Color x:Key="MainSectionBackground">AntiqueWhite</Color>
+    <Color x:Key="MainSectionBackground">Gray</Color>
     <Color x:Key="WindowBackground">SteelBlue</Color>
     <Color x:Key="WindowBackground1">#FFA9BCCF</Color>
     <Color x:Key="PrimaryPageForeground">Black</Color>

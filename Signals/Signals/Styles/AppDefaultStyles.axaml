@@ -2,7 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20" Width="400">
-            <!-- Background="{DynamicResource MainSectionBackground} -->
             <Border Classes="main-section" >
                 <Grid ColumnDefinitions="*, *">
                     <!-- Add Controls for Previewer Here -->
