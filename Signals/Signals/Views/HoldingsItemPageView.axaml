@@ -7,11 +7,16 @@
              xmlns:vm="clr-namespace:Signals.ViewModels"
              xmlns:entities="clr-namespace:Signals.CoreLayer.Entities"
              x:Class="Signals.Views.HoldingsItemPageView"
-             x:DataType="vm:HoldingsItemPageViewModel">
-
+             x:DataType="vm:HoldingsItemPageViewModel"
+             xmlns:converters="clr-namespace:Signals.Converters">
+    <!-- added xmlns:converters -->
     <Design.DataContext>
         <vm:HoldingsItemPageViewModel />
     </Design.DataContext>
+    <UserControl.Resources>
+        <converters:CurrencyOrEmptyConverter x:Key="DecimalOrEmptyConverter" />
+    </UserControl.Resources>
+    
 
     <Grid>
         <ContentControl Content="{Binding HoldingItem}">
@@ -91,8 +96,7 @@
                                     <StackPanel Grid.Row="3" Grid.Column="2">
                                         <Label Content="Number of Units Held" />
                                         <TextBox
-                                            Text="{Binding  QuantityHeld, StringFormat={}{0:#0}, 
-                                        FallbackValue=0, TargetNullValue=0}" />
+                                            Text="{Binding  QuantityHeld, StringFormat={}{0:#0}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="4" Grid.Column="0">
@@ -102,27 +106,22 @@
 
                                     <StackPanel Grid.Row="4" Grid.Column="2">
                                         <Label Content="Peak Price Since Purchase" />
-                                        <TextBox Text="{Binding  PeakPriceSincePurchase, StringFormat={}{0:C}}" />
+                                        <TextBox Text="{Binding  PeakPriceSincePurchase, 
+                                                 Converter={x:Static converters:CurrencyOrEmptyConverter.Instance}, 
+                                                 UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
-                                    <!--<StackPanel Grid.Row="5" Grid.Column="0">
-                                        <Label Content="Gain/Loss" />
-                                        <TextBox Text="{Binding  GainOrLoss, StringFormat={}{0:C}}" />
-                                    </StackPanel>-->
-
-                                    <!--<StackPanel Grid.Row="5" Grid.Column="2">
-                                        <Label Content="Peak Price Since Purchase" />
-                                        <TextBox Text="{Binding  PeakPriceSincePurchase, StringFormat={}{0:C}}" />
-                                    </StackPanel>-->
-
+                                    <!-- ... existing code ... -->
                                     <StackPanel Grid.Row="6" Grid.Column="0">
                                         <Label Content="High Target Price" />
-                                        <TextBox Text="{Binding  HighTargetPrice, StringFormat={}{0:C}}" />
+                                        <TextBox
+                                            Text="{Binding HighTargetPrice, Converter={StaticResource DecimalOrEmptyConverter}, UpdateSourceTrigger=PropertyChanged}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="6" Grid.Column="2">
                                         <Label Content="Low Target Price" />
-                                        <TextBox Text="{Binding  LowTargetPrice, StringFormat={}{0:C}}" />
+                                        <TextBox
+                                            Text="{Binding LowTargetPrice, Converter={StaticResource DecimalOrEmptyConverter}, UpdateSourceTrigger=PropertyChanged}" />
                                     </StackPanel>
                                 </Grid>
                                 <StackPanel>

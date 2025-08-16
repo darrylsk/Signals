@@ -11,8 +11,8 @@ public partial class BuyOrSellDialogViewModel : DialogViewModel
     [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))] private string _symbol = String.Empty;
     [ObservableProperty] private string _title = String.Empty;
     [ObservableProperty] private DateTime _transactionTime = DateTime.UtcNow;
-    [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))] private int _units;
-    [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))] private decimal _price;
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))] private int? _units;
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))] private decimal? _price;
 
     [ObservableProperty] private string _confirmText = "Confirm";
     [ObservableProperty] private string _cancelText = "Cancel";
@@ -50,8 +50,11 @@ public partial class BuyOrSellDialogViewModel : DialogViewModel
     
     #region Computed and non data members
     
+    // Bug: The value converter for the units is necessary to avoid an invalid cast exception and an error message
+    // in the NumericUpDown if its text box is cleared, but it interferes with the notification system, and there's
+    // no way to fix it from my code.
     public bool SaveIsEnabled
-        => !string.IsNullOrEmpty(Symbol) && Units > 0 && Price > 0;
+        => !string.IsNullOrEmpty(Symbol) && Units is > 0 && Price is > 0;
 
     public TransactionTypes Action { get; set; }
 

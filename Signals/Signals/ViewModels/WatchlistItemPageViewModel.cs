@@ -107,8 +107,8 @@ public partial class WatchlistItemPageViewModel : PageViewModel
         
         var holding = Mapper.Map<Holding>(watchlistItem);
         holding.Symbol = buyOrSellDialog.Symbol;
-        holding.QuantityHeld = buyOrSellDialog.Units;
-        holding.AveragePurchasePrice = buyOrSellDialog.Price;
+        holding.QuantityHeld = buyOrSellDialog.Units.Value;
+        holding.AveragePurchasePrice = buyOrSellDialog.Price ?? 0;
         await HoldingService.Buy(holding);
         
         MainViewModel.GoToHoldingDetailCommand.Execute(holding.Symbol);

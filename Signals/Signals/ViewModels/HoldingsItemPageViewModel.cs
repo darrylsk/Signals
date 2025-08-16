@@ -82,8 +82,8 @@ public partial class HoldingsItemPageViewModel : PageViewModel
         
         if (buyOrSellViewDialogModel.IsConfirmed == false) return;
         
-        holding.QuantityHeld = buyOrSellViewDialogModel.Units;
-        holding.AveragePurchasePrice = buyOrSellViewDialogModel.Price;
+        holding.QuantityHeld = buyOrSellViewDialogModel.Units.Value;
+        holding.AveragePurchasePrice = buyOrSellViewDialogModel.Price.Value;
 
         await HoldingService.Buy(holding);
 
@@ -107,8 +107,8 @@ public partial class HoldingsItemPageViewModel : PageViewModel
         
         if (buyOrSellViewDialogModel.IsConfirmed == false) return;
 
-        holding.QuantityHeld = buyOrSellViewDialogModel.Units;
-        holding.AveragePurchasePrice = buyOrSellViewDialogModel.Price;
+        holding.QuantityHeld = buyOrSellViewDialogModel.Units.Value;
+        holding.AveragePurchasePrice = buyOrSellViewDialogModel.Price.Value;
         
         await HoldingService.Sell(holding);
         
