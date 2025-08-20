@@ -17,3 +17,12 @@ Company Profile Query
 ---------------------
 method: profile2
 curl "https://finnhub.io/api/v1/stock/profile2?symbol=NVDA&token=brhr5qvrh5r807v5jimg"
+
+SPY Holdings
+------------
+curl "https://finnhub.io/api/v1/etf/holdings?symbol=SPY&token=brhr5qvrh5r807v5jimg"
+
+Examples
+--------
+Current SPY
+curl "https://finnhub.io/api/v1/etf/holdings?symbol=SPY&token=brhr5qvrh5r807v5jimg"

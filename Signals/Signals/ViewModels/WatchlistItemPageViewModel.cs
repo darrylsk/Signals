@@ -88,7 +88,7 @@ public partial class WatchlistItemPageViewModel : PageViewModel
     {
         var quote = await QuotationService.GetQuoteAsync(watchlistItem.Symbol);
         
-        var buyOrSellDialog = new BuyOrSellDialogViewModel()
+        var buyOrSellDialog = new AddBuyOrSellDialogViewModel()
         {
             Title = $"Buy {watchlistItem.Name}",
             Action = TransactionTypes.Purchase,

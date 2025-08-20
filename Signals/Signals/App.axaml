@@ -34,6 +34,7 @@
         <FluentTheme />
         <StyleInclude Source="Styles/AppDefaultStyles.axaml"></StyleInclude>
         <StyleInclude Source="Controls/StockItemHeader.axaml"></StyleInclude>
+        <StyleInclude Source="Controls/LookupItem.axaml"></StyleInclude>
     </Application.Styles>
 
 </Application>

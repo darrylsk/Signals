@@ -43,15 +43,18 @@
 
             <Border Grid.Row="1" Padding="20">
                 <StackPanel>
+
                     <Label Content="{x:Static lang:Resources.SymbolLabel}"></Label>
                     <TextBlock Text="{Binding Symbol}"></TextBlock>
                     <Label Content="{x:Static lang:Resources.DateLabel}"></Label>
-                    <TextBox Text="{Binding TransactionTime}"></TextBox>
+                    <DatePicker SelectedDate="{Binding TransactionDate}"></DatePicker>
+                    <TimePicker ClockIdentifier="12HourClock" SelectedTime="{Binding TransactionTime}"></TimePicker>
                     <Label Content="{x:Static lang:Resources.UnitsLabel}"></Label>
                     <!--Bug - can't use a value converter because the Numeric UpDown won't bind if you do.-->
                     <!--The value converter prevents an invalid cast exception if the TextBox part of the UpDown is 
-                    empty.  I can't find a way to fix this in my application, so we're just going to have to put up
-                    with this annoying little glitch for now.  -->
+                    empty.  The following is a work-around. Setting UpdateSourceTrigger=LostFocus and providing defaults
+                    TargetNullValue and FallbackValue prevents the ugly errors from spewing out.  The result is not 
+                    quite what I want, but it is acceptable for now. -->
                     <NumericUpDown Value="{Binding Units, UpdateSourceTrigger=LostFocus, 
                                    TargetNullValue=0, FallbackValue=0}"  
                                    FormatString="###,###,##0"

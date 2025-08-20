@@ -13,10 +13,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
     [ObservableProperty] private string _tagLine = $"Watch what happens";
     [ObservableProperty] private string _pageTitle;
     
-    [ObservableProperty] private DialogViewModel _dialog; // = new ConfirmDialogViewModel()
-    // {
-    //     IsDialogOpen = false
-    // };
+    [ObservableProperty] private DialogViewModel _dialog;
     
     /// <summary>
     /// Design-time only constructor
@@ -33,7 +30,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
         _pageFactory = pageFactory;
         CurrentPage = pageFactory.GetPageViewModel<HomePageViewModel>();
         PageTitle = "Main";
-        GoToWatchlist();
+        GoToHome();
     }
 
     [RelayCommand]
@@ -43,7 +40,6 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
             vm =>
             {
                 vm.PageSubtitle = "Home page";
-                //vm.PageTitle = "Home";
             });
         PageTitle = "Home";
     }

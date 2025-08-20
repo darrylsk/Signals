@@ -60,7 +60,7 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Signals tracks the performance of your investments and alerts you to significant events such as a double in price or a large percentage drop..
+        ///   Looks up a localized string similar to Signals empowers you to stay ahead of your financial goals by tracking stocks and ETFs like SPY and SPX in real time, with customizable alerts for significant price changes, such as doubling or a 25% drop..
         /// </summary>
         public static string AboutParagraph1 {
             get {
@@ -69,7 +69,7 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You&apos;ll need to set up a free account with data provider Finnhub.  Fortunately, this is easy to do (and as mentioned, costs nothing for  basic service).  Click the button below to visit Finnhub and get your free API key right now.  You don&apos;t have to give a lot of information (just an email address) and they don&apos;t spam you.  Once you have your key, enter it in the application&apos;s Settings page..
+        ///   Looks up a localized string similar to Signals is not a trading app and does not connect to brokerage accounts. It offers a convenient way to monitor your investment holdings and watchlist items, powered by real-time market data from Finnhub.io. Start tracking your financial journey today!.
         /// </summary>
         public static string AboutParagraph2 {
             get {
@@ -78,11 +78,20 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Signals does not provide investment advice.  By using this application, you are accepting full responsibility for making your own investment decisions and for the performance of your investments..
+        ///   Looks up a localized string similar to To access daily or real-time stock quotes, create a free Finnhub account to obtain your API key. It’s quick, requires only an email, and Finnhub won’t spam you. Click the button below to visit Finnhub.io and sign up. Then, enter your API key in the Settings page, accessible from the main menu.  Finnhub allows you 60 APO calls/minute with a free account..
         /// </summary>
         public static string AboutParagraph3 {
             get {
                 return ResourceManager.GetString("AboutParagraph3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disclaimer: Signals is for informational purposes only and not intended for trading or investment decisions. Stock quotes from Finnhub.io may experience delays or inaccuracies; users assume all risks related to financial decisions. Third-party services like Finnhub.io are subject to their terms and availability. Use Signals at your own risk..
+        /// </summary>
+        public static string AboutParagraph4 {
+            get {
+                return ResourceManager.GetString("AboutParagraph4", resourceCulture);
             }
         }
         
