@@ -12,18 +12,30 @@
         <vm:AboutPageViewModel />
     </Design.DataContext>
     
-    <StackPanel>
-        <TextBlock Name="Paragraph1" Text="{x:Static lang:Resources.AboutParagraph1}" />
-        <TextBlock Name="Paragraph2" Text="{x:Static lang:Resources.AboutParagraph2}" />
-        <TextBlock Name="Paragraph3" Text="{x:Static lang:Resources.AboutParagraph3}" />
-        <Button Name="BtnGetKey" Content="{x:Static lang:Resources.BtnGetKeyContent}" 
-                Command="{Binding GetKeyCommand}"
-                CommandParameter="{Binding $self}" />
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock Name="Paragraph1" Text="{x:Static lang:Resources.AboutParagraph1}" />
+                <TextBlock Name="Paragraph2" Text="{x:Static lang:Resources.AboutParagraph2}" />
+                <TextBlock Name="Paragraph3" Text="{x:Static lang:Resources.AboutParagraph3}" />
+                <TextBlock Name="Paragraph4" Text="{x:Static lang:Resources.AboutParagraph4}" />
+                <Button Name="BtnGetKey" Content="{x:Static lang:Resources.BtnGetKeyContent}"
+                        Command="{Binding GetKeyCommand}"
+                        CommandParameter="{Binding $self}" />
                 <!-- Click="BtnGetKey_OnClick" -->
-        <TextBlock Name="VersionStatement" Text="{x:Static lang:Resources.ApplicationVersionStatement}" />
-        <TextBlock Name="VersionStatement2" Text="Version 1.0 released 2025" />
-        <Button Name="BtnCheckForNewVersion" Content="{x:Static lang:Resources.BtnCheckForNewVersionContent}" 
-                Command="{Binding CheckForNewVersionCommand}"/>
-    </StackPanel>
+                <TextBlock Name="VersionStatement" Text="{x:Static lang:Resources.ApplicationVersionStatement}" />
+                <TextBlock Name="VersionStatement2" Text="Version 1.0 released 2025" />
+                <Button Name="BtnCheckForNewVersion" Content="{x:Static lang:Resources.BtnCheckForNewVersionContent}"
+                        Command="{Binding CheckForNewVersionCommand}" />
+                
+                <!--<Label Content="Application Data Folder"></Label>
+                <TextBlock Text="{Binding ApplicationDataFolderName}" />-->
+
+                <Label Content="Local Application Data Folder"></Label>
+                <TextBlock Text="{Binding ApplicationLocalDataFolderName}" />
+
+                <!--<Label Content="Common Application Data Folder"></Label>
+                <TextBlock Text="{Binding ApplicationCommonDataFolderName}" />-->
+            </StackPanel>
+        </ScrollViewer>
 
 </UserControl>

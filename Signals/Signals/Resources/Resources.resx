@@ -62,13 +62,16 @@
     <data name="BtnSaveSettingsText" xml:space="default">Save Settings</data>
 
     <data name="AboutParagraph1" xml:space="default">
-        <value>Signals tracks the performance of your investments and alerts you to significant events such as a double in price or a large percentage drop.</value>
+        <value>Signals empowers you to stay ahead of your financial goals by tracking stocks and ETFs like SPY and SPX in real time, with customizable alerts for significant price changes, such as doubling or a 25% drop.</value>
     </data>
     <data name="AboutParagraph2" xml:space="preserve">
-        <value>You'll need to set up a free account with data provider Finnhub.  Fortunately, this is easy to do (and as mentioned, costs nothing for  basic service).  Click the button below to visit Finnhub and get your free API key right now.  You don't have to give a lot of information (just an email address) and they don't spam you.  Once you have your key, enter it in the application's Settings page.</value>
+        <value>Signals is not a trading app and does not connect to brokerage accounts. It offers a convenient way to monitor your investment holdings and watchlist items, powered by real-time market data from Finnhub.io. Start tracking your financial journey today!</value>
     </data>
     <data name="AboutParagraph3" xml:space="preserve">
-        <value>Signals does not provide investment advice.  By using this application, you are accepting full responsibility for making your own investment decisions and for the performance of your investments.</value>
+        <value>To access daily or real-time stock quotes, create a free Finnhub account to obtain your API key. It’s quick, requires only an email, and Finnhub won’t spam you. Click the button below to visit Finnhub.io and sign up. Then, enter your API key in the Settings page, accessible from the main menu.  Finnhub allows you 60 APO calls/minute with a free account.</value>
+    </data>
+    <data name="AboutParagraph4" xml:space="preserve">
+        <value>Disclaimer: Signals is for informational purposes only and not intended for trading or investment decisions. Stock quotes from Finnhub.io may experience delays or inaccuracies; users assume all risks related to financial decisions. Third-party services like Finnhub.io are subject to their terms and availability. Use Signals at your own risk.</value>
     </data>
     <data name="ApplicationVersionStatement" xml:space="preserve">
         <value>Current version is 1.0 released 2025</value>

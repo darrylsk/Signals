@@ -1,0 +1,25 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:Signals.Views"
+             xmlns:lang="clr-namespace:Signals.Resources"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:AddBuyOrSellDialogViewModel"
+             x:Class="Signals.Views.AddBuyOrSellDialogView">
+
+    <Design.DataContext>
+        <vm:AddBuyOrSellDialogViewModel></vm:AddBuyOrSellDialogViewModel>
+    </Design.DataContext>
+    <StackPanel>
+
+        <CheckBox IsChecked="{Binding AddToWatchlist}"
+                  Content="{x:Static lang:Resources.AddToWatchlistLabel}">
+        </CheckBox>
+        <CheckBox IsChecked="{Binding AddToWatchlist}"
+                  Content="{x:Static lang:Resources.AddToWatchlistLabel}">
+        </CheckBox>
+        <views:BuyOrSellDialogView />
+    </StackPanel>
+</UserControl>

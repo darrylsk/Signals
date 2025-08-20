@@ -16,6 +16,7 @@ public class MappingProfile : Profile
         CreateMap<Holding, HoldingsItemPageViewModel>().ReverseMap();
         CreateMap<FinnhubCompanyProfileClientObject, CompanyProfile>();
         CreateMap<FinnhubQuoteClientObject, StockItem>();
+        CreateMap<StockItem, IndexItem>();
         CreateMap<StockItem, WatchlistItem>();
         CreateMap<StockItem, Holding>();
         CreateMap<StockItem, BuyOrSellDialogViewModel>();

@@ -52,5 +52,9 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>Resources.fr-CA.resx</DependentUpon>
       </Compile>
+      <Compile Update="Controls\LookupItem.axaml.cs">
+        <DependentUpon>LookupItem.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

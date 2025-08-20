@@ -1,0 +1,56 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Signals.Controls">
+    <Design.PreviewWith>
+        <controls:LookupItem />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|LookupItem">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border>
+                    <StackPanel>
+                        <Grid RowDefinitions="Auto, Auto, *" ColumnDefinitions="*, *, *, *">
+                            <StackPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock Text="{TemplateBinding Symbol}" Classes="item-heading" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3">
+                                <TextBlock Text="{TemplateBinding Name}" Classes="item-heading" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="0">
+                                <Label Content="Open"></Label>
+                                <TextBlock
+                                    Text="{Binding CurrentDayOpeningPrice, 
+                                        RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:C}}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1">
+                                <Label Content="Low"></Label>
+                                <TextBlock
+                                    Text="{Binding CurrentDayLowPrice, 
+                                        RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:C}}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="2">
+                                <Label Content="High"></Label>
+                                <TextBlock
+                                    Text="{Binding CurrentDayHighPrice,
+                                         RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:C}}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="3">
+                                <Label Content="Current"></Label>
+                                <TextBlock
+                                    Text="{Binding LatestQuotedPrice, 
+                                        RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:C}}" />
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <IconButton Classes="buy" Grid.Row="2" Grid.Column="2" Content="Add To Watch List"></IconButton>
+                            <IconButton Classes="sell" Grid.Row="2" Grid.Column="3" Content="Buy"></IconButton>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

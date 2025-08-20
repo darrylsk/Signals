@@ -1,7 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
-using MediatR;
 using Signals.CoreLayer.Entities;
 using Signals.InfrastructureLayer.Abstract;
 using SQLite;
@@ -26,9 +24,10 @@ public class SignalsContext : ISignalsDbContext
         Connection.CreateTableAsync<CompanyProfile>().Wait();
         Connection.CreateTableAsync<WatchlistItem>().Wait();
         Connection.CreateTableAsync<Holding>().Wait();
+        Connection.CreateTableAsync<IndexItem>().Wait();
         Connection.CreateTableAsync<TradingJournal>().Wait();
         var result = Connection.CreateTableAsync<Settings>().Result;
-        
+
         // SQLite useful functions
         // sqlite3.exe is a command line interface for sqlite and allows you to examine the database and run queries
         // C:\Program Files\SQLite contains command line executable utilities for SQLite, including sqlite3.exe
@@ -40,16 +39,18 @@ public class SignalsContext : ISignalsDbContext
         // .columns n n n ... sets column widths
         // .help displays hints
         // .exit closes SQLite.exe
-        
+
         // var settingsDef = Connection.GetTableInfoAsync("Settings").Result;
         // var watchlistItemDef = Connection.GetTableInfoAsync("WatchListItem").Result;
         // var holdingDef = Connection.GetTableInfoAsync("Holding").Result;
         // var companyProfileDef = Connection.GetTableInfoAsync("CompanyProfile").Result;
-        
+
         // Guard: Continue beyond here only on database creation.
-        
+
         if (result != CreateTableResult.Created) return;
-        
+
+        // Everything below this point is only executed on database creation.
+
         // Insert the initial settings record.
         var settings = new Settings
         {
@@ -60,9 +61,30 @@ public class SignalsContext : ISignalsDbContext
             DefaultHighGainMultiplier = 1.5
         };
         Connection.InsertAsync(settings).Wait();
-        // Connection.UpdateAsync(settings).Wait();
+
+        // Create the fixed list of index ETF items.
+        var profiles = new CompanyProfile[]
+        {
+            new CompanyProfile() { Name = "SPDR S&P 500 ETF", Symbol = "SPY", Currency = "USD" },
+            new CompanyProfile() { Name = "Invesco QQQ ETF Trust (NASDAQ)", Symbol = "QQQ", Currency = "USD" },
+            new CompanyProfile()
+                { Name = "SPDR Dow Jones Industrial Average ETF Trust", Symbol = "DIA", Currency = "USD" },
+            new CompanyProfile() { Name = "iShares Russell 2000 ETF", Symbol = "IWM", Currency = "USD" },
+            new CompanyProfile() { Name = "Vanguard Total Stock Market ETF", Symbol = "VTI", Currency = "USD" },
+        };
+        
+        Connection.InsertAllAsync((IEnumerable<CompanyProfile>)profiles).Wait();
+        var indexItems = new IndexItem[]
+        {
+            new IndexItem("SPY", "New York", "SPDR S&P 500 ETF", "USD"),
+            new IndexItem("QQQ", "New York", "Invesco QQQ ETF Trust (NASDAQ)", "USD"),
+            new IndexItem("DIA", "New York", "SPDR Dow Jones Industrial Average ETF Trust", "USD"),
+            new IndexItem("IWM", "New York", "iShares Russell 2000 ETF", "USD"),
+            new IndexItem("VTI", "New York", "Vanguard Total Stock Market ETF", "USD"),
+        };
+        Connection.InsertAllAsync((IEnumerable<IndexItem>)indexItems).Wait();
     }
-    
+
     public SQLiteAsyncConnection Connection { get; }
 }
 
@@ -70,4 +92,3 @@ public interface ISignalsDbContext
 {
     SQLiteAsyncConnection Connection { get; }
 }
-

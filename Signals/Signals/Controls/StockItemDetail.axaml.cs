@@ -81,7 +81,6 @@ public class StockItemDetail : TemplatedControl
     
     public static readonly StyledProperty<decimal?> CurrentDayOpeningPriceProperty = AvaloniaProperty.Register<StockItemDetail, decimal?>(
         nameof(CurrentDayOpeningPrice));
-
     public decimal? CurrentDayOpeningPrice
     {
         get => GetValue(CurrentDayOpeningPriceProperty);
@@ -108,7 +107,6 @@ public class StockItemDetail : TemplatedControl
 
     public static readonly StyledProperty<decimal?> CurrentDayLowPriceProperty = AvaloniaProperty.Register<StockItemDetail, decimal?>(
         nameof(CurrentDayLowPrice));
-
     public decimal? CurrentDayLowPrice
     {
         get => GetValue(CurrentDayLowPriceProperty);

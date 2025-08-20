@@ -29,7 +29,7 @@ public class FinnhubQuotationService : QuotationService<FinnhubQuoteClientObject
         ArgumentNullException.ThrowIfNull(symbol);
         if (HasValidToken == false) return null;
         
-        var query = $"{Uri}/quote?symbol={symbol}&token={Token}";
+        var query = $"{Uri}/quote?symbol={symbol.ToUpper()}&token={Token}";
         HttpResponseMessage response = await Client.GetAsync(query);
         var content = await response.Content.ReadAsStringAsync();
 

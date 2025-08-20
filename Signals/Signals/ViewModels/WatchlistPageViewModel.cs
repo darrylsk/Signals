@@ -44,6 +44,5 @@ public partial class WatchlistPageViewModel : PageViewModel
     private async Task LoadData()
     {
         Watchlist = await WatchlistService.GetAll();
-        PageTitle = "Watchlist";
     }
 }

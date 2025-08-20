@@ -3,21 +3,60 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:controls="clr-namespace:Signals.Controls"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:entities="clr-namespace:Signals.CoreLayer.Entities"
              x:DataType="vm:HomePageViewModel"
              x:Class="Signals.Views.HomePageView">
+    <Design.DataContext>
+        <vm:HomePageViewModel />
+    </Design.DataContext>
 
-	<StackPanel>
-		<Label Content="{Binding PageSubtitle}"></Label>
+    <Grid RowDefinitions="Auto, 10, *">
 
-		<Label Content="Application Data Folder"></Label>
-		<TextBlock Text="{Binding ApplicationDataFolderName}"/>
+        <StackPanel>
+            <ItemsControl Grid.Row="0" ItemsSource="{Binding  IndexEtfList}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <controls:StockItemHeader
+                                Symbol="{Binding Symbol}"
+                                Name="{Binding Name}"
+                                ColourByTrend="{Binding ColourByTrend}"
+                                LatestQuotedPrice="{Binding LatestQuotedPrice}"
+                                WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                                CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Label Content="Lookup" />
+            <Grid ColumnDefinitions="* , 5, Auto">
+                <TextBox Name="Symbol" Grid.Column="0" Watermark="Enter Symbol" Text="{Binding Symbol}" />
+                <IconButton Grid.Column="2" IconText="&#xE30C;" Content="Lookup"
+                            Command="{Binding LookupSymbolCommand}"
+                            CommandParameter="{Binding Symbol }">
+                </IconButton>
+            </Grid>
+        </StackPanel>
+        
+        <StackPanel Name="LookupResult" Grid.Row="2" IsVisible="{Binding IsItemFound }">
+            <ContentControl Content="{Binding IndexEtfItem}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate DataType="entities:IndexItem">
+                        <StackPanel>
+                            <controls:LookupItem
+                                Symbol="{Binding Symbol}"
+                                Name="{Binding Name}"
+                                CurrentDayOpeningPrice="{Binding CurrentDayOpeningPrice}"
+                                CurrentDayLowPrice="{Binding CurrentDayLowPrice}"
+                                CurrentDayHighPrice="{Binding CurrentDayHighPrice}"
+                                LatestQuotedPrice="{Binding LatestQuotedPrice}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+        </StackPanel>
+    </Grid>
 
-		<Label Content="Local Application Data Folder"></Label>
-		<TextBlock Text="{Binding ApplicationLocalDataFolderName}"/>
-
-		<Label Content="Common Application Data Folder"></Label>
-		<TextBlock Text="{Binding ApplicationCommonDataFolderName}"/>
-	</StackPanel>
-	
 </UserControl>

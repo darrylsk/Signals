@@ -35,6 +35,7 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        // Set to different cultures to test localization.
         // var culture = new CultureInfo("fr-CA");
         // Thread.CurrentThread.CurrentCulture = culture;
         // Thread.CurrentThread.CurrentUICulture = culture;
@@ -57,6 +58,7 @@ public partial class App : Application
         services.AddTransient<IWatchlistService, WatchlistService>();
         services.AddTransient<IHoldingService, HoldingService>();
         services.AddTransient<ICompanyProfileService, CompanyProfileService>();
+        services.AddTransient<IIndexItemService, IndexItemService>();
         services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
         services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
         services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
@@ -65,6 +67,7 @@ public partial class App : Application
         services.AddTransient<IFileService, FileService>();
         services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
         services.AddTransient<IHoldingRepository, HoldingRepository>();
+        services.AddTransient<IIndexItemRepository, IndexItemRepository>();
         services.AddTransient<ISettingsRepository, SettingsRepository>();
         services.AddTransient<ICompanyProfileRepository, CompanyProfileRepository>();
         services.AddTransient<ITradingJournalRepository, TradingJournalRepository>();
