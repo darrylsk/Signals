@@ -60,8 +60,11 @@
                     <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 </Style>
             </StackPanel.Styles>
-            <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
+            
+            <CheckBox Content="{x:Static lang:Resources.UsePhoneData}"
+                      IsChecked="{Binding UsePhoneData}" />
 
+            <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
             <!-- Grid containing the controls for setting the API key for the quotation service-->
             <Grid ColumnDefinitions="*, Auto">
                 <TextBox Name="TokenInput" Text="{Binding Key}"
@@ -77,10 +80,10 @@
                     </StackPanel>
                 </Button>
 
-                <!-- Save updated key value -->
+                <!-- Save an updated key value -->
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <Button Classes="decorator"
-                            Command="{Binding SaveKeyCommand}"
+                            Command="{Binding SaveConfigCommand}"
                             IsVisible="{Binding KeyIsInEditMode}">
                         <StackPanel>
                             <!--check mark icon-->

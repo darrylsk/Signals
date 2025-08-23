@@ -22,7 +22,8 @@ public partial class SettingsPageViewModel : PageViewModel
     /// </summary>
     public SettingsPageViewModel() : base("Settings",
         "Defaults")
-    { }
+    {
+    }
 
     public SettingsPageViewModel(
         ISignalsConfigurationService signalsConfigurationService,
@@ -43,6 +44,7 @@ public partial class SettingsPageViewModel : PageViewModel
     {
         SignalsConfiguration = SignalsConfigurationService.GetConfig();
         Key = SignalsConfiguration.Token;
+        UsePhoneData = SignalsConfiguration.UsePhoneData;
     }
 
     public void SaveConfiguration()
@@ -65,6 +67,7 @@ public partial class SettingsPageViewModel : PageViewModel
         var settings = WatchlistMapper.Map<Settings>(this);
         if (settings! == null!) return;
         await SettingsService.Update(settings);
+        SaveConfig(); /////////////////////////////////
     }
 
     [ObservableProperty] private Guid _id;
@@ -73,21 +76,24 @@ public partial class SettingsPageViewModel : PageViewModel
     [ObservableProperty] private double _defaultHighGainMultiplier;
     [ObservableProperty] private bool _defaultUseTrailingStop;
     [ObservableProperty] private double _defaultTrailingStop;
+
+    [ObservableProperty] private bool _usePhoneData;
+
     [ObservableProperty] private bool _keyIsInEditMode;
     [ObservableProperty] private string _key;
     // public string Key { get; set; }
-    
+
     [RelayCommand]
     public void EditKey()
     {
         KeyIsInEditMode = true;
-        
     }
 
     [RelayCommand]
-    private void SaveKey()
+    private void SaveConfig()
     {
         SignalsConfiguration.Token = Key;
+        SignalsConfiguration.UsePhoneData = UsePhoneData;
         SignalsConfigurationService.SaveConfig(SignalsConfiguration);
         KeyIsInEditMode = false;
     }
