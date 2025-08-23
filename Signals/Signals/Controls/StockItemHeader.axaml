@@ -22,7 +22,7 @@
                                            Foreground="{TemplateBinding ColourByTrend}" 
                                            Classes="item-heading" />
                             </StackPanel>
-                            <StackPanel Grid.Row="0" Grid.Column="1">
+                            <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
                                 <TextBlock Text="{TemplateBinding Name}" Classes="item-heading" />
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="0">

@@ -21,12 +21,12 @@ public class Holding : StockItem
         WhenLastPurchased = DateTime.UtcNow;
     }
 
-    public int QuantityHeld { get; set; }
+    public int? QuantityHeld { get; set; }
     public DateTime WhenLastPurchased { get; set; }
     public decimal? PeakPriceSincePurchase { get; set; }
     public decimal? HighTargetPrice { get; set; }
     public decimal? LowTargetPrice { get; set; }
-    public decimal AveragePurchasePrice { get; set; }
+    public decimal? AveragePurchasePrice { get; set; }
     
     public bool UseTrailingStop { get; set; }
 

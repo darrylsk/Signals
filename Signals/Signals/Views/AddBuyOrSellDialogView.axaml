@@ -4,22 +4,92 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:Signals.Views"
              xmlns:lang="clr-namespace:Signals.Resources"
+             xmlns:converters="clr-namespace:Signals.Converters"
              xmlns:vm="clr-namespace:Signals.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:AddBuyOrSellDialogViewModel"
              x:Class="Signals.Views.AddBuyOrSellDialogView">
 
     <Design.DataContext>
-        <vm:AddBuyOrSellDialogViewModel></vm:AddBuyOrSellDialogViewModel>
+        <vm:AddBuyOrSellDialogViewModel />
     </Design.DataContext>
-    <StackPanel>
 
-        <CheckBox IsChecked="{Binding AddToWatchlist}"
-                  Content="{x:Static lang:Resources.AddToWatchlistLabel}">
-        </CheckBox>
-        <CheckBox IsChecked="{Binding AddToWatchlist}"
-                  Content="{x:Static lang:Resources.AddToWatchlistLabel}">
-        </CheckBox>
-        <views:BuyOrSellDialogView />
-    </StackPanel>
+    <UserControl.Resources>
+        <converters:IntOrEmptyConverter x:Key="IntOrEmptyConverter" />
+        <converters:IntOrZeroConverter x:Key="IntOrZeroConverter" />
+        <converters:CurrencyOrEmptyConverter x:Key="CurrencyOrEmptyConverter" />
+        <converters:DecimalOrEmptyConverter x:Key="DecimalOrEmptyConverter" />
+    </UserControl.Resources>
+
+    <Border Background="{DynamicResource PrimaryDialogBackground}"
+            CornerRadius="10"
+            ClipToBounds="True"
+            Margin="10">
+
+        <Border.Effect>
+            <DropShadowEffect Color="{DynamicResource PrimaryDialogDropShadow}"
+                              Opacity=".5" />
+        </Border.Effect>
+
+        <Grid RowDefinitions="Auto, *, Auto">
+
+            <!-- Title Bar -->
+            <Border Background="{DynamicResource TitleBarBackground}">
+                <TextBlock Text="{Binding Title}"
+                           Padding="10"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource TitleBarForeground}" />
+            </Border>
+
+            <Border Grid.Row="1">
+                <StackPanel>
+
+                    <CheckBox IsChecked="{Binding AddToWatchlist}"
+                              Content="{x:Static lang:Resources.AddToWatchlistLabel}">
+                    </CheckBox>
+                    <CheckBox IsChecked="{Binding AddToWatchlist}"
+                              Content="{x:Static lang:Resources.AddToWatchlistLabel}">
+                    </CheckBox>
+                    <views:BuyOrSellDialogView />
+                    
+                    <Label Content="{x:Static lang:Resources.SymbolLabel}"></Label>
+                    <TextBlock Text="{Binding Symbol}"></TextBlock>
+                    <Label Content="{x:Static lang:Resources.DateLabel}"></Label>
+                    <DatePicker SelectedDate="{Binding TransactionDate}"></DatePicker>
+                    <TimePicker ClockIdentifier="12HourClock" SelectedTime="{Binding TransactionTime}"></TimePicker>
+                    <Label Content="{x:Static lang:Resources.UnitsLabel}"></Label>
+                    <!--Bug - can't use a value converter because the Numeric UpDown won't bind if you do.-->
+                    <!--The value converter prevents an invalid cast exception if the TextBox part of the UpDown is 
+                    empty.  The following is a work-around. Setting UpdateSourceTrigger=LostFocus and providing defaults
+                    TargetNullValue and FallbackValue prevents the ugly errors from spewing out.  The result is not 
+                    quite what I want, but it is acceptable for now. -->
+                    <NumericUpDown Value="{Binding Units, UpdateSourceTrigger=LostFocus, 
+                                   TargetNullValue=0, FallbackValue=0}"  
+                                   FormatString="###,###,##0"
+                                   Minimum="0" Maximum="10000000" />
+
+                    <!--<TextBox Text="{Binding Units}" />-->
+                    <Label Content="{x:Static lang:Resources.PriceLabel}"></Label>
+                    <TextBox Text="{Binding Price,
+                             Converter={StaticResource CurrencyOrEmptyConverter}}"
+                    />
+                </StackPanel>
+            </Border>
+            
+            <!-- Confirm/Cancel buttons -->
+            <Border Grid.Row="2" Padding="20">
+                <StackPanel Classes="buttons"
+                            Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <Button Content="{Binding CancelText}"
+                            Command="{Binding  CancelCommand}"
+                            Classes="danger outline" />
+                    <Button Content="{Binding ConfirmText}"
+                            Command="{Binding  ConfirmCommand}"
+                            IsEnabled="{Binding SaveIsEnabled}"
+                            Classes="success" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
 </UserControl>

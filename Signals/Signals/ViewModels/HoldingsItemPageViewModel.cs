@@ -82,9 +82,14 @@ public partial class HoldingsItemPageViewModel : PageViewModel
         
         if (buyOrSellViewDialogModel.IsConfirmed == false) return;
         
+        // Perform the Buy operation.
+        
         holding.QuantityHeld = buyOrSellViewDialogModel.Units.Value;
+        // Note: The service will update the holding with the actual average purchase price.
+        // This is a bad design.  To correct this, the next version will build the view model here, and
+        // pass it to the service, so there is less confusion.
         holding.AveragePurchasePrice = buyOrSellViewDialogModel.Price.Value;
-
+        holding.WhenLastPurchased = buyOrSellViewDialogModel.TransactionDateTime;
         await HoldingService.Buy(holding);
 
         MainViewModel.GoToHoldingDetailCommand.Execute(holding.Symbol);

@@ -25,7 +25,7 @@ public class HoldingService : BusinessService<Holding>, IHoldingService
 
     public async Task<Holding?> GetBySymbol(string symbol)
     {
-        var holding = (await Repository.GetAsync(x => x.Symbol == symbol)).FirstOrDefault();
+        var holding = (await Repository.GetAsync(x => x.Symbol == symbol.ToUpper())).FirstOrDefault();
         return holding;
     }
 
@@ -52,52 +52,75 @@ public class HoldingService : BusinessService<Holding>, IHoldingService
 
     public async Task<int> Buy(Holding model)
     {
-        model.Events.Add(new HoldingPurchased(model));
-        int ct;
-        var currentHolding = await GetBySymbol(model.Symbol);
-        if (currentHolding! != null!)
+        try
         {
-            // If the item is already in holdings, then update the quantity held and
-            // recalculate the average price.
-            if (model.AveragePurchasePrice > currentHolding.PeakPriceSincePurchase)
+            model.Events.Add(new HoldingPurchased(model));
+            int ct;
+            var currentHolding = await GetBySymbol(model.Symbol);
+            if (currentHolding! != null!)
             {
-                currentHolding.PeakPriceSincePurchase = model.AveragePurchasePrice;
+                // If the item is already in holdings, then update the quantity held and
+                // recalculate the average price.
+                if (model.AveragePurchasePrice > currentHolding.PeakPriceSincePurchase)
+                {
+                    currentHolding.PeakPriceSincePurchase = model.AveragePurchasePrice;
+                }
+
+                var originalValue = (currentHolding.QuantityHeld ?? 0) * (currentHolding.AveragePurchasePrice ?? 0);
+                var valueAdded = model.QuantityHeld * model.AveragePurchasePrice;
+                var totalQuantity = (currentHolding.QuantityHeld ?? 0) + (model.QuantityHeld ?? 0);
+                currentHolding.QuantityHeld = totalQuantity;
+                currentHolding.AveragePurchasePrice = (originalValue + (valueAdded ?? 0)) / totalQuantity;
+                ct = await Repository.UpdateAsync(currentHolding);
+            }
+            else
+            {
+                model.PeakPriceSincePurchase = model.AveragePurchasePrice;
+                ct = await Add(model);
             }
 
-            var originalValue = currentHolding.QuantityHeld * currentHolding.AveragePurchasePrice;
-            var valueAdded = model.QuantityHeld * model.AveragePurchasePrice;
-            var totalQuantity = currentHolding.QuantityHeld + model.QuantityHeld;
-            currentHolding.QuantityHeld = totalQuantity;
-            currentHolding.AveragePurchasePrice = (originalValue + valueAdded) / totalQuantity;
-            ct = await Repository.UpdateAsync(currentHolding);
+            return ct;
         }
-        else
+        catch (Exception e)
         {
-            model.PeakPriceSincePurchase = model.AveragePurchasePrice;
-            ct = await Add(model);
+            // Log any exceptions to the console.  Todo: Add proper logging.
+            Console.WriteLine(e);
+            return 0;
         }
-
-        return ct;
     }
 
     public async Task<int> Sell(Holding model)
     {
-        var currentHolding = await GetBySymbol(model.Symbol);
+        try
+        {
+            var currentHolding = await GetBySymbol(model.Symbol);
 
-        if (currentHolding! == null!)
-            throw new ApplicationException(
-                $"Cannot sell {model.Symbol}: {model.Name} because there are no units in the portfolio.");
+            if (currentHolding! == null!)
+                throw new ApplicationException(
+                    $"Cannot sell {model.Symbol}: {model.Name} because there are no units in the portfolio.");
 
-        if (currentHolding.QuantityHeld < model.QuantityHeld)
-            throw new ApplicationException(
-                $"Sale of {model.QuantityHeld} units would result in negative remainder");
+            if (currentHolding.QuantityHeld < model.QuantityHeld)
+                throw new ApplicationException(
+                    $"Sale of {model.QuantityHeld} units would result in negative remainder");
 
-        currentHolding.QuantityHeld -= model.QuantityHeld;
+            var originalValue = (currentHolding.QuantityHeld ?? 0) * (currentHolding.AveragePurchasePrice ?? 0);
+            var valueSold = model.QuantityHeld * model.AveragePurchasePrice;
+            var newQuantityHeld = (currentHolding.QuantityHeld ?? 0) - (model.QuantityHeld ?? 0);
+            currentHolding.QuantityHeld = newQuantityHeld;
+            var newAveragePrice = (originalValue - valueSold) / newQuantityHeld;
+            currentHolding.AveragePurchasePrice = newAveragePrice;
 
-        model.Events.Add(new HoldingSold(model, model.AveragePurchasePrice, model.QuantityHeld));
-        if (currentHolding.QuantityHeld == 0)
-            return await Delete(model);
-        
-        return await Update(currentHolding);
+            model.Events.Add(new HoldingSold(model, model.AveragePurchasePrice ?? 0, model.QuantityHeld ?? 0));
+            if (currentHolding.QuantityHeld == 0)
+                return await Delete(model);
+
+            return await Update(currentHolding);
+        }
+        catch (Exception e)
+        {
+            // Log any exceptions to the console.  Todo: Add proper logging.
+            Console.WriteLine(e);
+            return 0;
+        }
     }
 }

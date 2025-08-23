@@ -5,6 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
              xmlns:lang="clr-namespace:Signals.Resources"
+             xmlns:converters="clr-namespace:Signals.Converters"
              x:DataType="vm:AddItemPageViewModel"
              x:Class="Signals.Views.AddItemPageView">
 
@@ -12,59 +13,82 @@
         <vm:AddItemPageViewModel />
     </Design.DataContext>
 
-    <!--
-    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
-     -->
+    <UserControl.Resources>
+        <converters:IntOrEmptyConverter x:Key="IntOrEmptyConverter" />
+        <converters:IntOrZeroConverter x:Key="IntOrZeroConverter" />
+        <converters:CurrencyOrEmptyConverter x:Key="CurrencyOrEmptyConverter" />
+        <converters:DecimalOrEmptyConverter x:Key="DecimalOrEmptyConverter" />
+    </UserControl.Resources>
 
-    <StackPanel>
+    <Grid RowDefinitions="*, 5, Auto">
         <StackPanel>
-            <Label Content="{x:Static lang:Resources.SymbolLabel}"></Label>
-            <TextBox Text="{Binding Symbol, 
-            Converter={StaticResource UpperCaseConverter}}"></TextBox>
-        </StackPanel>
+            <StackPanel>
+                <Label Content="{x:Static lang:Resources.SymbolLabel}"></Label>
+                <TextBox
+                    Text="{Binding Symbol, 
+            UpdateSourceTrigger=LostFocus,
+            Converter={StaticResource UpperCaseConverter}}">
+                </TextBox>
+            </StackPanel>
 
-        <StackPanel Classes="formField">
-            <CheckBox IsChecked="{Binding AddToWatchlist}"
-                      Content="{x:Static lang:Resources.AddToWatchlistLabel}">
-            </CheckBox>
-        </StackPanel>
+            <StackPanel Classes="formField">
+                <CheckBox IsChecked="{Binding AddToWatchlist}"
+                          IsVisible="{Binding EditIsEnabled}"
+                          Content="{x:Static lang:Resources.AddToWatchlistLabel}">
+                </CheckBox>
+                <CheckBox IsChecked="{Binding AddToHoldings}"
+                          IsVisible="{Binding EditIsEnabled}"
+                          Content="{x:Static lang:Resources.AddToHoldingsLabel}"
+                          Command="{Binding LookupSymbolCommand}">
+                </CheckBox>
+            </StackPanel>
 
-        <StackPanel Classes="formField">
-            <CheckBox IsChecked="{Binding AddToHoldings}"
-                      Content="{x:Static lang:Resources.AddToHoldingsLabel}">
-            </CheckBox>
-            <StackPanel IsVisible="{Binding  AddToHoldings}">
-                <Label Content="{x:Static lang:Resources.PriceLabel}"></Label>
-                <TextBox Name="PriceInput" Text="{Binding PurchasePrice }"
-                         IsEnabled="{Binding  AddToHoldings}" />
-                <Label Content="{x:Static lang:Resources.UnitsLabel}"></Label>
-                <TextBox Name="QuantityInput" Text="{Binding UnitsPurchased }"
+            <StackPanel Classes="formField">
+
+                <StackPanel IsVisible="{Binding  AddToHoldings}">
+                    <!-- purchase date and time controls -->
+                    <Label Content="{x:Static lang:Resources.DateLabel}"></Label>
+                    <DatePicker SelectedDate="{Binding TransactionDate}"></DatePicker>
+                    <TimePicker ClockIdentifier="12HourClock" SelectedTime="{Binding TransactionTime}"></TimePicker>
+
+                    <Label Content="{x:Static lang:Resources.UnitsLabel}"></Label>
+                    <!--Bug - can't use a value converter because the Numeric UpDown won't bind if you do.-->
+                    <!--The value converter prevents an invalid cast exception if the TextBox part of the UpDown is 
+                    empty.  The following is a work-around. Setting UpdateSourceTrigger=LostFocus and providing defaults
+                    TargetNullValue and FallbackValue prevents the ugly errors from spewing out.  The result is not 
+                    quite what I want, but it is acceptable for now. -->
+                    <NumericUpDown
+                        Value="{Binding UnitsPurchased, 
+                    UpdateSourceTrigger=LostFocus, 
+                    TargetNullValue=0, FallbackValue=0}"
+                        FormatString="###,###,##0"
+                        Minimum="0" Maximum="10000000" />
+                    <!--<TextBox Name="QuantityInput" Text="{Binding UnitsPurchased }"
                          IsEnabled="{Binding  AddToHoldings}"
-                         HorizontalAlignment="Stretch" />
-                <Label Content="{x:Static lang:Resources.DateLabel}"></Label>
-                <TextBox Name="DateInput" Text="{Binding DatePurchased }"
-                         IsEnabled="{Binding  AddToHoldings}"
-                         HorizontalAlignment="Stretch" />
-                <StackPanel Orientation="Horizontal">
+                         HorizontalAlignment="Stretch" />-->
+
+                    <Label Content="{x:Static lang:Resources.PriceLabel}"></Label>
+                    <TextBox Name="PriceInput"
+                             Text="{Binding PurchasePrice, 
+                         UpdateSourceTrigger=LostFocus,
+                         Converter={StaticResource CurrencyOrEmptyConverter}}"
+                             IsEnabled="{Binding  AddToHoldings}" />
+
+                    <!--<StackPanel Orientation="Horizontal">
                     <Label Content="{x:Static lang:Resources.HourLabel}"></Label>
                     <Label>/</Label>
                     <Label Content="{x:Static lang:Resources.MinuteLabel}"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Spacing="5">
-                    <TextBox Name="HourInput" Text="{Binding HourPurchased }"
-                             IsEnabled="{Binding  AddToHoldings}"
-                             HorizontalAlignment="Stretch" />
-                    <TextBox Name="MinuteInput" Text="{Binding MinutePurchased }"
-                             IsEnabled="{Binding  AddToHoldings}"
-                             HorizontalAlignment="Stretch" />
+                </StackPanel>-->
                 </StackPanel>
             </StackPanel>
-        </StackPanel>
 
-        <Button Content="Save" Command="{Binding AddSymbolCommand}"
-                CommandParameter="{Binding $parent[UserControl].((vm:AddItemPageViewModel)DataContext).BackLink, FallbackValue=null}"
-                IsEnabled="{Binding SaveIsEnabled}">
-        </Button>
-    </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Button Content="Save" Command="{Binding AddSymbolCommand}"
+                    CommandParameter="{Binding $parent[UserControl].((vm:AddItemPageViewModel)DataContext).BackLink, FallbackValue=null}"
+                    IsEnabled="{Binding SaveIsEnabled}">
+            </Button>
+        </StackPanel>
+    </Grid>
 
 </UserControl>
