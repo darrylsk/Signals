@@ -44,10 +44,6 @@
                                         RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:C}}" />
                             </StackPanel>
                         </Grid>
-                        <StackPanel Orientation="Horizontal" Spacing="5">
-                            <IconButton Classes="buy" Grid.Row="2" Grid.Column="2" Content="Add To Watch List"></IconButton>
-                            <IconButton Classes="sell" Grid.Row="2" Grid.Column="3" Content="Buy"></IconButton>
-                        </StackPanel>
                     </StackPanel>
                 </Border>
             </ControlTemplate>

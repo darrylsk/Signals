@@ -53,7 +53,7 @@ public class WatchlistService : BusinessService<WatchlistItem>, IWatchlistServic
 
     public async Task<WatchlistItem?> GetBySymbol(string symbol)
     {
-        var watchlistItem = (await Repository.GetAsync(x => x.Symbol == symbol)).FirstOrDefault();
+        var watchlistItem = (await Repository.GetAsync(x => x.Symbol == symbol.ToUpper())).FirstOrDefault();
         return watchlistItem;
     }
 

@@ -89,24 +89,24 @@
                                     <!-- Fillable fields -->
                                     <StackPanel Grid.Row="3" Grid.Column="0">
                                         <Label Content="When Purchased" />
-                                        <TextBox
+                                        <TextBlock
                                             Text="{Binding  WhenLastPurchased, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="3" Grid.Column="2">
                                         <Label Content="Number of Units Held" />
-                                        <TextBox
+                                        <TextBlock
                                             Text="{Binding  QuantityHeld, StringFormat={}{0:#0}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="4" Grid.Column="0">
                                         <Label Content="Average Purchase Price" />
-                                        <TextBox Text="{Binding  AveragePurchasePrice, StringFormat={}{0:C}}" />
+                                        <TextBlock Text="{Binding  AveragePurchasePrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="4" Grid.Column="2">
                                         <Label Content="Peak Price Since Purchase" />
-                                        <TextBox Text="{Binding  PeakPriceSincePurchase, 
+                                        <TextBlock Text="{Binding  PeakPriceSincePurchase, 
                                                  Converter={x:Static converters:CurrencyOrEmptyConverter.Instance}, 
                                                  UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:C}}" />
                                     </StackPanel>

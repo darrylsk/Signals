@@ -5,7 +5,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Signals.ApplicationLayer.Abstract;
 using Signals.ApplicationLayer.Services;
-using Signals.CoreLayer.Abstract.Base;
 using Signals.CoreLayer.Entities;
 using Signals.CoreLayer.Enums;
 using Signals.Factories;
@@ -22,7 +21,7 @@ public partial class WatchlistItemPageViewModel : PageViewModel
     private IWatchlistService WatchlistService { get; }
     public IHoldingService HoldingService { get; }
     public IMapper Mapper { get; }
-    
+
     [ObservableProperty] private WatchlistItem? _watchlistItem;
     // [ObservableProperty] private DialogViewModel _currentDialog = new ConfirmDialogViewModel()
     // {
@@ -56,7 +55,6 @@ public partial class WatchlistItemPageViewModel : PageViewModel
     public async Task LoadData(string symbol)
     {
         WatchlistItem = await WatchlistService.GetBySymbol(symbol);
-        
     }
 
     [RelayCommand]
@@ -68,27 +66,26 @@ public partial class WatchlistItemPageViewModel : PageViewModel
         };
 
         await DialogService.ShowDialog(MainViewModel, confirmDialog);
-        
+
         if (confirmDialog.IsConfirmed == false) return;
-        
+
         // Todo: Convert to logging
         // Console.WriteLine(Resources.Resources.WatchlistItemPageViewModel_DeleteWatchlistItem_Deleted__0_,
         // watchlistItem?.Name);
 
         // delete the current item
         if (watchlistItem! != null!) await WatchlistService.Delete(watchlistItem);
-        
+
         // navigate back to the list
         MainViewModel.GoToWatchlistCommand.Execute(null);
-        
     }
 
     [RelayCommand]
     private async Task Buy(WatchlistItem watchlistItem)
     {
         var quote = await QuotationService.GetQuoteAsync(watchlistItem.Symbol);
-        
-        var buyOrSellDialog = new AddBuyOrSellDialogViewModel()
+
+        var buyOrSellDialog = new BuyOrSellDialogViewModel()
         {
             Title = $"Buy {watchlistItem.Name}",
             Action = TransactionTypes.Purchase,
@@ -98,23 +95,31 @@ public partial class WatchlistItemPageViewModel : PageViewModel
 
         Mapper.Map(watchlistItem, buyOrSellDialog);
         //Mapper.Map(quote, buyOrSellDialog);
-        
+
         await DialogService.ShowDialog(MainViewModel, buyOrSellDialog);
-        
+
         if (buyOrSellDialog.IsConfirmed == false) return;
 
         // Perform the Buy operation.
-        
+
         var holding = Mapper.Map<Holding>(watchlistItem);
         holding.Symbol = buyOrSellDialog.Symbol;
-        holding.QuantityHeld = buyOrSellDialog.Units.Value;
+        holding.QuantityHeld = buyOrSellDialog.Units ?? 0;
+        // Note: The service will update the holding with the actual average purchase price.
+        // This is a bad design.  To correct this, the next version will build the view model here, and
+        // pass it to the service, so there is less confusion.
         holding.AveragePurchasePrice = buyOrSellDialog.Price ?? 0;
+        holding.WhenLastPurchased = buyOrSellDialog.TransactionDateTime;
         await HoldingService.Buy(holding);
-        
+
         MainViewModel.GoToHoldingDetailCommand.Execute(holding.Symbol);
 
         // Todo: Convert to logging
-        Console.WriteLine(Resources.Resources.WatchlistItemPageViewModel_Buy_Purchased__0__units_of__1__for__2_C__each_on__3_MMMM_dd_yyyy__at__4_h_mm_ss_tt_zz_, buyOrSellDialog.Units, buyOrSellDialog.Symbol, buyOrSellDialog.Price, buyOrSellDialog.TransactionTime, buyOrSellDialog.TransactionTime);
+        // Console.WriteLine(Resources.Resources.WatchlistItemPageViewModel_Buy_Purchased__0__units_of__1__for__2_C__each_on__3_MMMM_dd_yyyy__at__4_h_mm_ss_tt_zz_, 
+        //     buyOrSellDialog.Units, 
+        //     buyOrSellDialog.Symbol, 
+        //     buyOrSellDialog.Price, 
+        //     buyOrSellDialog.TransactionTime, 
+        //     buyOrSellDialog.TransactionTime);
     }
-    
 }

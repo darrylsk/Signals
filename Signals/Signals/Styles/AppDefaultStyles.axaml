@@ -125,6 +125,10 @@
         <Setter Property="FontWeight" Value="Bold"></Setter>
         <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
     </Style>
+    <Style Selector="TextBlock.page-subtitle">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+    </Style>
 
     <Style Selector="TextBlock.item-heading">
         <Setter Property="FontSize" Value="14"></Setter>

@@ -10,7 +10,7 @@
              x:DataType="viewModels:BuyOrSellDialogViewModel">
 
     <Design.DataContext>
-        <viewModels:BuyOrSellDialogViewModel></viewModels:BuyOrSellDialogViewModel>
+        <viewModels:BuyOrSellDialogViewModel />
     </Design.DataContext>
 
     <UserControl.Resources>
@@ -58,11 +58,12 @@
                     <NumericUpDown Value="{Binding Units, UpdateSourceTrigger=LostFocus, 
                                    TargetNullValue=0, FallbackValue=0}"  
                                    FormatString="###,###,##0"
-                                   Minimum="0" Maximum="10000000"
-                                   />
+                                   Minimum="0" Maximum="10000000" />
+
                     <!--<TextBox Text="{Binding Units}" />-->
                     <Label Content="{x:Static lang:Resources.PriceLabel}"></Label>
                     <TextBox Text="{Binding Price,
+                             UpdateSourceTrigger=LostFocus,
                              Converter={StaticResource CurrencyOrEmptyConverter}}"
                              />
                 </StackPanel>

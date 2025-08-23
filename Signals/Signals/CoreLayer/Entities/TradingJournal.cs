@@ -11,8 +11,8 @@ public class TradingJournal : Entity
         Symbol ??= "";
     }
     
-    public TradingJournal(string symbol, DateTime timeOfTransaction, decimal quantity, TransactionTypes transactionType, 
-        decimal unitPrice)
+    public TradingJournal(string symbol, DateTime timeOfTransaction, decimal? quantity, TransactionTypes transactionType, 
+        decimal? unitPrice)
     {
         Symbol = symbol;
         TimeOfTransaction = timeOfTransaction;
@@ -23,7 +23,7 @@ public class TradingJournal : Entity
 
     public string Symbol { get; set; }
     public DateTime TimeOfTransaction { get; set; }
-    public decimal Quantity { get; set; }
+    public decimal? Quantity { get; set; }
     public TransactionTypes TransactionType { get; set; }
-    public decimal UnitPrice { get; set; }
+    public decimal? UnitPrice { get; set; }
 }
