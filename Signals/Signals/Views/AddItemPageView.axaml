@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:local="clr-namespace:Signals.Views"
              xmlns:lang="clr-namespace:Signals.Resources"
              xmlns:converters="clr-namespace:Signals.Converters"
              x:DataType="vm:AddItemPageViewModel"
@@ -22,14 +23,25 @@
 
     <Grid RowDefinitions="*, 5, Auto">
         <StackPanel>
-            <StackPanel>
+            <!-- Back Button -->
+            <Button Classes="navigation" Background="Transparent" HorizontalAlignment="Left"
+                    Command="{Binding $parent[local:MainView].((vm:MainViewModel)DataContext).GoToHomeCommand, FallbackValue=null}">
+                <StackPanel>
+                    <!-- Back arrow -->
+                    <Label Classes="icon" FontSize="24" Content="&#xE058;"></Label>
+                </StackPanel>
+            </Button>
+
+            <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, 5, Auto">
                 <Label Content="{x:Static lang:Resources.SymbolLabel}"></Label>
-                <TextBox
-                    Text="{Binding Symbol, 
-            UpdateSourceTrigger=LostFocus,
-            Converter={StaticResource UpperCaseConverter}}">
+                <TextBox Grid.Row="1" Grid.Column="0"
+                    Text="{Binding Symbol, UpdateSourceTrigger=LostFocus,
+                          Converter={StaticResource UpperCaseConverter}}">
                 </TextBox>
-            </StackPanel>
+                <Button Grid.Row="1" Grid.Column="2">
+                    <Label Classes="icon" FontSize="24" Content="&#xE13A;x"></Label>
+                </Button>
+            </Grid>
 
             <StackPanel Classes="formField">
                 <CheckBox IsChecked="{Binding AddToWatchlist}"

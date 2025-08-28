@@ -195,6 +195,10 @@
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryForeground}"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>
     </Style>
+    
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="{DynamicResource MainSectionBackground}"></Setter>
+    </Style>
 
     <!-- NumericUpDown Styles -->
     <Style Selector="NumericUpDown">

@@ -45,4 +45,10 @@ public partial class WatchlistPageViewModel : PageViewModel
     {
         Watchlist = await WatchlistService.GetAll();
     }
+
+    [RelayCommand]
+    public void Test()
+    {
+        System.Console.WriteLine("This is a test.");
+    }
 }

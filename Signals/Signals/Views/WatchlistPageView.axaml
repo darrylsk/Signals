@@ -4,25 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
              xmlns:controls="clr-namespace:Signals.Controls"
+			 xmlns:local="clr-namespace:Signals.Views"
              xmlns:vm="clr-namespace:Signals.ViewModels"
              x:Class="Signals.Views.WatchlistPageView"
              x:DataType="vm:WatchlistPageViewModel">
 
-    <Design.DataContext>
-        <vm:WatchlistPageViewModel />
-    </Design.DataContext>
+	<Design.DataContext>
+		<vm:WatchlistPageViewModel />
+	</Design.DataContext>
+	<!-- 
+                                Command="{Binding $parent[UserControl].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+                                Command="{Binding $parent[UserControl].((vm:WatchlistPageViewModel)DataContext).TestCommand, FallbackValue=null}"
 
-    <Grid RowDefinitions="Auto, *">
-        <!-- Header -->
-        <controls:StocklistHeader Grid.Row="0"></controls:StocklistHeader>
+-->
+	<Grid RowDefinitions="Auto, *">
+		<!-- Header -->
+		<controls:StocklistHeader Grid.Row="0"></controls:StocklistHeader>
 
-        <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding Watchlist}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <controls:StockItemHeader
-                                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
+		<ScrollViewer Grid.Row="1">
+			<ListBox ItemsSource="{Binding Watchlist}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<controls:StockItemHeader
+                                Command="{Binding $parent[local:MainView].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
                                 CommandParameter="{Binding Symbol}"
                                 Symbol="{Binding Symbol}"
                                 Name="{Binding Name}"
@@ -30,10 +35,10 @@
                                 LatestQuotedPrice="{Binding LatestQuotedPrice}"
                                 WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
                                 CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-    </Grid>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</ScrollViewer>
+	</Grid>
 </UserControl>

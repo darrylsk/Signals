@@ -24,6 +24,7 @@ public class Scheduler
         var backOffDelay = new TimeSpan(0, 5, 0);
 
         // Start the first repeat interval iteration to 10:00 UTC (5:00 AM EST/6:00 AM EDT).
+
         var intervalStart = DateTime.UtcNow.Date.AddHours(10);
         if (intervalStart < DateTime.UtcNow) intervalStart = intervalStart.AddDays(1);
         
@@ -36,7 +37,23 @@ public class Scheduler
         // Time delay before starting the first iteration.
         var initialDelay = TimeSpan.Zero;
         var minutesTillMidnight = (24 - DateTime.UtcNow.Hour) * 60;
-        
+
+#if DEBUG
+        // Create the work request to periodically run the worker that updates all stock quotes
+        PeriodicWorkRequest quotationSchedule = (PeriodicWorkRequest)PeriodicWorkRequest.Builder
+            .From<QuoteWorker>(repeatInterval, flexInterval)
+            .SetBackoffCriteria(BackoffPolicy.Exponential!, backOffDelay.Minutes, TimeUnit.Minutes!)
+            .SetInitialDelay(minutesTillMidnight, TimeUnit.Minutes!)!
+            .SetConstraints(constraints)
+            .AddTag(PlatformTag)
+            .Build();
+
+        // var op = WorkManager.GetInstance(App.Context).Enqueue(sigalsQuotationScheduler);
+        var mgr = WorkManager.GetInstance(Xamarin.Essentials.Platform.AppContext);
+        var op = mgr.EnqueueUniquePeriodicWork(PlatformTag, ExistingPeriodicWorkPolicy.Update!,
+            quotationSchedule);
+//        mgr.CancelAllWork();
+#else
         // Create the work request to periodically run the worker that updates all stock quotes
         PeriodicWorkRequest quotationSchedule = (PeriodicWorkRequest)PeriodicWorkRequest.Builder
             .From<QuoteWorker>(repeatInterval, flexInterval)
@@ -51,6 +68,7 @@ public class Scheduler
         var op = mgr.EnqueueUniquePeriodicWork(PlatformTag, ExistingPeriodicWorkPolicy.Keep!,
             quotationSchedule);
         mgr.CancelAllWork();
+#endif
 
     }
 }
