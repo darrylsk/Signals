@@ -384,6 +384,15 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use Phone Data.
+        /// </summary>
+        public static string UsePhoneData {
+            get {
+                return ResourceManager.GetString("UsePhoneData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchased {0} units of {1} for {2} each at {3}.
         /// </summary>
         public static string WatchlistItemPageViewModel_Buy_Purchased__0__of__1__for__2__each_at__3_ {

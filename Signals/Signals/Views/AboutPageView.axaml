@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lang="clr-namespace:Signals.Resources"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:local="clr-namespace:Signals.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Signals.Views.AboutPageView"
              x:DataType="vm:AboutPageViewModel">
@@ -12,7 +13,17 @@
         <vm:AboutPageViewModel />
     </Design.DataContext>
     
-        <ScrollViewer>
+    <Grid RowDefinitions="Auto, *">
+        <!-- Back Button -->
+        <Button Classes="navigation" Background="Transparent" HorizontalAlignment="Left"
+                Command="{Binding $parent[local:MainView].((vm:MainViewModel)DataContext).GoToHomeCommand, FallbackValue=null}">
+            <StackPanel>
+                <!-- Back arrow -->
+                <Label Classes="icon" FontSize="24" Content="&#xE058;"></Label>
+            </StackPanel>
+        </Button>
+        
+        <ScrollViewer Grid.Row="1">
             <StackPanel>
                 <TextBlock Name="Paragraph1" Text="{x:Static lang:Resources.AboutParagraph1}" />
                 <TextBlock Name="Paragraph2" Text="{x:Static lang:Resources.AboutParagraph2}" />
@@ -37,5 +48,6 @@
                 <TextBlock Text="{Binding ApplicationCommonDataFolderName}" />-->
             </StackPanel>
         </ScrollViewer>
+    </Grid>
 
 </UserControl>

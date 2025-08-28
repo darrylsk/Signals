@@ -48,6 +48,9 @@
     <data name="Use" xml:space="preserve">
         <value>Use</value>
     </data>
+    <data name="UsePhoneData" xml:space="preserve">
+        <value>Use Phone Data</value>
+    </data>
     <data name="BtnBackupDatabaseContent" xml:space="preserve">
         <value>Backup Database</value>
     </data>

@@ -106,14 +106,15 @@ public class HoldingService : BusinessService<Holding>, IHoldingService
             var originalValue = (currentHolding.QuantityHeld ?? 0) * (currentHolding.AveragePurchasePrice ?? 0);
             var valueSold = model.QuantityHeld * model.AveragePurchasePrice;
             var newQuantityHeld = (currentHolding.QuantityHeld ?? 0) - (model.QuantityHeld ?? 0);
+
+            // If all items are sold, then delete the holding.
+            if (newQuantityHeld <= 0)
+                return await Delete(model);
+
             currentHolding.QuantityHeld = newQuantityHeld;
             var newAveragePrice = (originalValue - valueSold) / newQuantityHeld;
             currentHolding.AveragePurchasePrice = newAveragePrice;
-
             model.Events.Add(new HoldingSold(model, model.AveragePurchasePrice ?? 0, model.QuantityHeld ?? 0));
-            if (currentHolding.QuantityHeld == 0)
-                return await Delete(model);
-
             return await Update(currentHolding);
         }
         catch (Exception e)

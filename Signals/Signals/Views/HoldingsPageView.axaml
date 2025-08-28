@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:Signals.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+			 xmlns:local="clr-namespace:Signals.Views"
              x:DataType="vm:HoldingsPageViewModel"
              x:Class="Signals.Views.HoldingsPageView">
 
@@ -17,12 +18,12 @@
         <controls:StocklistHeader Grid.Row="0"></controls:StocklistHeader>
 
         <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding Holdings}">
-                <ItemsControl.ItemTemplate>
+            <ListBox ItemsSource="{Binding Holdings}">
+                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <controls:StockItemHeader
-                                Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToHoldingDetailCommand, FallbackValue=null}"
+                                Command="{Binding $parent[local:MainView].((vm:MainViewModel)DataContext).GoToHoldingDetailCommand, FallbackValue=null}"
                                 CommandParameter="{Binding Symbol}"
                                 Symbol="{Binding Symbol}"
                                 Name="{Binding Name}"
@@ -32,8 +33,8 @@
                                 CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
                         </StackPanel>
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </ScrollViewer>
     </Grid>
 </UserControl>

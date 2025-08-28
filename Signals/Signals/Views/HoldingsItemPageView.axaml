@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:Signals.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+			 xmlns:local="clr-namespace:Signals.Views"
              xmlns:entities="clr-namespace:Signals.CoreLayer.Entities"
              x:Class="Signals.Views.HoldingsItemPageView"
              x:DataType="vm:HoldingsItemPageViewModel"
@@ -26,8 +27,9 @@
                         <StackPanel Grid.Row="0">
                             <Button Classes="navigation" Background="Transparent"
                                     HorizontalAlignment="Left"
-                                    Command="{Binding $parent[Window].((vm:MainViewModel)DataContext).GoToHoldingsCommand, FallbackValue=null}">
+                                    Command="{Binding $parent[local:MainView].((vm:MainViewModel)DataContext).GoToHoldingsCommand, FallbackValue=null}">
                                 <StackPanel>
+									<!-- Back arrow -->
                                     <Label Classes="icon" FontSize="24" Content="&#xe058;"></Label>
                                 </StackPanel>
                             </Button>
