@@ -5,14 +5,18 @@ using System.Text.Json;
 
 namespace Signals.InfrastructureLayer.FileService;
 
-public class SignalsConfigurationService : FileService, ISignalsConfigurationService
+public class SignalsConfigurationService : ISignalsConfigurationService
 {
+    public IFileService FileService { get; }
     private readonly string _configPath;
 
-    public SignalsConfigurationService()
+    public SignalsConfigurationService(IFileService fileService)
     {
+        FileService = fileService;
         // Get the LocalApplicationData folder (cross-platform)
-        string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        // string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        // string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+        var localAppData = fileService.GetUserAccessibleFolder();
         // Create a subfolder for your app
         string appFolder = Path.Combine(localAppData, "Signals");
         Directory.CreateDirectory(appFolder); // Ensure the folder exists

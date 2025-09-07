@@ -21,7 +21,7 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     private IHoldingService HoldingService { get; }
     public IMapper Mapper { get; }
     [ObservableProperty] private Holding? _holdingItem;
-    [ObservableProperty] private decimal _quantityHeld;
+    [ObservableProperty] private decimal _unitsHeld;
     
     // Todo: decide whether these need to be observables (they probably do).
     public string Symbol { get; set; }
@@ -84,7 +84,7 @@ public partial class HoldingsItemPageViewModel : PageViewModel
         
         // Perform the Buy operation.
         
-        holding.QuantityHeld = buyOrSellViewDialogModel.Units.Value;
+        holding.UnitsHeld = buyOrSellViewDialogModel.Units.Value;
         // Note: The service will update the holding with the actual average purchase price.
         // This is a bad design.  To correct this, the next version will build the view model here, and
         // pass it to the service, so there is less confusion.
@@ -112,7 +112,7 @@ public partial class HoldingsItemPageViewModel : PageViewModel
         
         if (buyOrSellViewDialogModel.IsConfirmed == false) return;
 
-        holding.QuantityHeld = buyOrSellViewDialogModel.Units.Value;
+        holding.UnitsHeld = buyOrSellViewDialogModel.Units.Value;
         holding.AveragePurchasePrice = buyOrSellViewDialogModel.Price.Value;
         
         await HoldingService.Sell(holding);

@@ -98,7 +98,7 @@
                                     <StackPanel Grid.Row="3" Grid.Column="2">
                                         <Label Content="Number of Units Held" />
                                         <TextBlock
-                                            Text="{Binding  QuantityHeld, StringFormat={}{0:#0}}" />
+                                            Text="{Binding  UnitsHeld, StringFormat={}{0:#0}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="4" Grid.Column="0">

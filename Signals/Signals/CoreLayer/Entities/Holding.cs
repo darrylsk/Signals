@@ -21,7 +21,8 @@ public class Holding : StockItem
         WhenLastPurchased = DateTime.UtcNow;
     }
 
-    public int? QuantityHeld { get; set; }
+    public int? UnitsHeld { get; set; }
+    public int? CumulativeUnitsPurchased { get; set; }
     public DateTime WhenLastPurchased { get; set; }
     public decimal? PeakPriceSincePurchase { get; set; }
     public decimal? HighTargetPrice { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Signals.CoreLayer.Entities;
 using Signals.InfrastructureLayer.Abstract;
@@ -15,9 +16,10 @@ public class SignalsContext : ISignalsDbContext
         // On Windows: C:\Users\[user]\AppData 
         // On Android: 
         // On iOS (iPhone): 
-        var localAppData = fileService.GetLocalAppDataFolder();
+        var localAppData = fileService.GetUserAccessibleFolder();
         var databaseFolder = fileService.CreateFolder(Path.Combine(localAppData, "Signals"));
         var dbPath = Path.Combine(databaseFolder, "Signals.db");
+        
         Connection = new SQLiteAsyncConnection(dbPath);
 
         // Create the tables if they don't already exist.

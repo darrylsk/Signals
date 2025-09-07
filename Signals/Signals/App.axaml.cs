@@ -40,72 +40,9 @@ public partial class App : Application
         // Thread.CurrentThread.CurrentCulture = culture;
         // Thread.CurrentThread.CurrentUICulture = culture;
         // Lang.Resources.Culture = new CultureInfo("fil-PH");
-
+        
         var services = new ServiceCollection();
-        services.AddSingleton<MainViewModel>();
-        
-        services.AddTransient<HomePageViewModel>();
-        services.AddTransient<HoldingsPageViewModel>();
-        services.AddTransient<HoldingsItemPageViewModel>();
-        services.AddTransient<SettingsPageViewModel>();
-        services.AddTransient<WatchlistPageViewModel>();
-        services.AddTransient<WatchlistItemPageViewModel>();
-        services.AddTransient<AddItemPageViewModel>();
-        services.AddTransient<AboutPageViewModel>();
-        services.AddTransient<UpdatesPageViewModel>();
-        services.AddTransient<QuoteLogPageViewModel>();
-
-        services.AddTransient<IWatchlistService, WatchlistService>();
-        services.AddTransient<IHoldingService, HoldingService>();
-        services.AddTransient<ICompanyProfileService, CompanyProfileService>();
-        services.AddTransient<IIndexItemService, IndexItemService>();
-        services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
-        services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
-        services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
-        services.AddTransient<ISignalsConfigurationService, SignalsConfigurationService>();
-        services.AddTransient<ISettingsService, SettingsService>();
-        services.AddTransient<IFileService, FileService>();
-        services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
-        services.AddTransient<IHoldingRepository, HoldingRepository>();
-        services.AddTransient<IIndexItemRepository, IndexItemRepository>();
-        services.AddTransient<ISettingsRepository, SettingsRepository>();
-        services.AddTransient<ICompanyProfileRepository, CompanyProfileRepository>();
-        services.AddTransient<ITradingJournalRepository, TradingJournalRepository>();
-
-        services.AddSingleton<ISignalsDbContext, SignalsContext>();
-
-        services.AddSingleton<Func<Type, PageViewModel>>( x => type
-            => type switch
-        {
-            _ when type == typeof(HomePageViewModel)  => x.GetRequiredService<HomePageViewModel>(),
-            _ when type == typeof(WatchlistPageViewModel) => x.GetRequiredService<WatchlistPageViewModel>(),
-            _ when type == typeof(HoldingsPageViewModel) => x.GetRequiredService<HoldingsPageViewModel>(),
-            _ when type == typeof(SettingsPageViewModel)  => x.GetRequiredService<SettingsPageViewModel>(),
-            _ when type == typeof(WatchlistItemPageViewModel)  => x.GetRequiredService<WatchlistItemPageViewModel>(),
-            _ when type == typeof(HoldingsItemPageViewModel)  => x.GetRequiredService<HoldingsItemPageViewModel>(),
-            _ when type == typeof(AddItemPageViewModel)  => x.GetRequiredService<AddItemPageViewModel>(),
-            _ when type == typeof(AboutPageViewModel)  => x.GetRequiredService<AboutPageViewModel>(),
-            _ when type == typeof(UpdatesPageViewModel)  => x.GetRequiredService<UpdatesPageViewModel>(),
-            _ when type == typeof(QuoteLogPageViewModel)  => x.GetRequiredService<QuoteLogPageViewModel>(),
-            _ => throw new NotImplementedException(),
-        });
-
-        // services.AddSingleton<Func<PageNames, string, PageViewModel>>(x => (names, s)  
-        //     => names switch
-        // {
-        //     PageNames.WatchlistItemDetail => x.GetRequiredService<WatchlistItemPageViewModel>()
-        // });
-        
-        services.AddSingleton<PageFactory>();
-        services.AddSingleton<DialogService>();
-        
-        services.AddAutoMapper(typeof(MappingProfile)); 
-        services.AddSingleton<ILoggerFactory, LoggerFactory>();
-        
-        //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(App).Assembly));
-        
-        var provider = services.BuildServiceProvider();
+        var provider = ConfigureServices(services);
         
         // Alternative to including ViewLocator in the App.axaml file.
         // var viewLocator = new ViewLocator();
@@ -131,6 +68,88 @@ public partial class App : Application
             };
         }
 
+
         base.OnFrameworkInitializationCompleted();
+    }
+
+    public static ServiceProvider ConfigureServices(ServiceCollection services)
+    {
+        services.AddSingleton<MainViewModel>();
+        
+        services.AddTransient<HomePageViewModel>();
+        services.AddTransient<HoldingsPageViewModel>();
+        services.AddTransient<HoldingsItemPageViewModel>();
+        services.AddTransient<SettingsPageViewModel>();
+        services.AddTransient<WatchlistPageViewModel>();
+        services.AddTransient<WatchlistItemPageViewModel>();
+        services.AddTransient<AddItemPageViewModel>();
+        services.AddTransient<AboutPageViewModel>();
+        services.AddTransient<UpdatesPageViewModel>();
+        services.AddTransient<QuoteLogPageViewModel>();
+
+        services.AddTransient<IWatchlistService, WatchlistService>();
+        services.AddTransient<IHoldingService, HoldingService>();
+        services.AddTransient<ICompanyProfileService, CompanyProfileService>();
+        services.AddTransient<IIndexItemService, IndexItemService>();
+        services.AddTransient<IQuotationServiceAdapter, QuotationServiceAdapter>();
+        services.AddTransient<IFinnhubQuotationService, FinnhubQuotationService>();
+        services.AddTransient<ITiingoQuotationService, TiingoQuotationService>();
+        services.AddTransient<IPriceRefreshService, PriceRefreshService>();
+        services.AddTransient<ISignalsConfigurationService, SignalsConfigurationService>();
+        services.AddTransient<ISettingsService, SettingsService>();
+
+        services.AddTransient<IFileService, FileService>();
+
+//#if __IOS__
+//        services.AddTransient<IFileService, IosFileService>();
+//#elif __ANDROID__
+//        services.AddTransient<IFileService, AndroidFileService>();
+//#else
+//        services.AddTransient<IFileService, FileService>();
+//#endif
+        
+        services.AddTransient<IWatchlistItemRepository, WatchlistItemRepository>();
+        services.AddTransient<IHoldingRepository, HoldingRepository>();
+        services.AddTransient<IIndexItemRepository, IndexItemRepository>();
+        services.AddTransient<ISettingsRepository, SettingsRepository>();
+        services.AddTransient<ICompanyProfileRepository, CompanyProfileRepository>();
+        services.AddTransient<ITradingJournalRepository, TradingJournalRepository>();
+
+        services.AddSingleton<ISignalsDbContext, SignalsContext>();
+
+        services.AddSingleton<Func<Type, PageViewModel>>( x => type
+            => type switch
+            {
+                _ when type == typeof(HomePageViewModel)  => x.GetRequiredService<HomePageViewModel>(),
+                _ when type == typeof(WatchlistPageViewModel) => x.GetRequiredService<WatchlistPageViewModel>(),
+                _ when type == typeof(HoldingsPageViewModel) => x.GetRequiredService<HoldingsPageViewModel>(),
+                _ when type == typeof(SettingsPageViewModel)  => x.GetRequiredService<SettingsPageViewModel>(),
+                _ when type == typeof(WatchlistItemPageViewModel)  => x.GetRequiredService<WatchlistItemPageViewModel>(),
+                _ when type == typeof(HoldingsItemPageViewModel)  => x.GetRequiredService<HoldingsItemPageViewModel>(),
+                _ when type == typeof(AddItemPageViewModel)  => x.GetRequiredService<AddItemPageViewModel>(),
+                _ when type == typeof(AboutPageViewModel)  => x.GetRequiredService<AboutPageViewModel>(),
+                _ when type == typeof(UpdatesPageViewModel)  => x.GetRequiredService<UpdatesPageViewModel>(),
+                _ when type == typeof(QuoteLogPageViewModel)  => x.GetRequiredService<QuoteLogPageViewModel>(),
+                _ => throw new NotImplementedException(),
+            });
+
+        // services.AddSingleton<Func<PageNames, string, PageViewModel>>(x => (names, s)  
+        //     => names switch
+        // {
+        //     PageNames.WatchlistItemDetail => x.GetRequiredService<WatchlistItemPageViewModel>()
+        // });
+        
+        services.AddSingleton<PageFactory>();
+        services.AddSingleton<DialogService>();
+        
+        services.AddAutoMapper(typeof(MappingProfile)); 
+        services.AddSingleton<ILoggerFactory, LoggerFactory>();
+        
+        //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(App).Assembly));
+        
+        var provider = services.BuildServiceProvider();
+
+        return provider;
     }
 }

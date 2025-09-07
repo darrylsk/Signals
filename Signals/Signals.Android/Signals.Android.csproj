@@ -4,11 +4,22 @@
         <TargetFramework>net9.0-android</TargetFramework>
         <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
         <Nullable>enable</Nullable>
-        <ApplicationId>com.CompanyName.Signals</ApplicationId>
+        <ApplicationId>com.skmetrics.signals</ApplicationId>
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <AndroidPackageFormat>apk</AndroidPackageFormat>
         <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+        <AndroidSigningKeyStore>Signals.keystore</AndroidSigningKeyStore>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+        <AndroidKeyStore>False</AndroidKeyStore>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <AndroidSigningStorePass>SKM-1488-sig25-crow</AndroidSigningStorePass>
+        <AndroidSigningKeyAlias>SKMsignalsKey</AndroidSigningKeyAlias>
+        <AndroidSigningKeyPass>SKM-1488-sig25-crow</AndroidSigningKeyPass>
+        <AndroidKeyStore>True</AndroidKeyStore>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,6 +30,7 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Android" Version="11.2.7" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
         <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.14" />
         <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.10.2.1" />
         <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
