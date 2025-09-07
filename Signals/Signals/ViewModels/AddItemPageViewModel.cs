@@ -145,7 +145,7 @@ public partial class AddItemPageViewModel : PageViewModel
                 // Grab the values entered on the view 
                 holding.AveragePurchasePrice = PurchasePrice;
                 holding.PeakPriceSincePurchase = PurchasePrice;
-                holding.QuantityHeld = (holding.QuantityHeld ?? 0) + (UnitsPurchased ?? 0);
+                holding.UnitsHeld = (holding.UnitsHeld ?? 0) + (UnitsPurchased ?? 0);
                 holding.WhenLastPurchased = TransactionDateTime; 
 
                 // Save holding, recalculate the average price, and add to the holding list.

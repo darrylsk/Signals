@@ -66,11 +66,12 @@ public class HoldingService : BusinessService<Holding>, IHoldingService
                     currentHolding.PeakPriceSincePurchase = model.AveragePurchasePrice;
                 }
 
-                var originalValue = (currentHolding.QuantityHeld ?? 0) * (currentHolding.AveragePurchasePrice ?? 0);
-                var valueAdded = model.QuantityHeld * model.AveragePurchasePrice;
-                var totalQuantity = (currentHolding.QuantityHeld ?? 0) + (model.QuantityHeld ?? 0);
-                currentHolding.QuantityHeld = totalQuantity;
-                currentHolding.AveragePurchasePrice = (originalValue + (valueAdded ?? 0)) / totalQuantity;
+                var originalValue = (currentHolding.CumulativeUnitsPurchased ?? 0) * (currentHolding.AveragePurchasePrice ?? 0);
+                var valueAdded = (model.UnitsHeld ?? 0) * model.LatestQuotedPrice;  // units purchased * price per unit purchased.
+                var totalUnitsHeld = (currentHolding.UnitsHeld ?? 0) + (model.UnitsHeld ?? 0);
+                var cumulativeUnitsPurchased = (currentHolding.CumulativeUnitsPurchased ?? 0) + (model.UnitsHeld ?? 0);
+                currentHolding.UnitsHeld = totalUnitsHeld;
+                currentHolding.AveragePurchasePrice = (originalValue + valueAdded) / cumulativeUnitsPurchased;
                 ct = await Repository.UpdateAsync(currentHolding);
             }
             else
@@ -99,22 +100,22 @@ public class HoldingService : BusinessService<Holding>, IHoldingService
                 throw new ApplicationException(
                     $"Cannot sell {model.Symbol}: {model.Name} because there are no units in the portfolio.");
 
-            if (currentHolding.QuantityHeld < model.QuantityHeld)
+            if (currentHolding.UnitsHeld < model.UnitsHeld)
                 throw new ApplicationException(
-                    $"Sale of {model.QuantityHeld} units would result in negative remainder");
+                    $"Sale of {model.UnitsHeld} units would result in negative remainder");
 
-            var originalValue = (currentHolding.QuantityHeld ?? 0) * (currentHolding.AveragePurchasePrice ?? 0);
-            var valueSold = model.QuantityHeld * model.AveragePurchasePrice;
-            var newQuantityHeld = (currentHolding.QuantityHeld ?? 0) - (model.QuantityHeld ?? 0);
+            // var originalValue = (currentHolding.UnitsHeld ?? 0) * (currentHolding.AveragePurchasePrice ?? 0);
+            // var valueSold = model.UnitsHeld * model.AveragePurchasePrice;
+            var newUnitsHeld = (currentHolding.UnitsHeld ?? 0) - (model.UnitsHeld ?? 0);
 
             // If all items are sold, then delete the holding.
-            if (newQuantityHeld <= 0)
+            if (newUnitsHeld <= 0)
                 return await Delete(model);
 
-            currentHolding.QuantityHeld = newQuantityHeld;
-            var newAveragePrice = (originalValue - valueSold) / newQuantityHeld;
-            currentHolding.AveragePurchasePrice = newAveragePrice;
-            model.Events.Add(new HoldingSold(model, model.AveragePurchasePrice ?? 0, model.QuantityHeld ?? 0));
+            currentHolding.UnitsHeld = newUnitsHeld;
+            //var newAveragePrice = (originalValue - valueSold) / newQuantityHeld;
+            //currentHolding.AveragePurchasePrice = newAveragePrice;
+            model.Events.Add(new HoldingSold(model, model.AveragePurchasePrice ?? 0, model.UnitsHeld ?? 0));
             return await Update(currentHolding);
         }
         catch (Exception e)

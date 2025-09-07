@@ -104,7 +104,7 @@ public partial class WatchlistItemPageViewModel : PageViewModel
 
         var holding = Mapper.Map<Holding>(watchlistItem);
         holding.Symbol = buyOrSellDialog.Symbol;
-        holding.QuantityHeld = buyOrSellDialog.Units ?? 0;
+        holding.UnitsHeld = buyOrSellDialog.Units ?? 0;
         // Note: The service will update the holding with the actual average purchase price.
         // This is a bad design.  To correct this, the next version will build the view model here, and
         // pass it to the service, so there is less confusion.

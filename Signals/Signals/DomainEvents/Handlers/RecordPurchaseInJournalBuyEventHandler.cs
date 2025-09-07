@@ -22,7 +22,7 @@ public class RecordPurchaseInJournalBuyEventHandler(ITradingJournalRepository re
     {
         // Console.WriteLine(Resources.Resources.BuyEventHandler_Handle_purchased_units);
         var journalEntry = new TradingJournal(notification.Holding.Symbol, notification.TimeOfEvent,
-            notification.Holding.QuantityHeld, TransactionTypes.Purchase, notification.Holding.LatestQuotedPrice);
+            notification.Holding.UnitsHeld, TransactionTypes.Purchase, notification.Holding.LatestQuotedPrice);
         await Repository.AddAsync(journalEntry);
     }
 }

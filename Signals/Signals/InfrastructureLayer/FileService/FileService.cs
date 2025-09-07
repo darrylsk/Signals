@@ -24,7 +24,8 @@ public class FileService : IFileService
     /// <returns></returns>
     public string GetLocalAppDataFolder()
     {
-        var appLocalFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        // var appLocalFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        var appLocalFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         return appLocalFolder;
     }
 
@@ -40,14 +41,14 @@ public class FileService : IFileService
         return folder;
     }
 
-    public string GetBackupFile()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public string CreateFolder(string folderPath)
     {
         var folder = Directory.CreateDirectory(folderPath);
         return folder.FullName;
+    }
+
+    public virtual string GetUserAccessibleFolder()
+    {
+        return GetLocalAppDataFolder();
     }
 }
