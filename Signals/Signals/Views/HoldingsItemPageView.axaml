@@ -16,6 +16,7 @@
     </Design.DataContext>
     <UserControl.Resources>
         <converters:CurrencyOrEmptyConverter x:Key="DecimalOrEmptyConverter" />
+        <converters:LocalTimeConverter x:Key="LocalTimeConverter" />
     </UserControl.Resources>
     
 
@@ -42,8 +43,9 @@
                                 <Label Content="Exchange" />
                                 <TextBlock Text="{Binding  ExchangeName}" />
                                 <Label Content="Quote Received" />
-                                <TextBlock
-                                    Text="{Binding  WhenLatestQuoteReceived, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
+                                <TextBlock Text="{Binding  WhenLatestQuoteReceived, 
+                                    StringFormat={}{0:MMM d\, yyyy hh:mm tt}
+                                    , Converter={StaticResource LocalTimeConverter}}" />
 
                                 <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto"
                                       ColumnDefinitions="*,5,*">

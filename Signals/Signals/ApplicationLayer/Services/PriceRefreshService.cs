@@ -96,6 +96,10 @@ public class PriceRefreshService : IPriceRefreshService
                 var quote = await QuotationService.GetQuoteAsync(index.Symbol);
                 index.LatestQuotedPrice = quote?.LatestQuotedPrice ?? 0;
                 index.WhenLatestQuoteReceived = quote?.WhenLatestQuoteReceived;
+                index.CurrentDayOpeningPrice = quote?.CurrentDayOpeningPrice ?? 0;
+                index.CurrentDayHighPrice = quote?.CurrentDayHighPrice ?? 0;
+                index.CurrentDayLowPrice = quote?.CurrentDayLowPrice ?? 0;
+                index.PreviousDayClosingPrice = quote?.PreviousDayClosingPrice ?? 0;
                 await IndexService.Update(index);
 
                 // index.LatestQuotedPrice = 100 + itemsUpdated * 10;
