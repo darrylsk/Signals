@@ -7,11 +7,15 @@
 			 xmlns:local="clr-namespace:Signals.Views"
              xmlns:vm="clr-namespace:Signals.ViewModels"
              x:Class="Signals.Views.WatchlistPageView"
-             x:DataType="vm:WatchlistPageViewModel">
+             x:DataType="vm:WatchlistPageViewModel"
+             xmlns:converters="clr-namespace:Signals.Converters">
 
 	<Design.DataContext>
 		<vm:WatchlistPageViewModel />
 	</Design.DataContext>
+	<UserControl.Resources>
+		<converters:LocalTimeConverter x:Key="LocalTimeConverter" />
+	</UserControl.Resources>
 	<!-- 
                                 Command="{Binding $parent[UserControl].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
                                 Command="{Binding $parent[UserControl].((vm:WatchlistPageViewModel)DataContext).TestCommand, FallbackValue=null}"
@@ -33,7 +37,8 @@
                                 Name="{Binding Name}"
                                 ColourByTrend="{Binding ColourByTrend}"
                                 LatestQuotedPrice="{Binding LatestQuotedPrice}"
-                                WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                                WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived
+                                , Converter={StaticResource LocalTimeConverter}}"
                                 CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
 						</StackPanel>
 					</DataTemplate>

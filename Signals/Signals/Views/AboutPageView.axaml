@@ -32,7 +32,6 @@
                 <Button Name="BtnGetKey" Content="{x:Static lang:Resources.BtnGetKeyContent}"
                         Command="{Binding GetKeyCommand}"
                         CommandParameter="{Binding $self}" />
-                <!-- Click="BtnGetKey_OnClick" -->
                 <TextBlock Name="VersionStatement" Text="{x:Static lang:Resources.ApplicationVersionStatement}" />
                 <TextBlock Name="VersionStatement2" Text="Version 1.0 released 2025" />
                 <Button Name="BtnCheckForNewVersion" Content="{x:Static lang:Resources.BtnCheckForNewVersionContent}"

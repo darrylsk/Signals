@@ -11,13 +11,61 @@
     <Design.DataContext>
         <vm:SettingsPageViewModel />
     </Design.DataContext>
+
     <Grid RowDefinitions="Auto, *, Auto">
-        <Label Grid.Row="0" Classes="heading" Content="{Binding PageSubtitle}"></Label>
+        <StackPanel Grid.Row="0">
+            <TextBlock  HorizontalAlignment="Center" Classes="page-title" Text="Configure settings and preferences"></TextBlock>
+        </StackPanel>
 
         <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *, Auto" ColumnDefinitions="Auto, 16, *">
 
-            <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
-            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding MetadataVersion}"></TextBlock>
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Spacing="5">
+                <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
+                <!-- Grid containing the controls for setting the API key for the quotation service-->
+                <Grid ColumnDefinitions="*, Auto">
+                    <TextBox Name="TokenInput" Text="{Binding Key}"
+                             IsEnabled="{Binding  KeyIsInEditMode}"
+                             HorizontalAlignment="Stretch" />
+                    <!-- Edit the key -->
+                    <Button Grid.Column="1" Classes="decorator"
+                            Command="{Binding EditKeyCommand}"
+                            IsVisible="{Binding !KeyIsInEditMode}">
+                        <StackPanel>
+                            <!--pencil-->
+                            <Label Classes="icon" Content="&#xe3B4;"></Label>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Save an updated key value -->
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button Classes="decorator"
+                                Command="{Binding SaveConfigCommand}"
+                                IsVisible="{Binding KeyIsInEditMode}">
+                            <StackPanel>
+                                <!--check mark icon-->
+                                <Label Classes="icon" Content="&#xe182;"></Label>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Discard changes, restoring previous value -->
+                        <Button Classes="decorator"
+                                Command="{Binding CancelSaveKeyCommand}"
+                                IsVisible="{Binding KeyIsInEditMode}"
+                                BorderBrush="{DynamicResource PrimaryForeground}"
+                                BorderThickness="0 1 1 1">
+                            <StackPanel>
+                                <!-- Label with X icon -->
+                                <Label Classes="icon" Content="&#xe038;"></Label>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Contact the service provider to get an API key -->
+                <Button Name="BtnGetKey" Content="{x:Static lang:Resources.BtnGetKeyContent}"
+                        Command="{Binding GetKeyCommand}"
+                        CommandParameter="{Binding $self}" />
+            </StackPanel>
 
             <!-- Default Gain Alert Level -->
             <StackPanel Classes="formField" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch">
@@ -48,7 +96,10 @@
                           IsChecked="{Binding DefaultUseTrailingStop}" />
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                <Label Content="{x:Static lang:Resources.SettingsMetadataVersionLabel}"></Label>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding MetadataVersion}"></TextBlock>
+            </StackPanel>
         </Grid>
 
         <!-- Grid bottom row: This section contains the controls for setting the API key for the quotation service -->
@@ -60,50 +111,9 @@
                     <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 </Style>
             </StackPanel.Styles>
-            
+
             <CheckBox Content="{x:Static lang:Resources.UsePhoneData}"
                       IsChecked="{Binding UsePhoneData}" />
-
-            <Label Content="{x:Static lang:Resources.KeyLabel}"></Label>
-            <!-- Grid containing the controls for setting the API key for the quotation service-->
-            <Grid ColumnDefinitions="*, Auto">
-                <TextBox Name="TokenInput" Text="{Binding Key}"
-                         IsEnabled="{Binding  KeyIsInEditMode}"
-                         HorizontalAlignment="Stretch" />
-                <!-- Edit the key -->
-                <Button Grid.Column="1" Classes="decorator"
-                        Command="{Binding EditKeyCommand}"
-                        IsVisible="{Binding !KeyIsInEditMode}">
-                    <StackPanel>
-                        <!--pencil-->
-                        <Label Classes="icon" Content="&#xe3B4;"></Label>
-                    </StackPanel>
-                </Button>
-
-                <!-- Save an updated key value -->
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Button Classes="decorator"
-                            Command="{Binding SaveConfigCommand}"
-                            IsVisible="{Binding KeyIsInEditMode}">
-                        <StackPanel>
-                            <!--check mark icon-->
-                            <Label Classes="icon" Content="&#xe182;"></Label>
-                        </StackPanel>
-                    </Button>
-
-                    <!-- Discard changes, restoring previous value -->
-                    <Button Classes="decorator"
-                            Command="{Binding CancelSaveKeyCommand}"
-                            IsVisible="{Binding KeyIsInEditMode}"
-                            BorderBrush="{DynamicResource PrimaryForeground}"
-                            BorderThickness="0 1 1 1">
-                        <StackPanel>
-                            <!-- Label with X icon -->
-                            <Label Classes="icon" Content="&#xe4F6;"></Label>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
-            </Grid>
 
             <!-- Save Settings Button -->
             <Button Content="{x:Static lang:Resources.BtnSaveSettingsText}"
