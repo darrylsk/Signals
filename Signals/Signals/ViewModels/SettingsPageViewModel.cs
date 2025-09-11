@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Signals.ApplicationLayer.Abstract;
@@ -88,7 +89,16 @@ public partial class SettingsPageViewModel : PageViewModel
     {
         KeyIsInEditMode = true;
     }
-
+    [RelayCommand]
+    public async Task GetKey(Button getKeyButton)
+    {
+        // Get key from Quotation Service and apply to the application configuration.
+        var uri = new Uri("https://finnhub.io/");
+        var launcher = TopLevel.GetTopLevel(getKeyButton)?.Launcher;
+        if (launcher == null) return;
+        var success = await launcher.LaunchUriAsync(uri);
+    }
+    
     [RelayCommand]
     private void SaveConfig()
     {

@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:Signals.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
 			 xmlns:local="clr-namespace:Signals.Views"
@@ -94,7 +93,9 @@
                                     <StackPanel Grid.Row="3" Grid.Column="0">
                                         <Label Content="When Purchased" />
                                         <TextBlock
-                                            Text="{Binding  WhenLastPurchased, StringFormat={}{0:MMM d\, yyyy hh:mm tt}}" />
+                                            Text="{Binding  WhenLastPurchased, 
+                                            StringFormat={}{0:MMM d\, yyyy hh:mm tt}
+                                            , Converter={StaticResource LocalTimeConverter}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="3" Grid.Column="2">

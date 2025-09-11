@@ -5,12 +5,16 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:controls="clr-namespace:Signals.Controls"
              xmlns:vm="clr-namespace:Signals.ViewModels"
-             xmlns:entities="clr-namespace:Signals.CoreLayer.Entities"
              x:DataType="vm:HomePageViewModel"
-             x:Class="Signals.Views.HomePageView">
+             x:Class="Signals.Views.HomePageView"
+             xmlns:converters="clr-namespace:Signals.Converters">
+
     <Design.DataContext>
         <vm:HomePageViewModel />
     </Design.DataContext>
+    <UserControl.Resources>
+        <converters:LocalTimeConverter x:Key="LocalTimeConverter" />
+    </UserControl.Resources>
 
     <Grid RowDefinitions="Auto, 10, *">
 
@@ -29,7 +33,8 @@
                                     Name="{Binding Name}"
                                     ColourByTrend="{Binding ColourByTrend}"
                                     LatestQuotedPrice="{Binding LatestQuotedPrice}"
-                                    WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                                    WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived
+                                    , Converter={StaticResource LocalTimeConverter}}"
                                     CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
                             </StackPanel>
                         </DataTemplate>
