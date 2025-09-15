@@ -19,7 +19,6 @@
 	<!-- 
                                 Command="{Binding $parent[UserControl].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
                                 Command="{Binding $parent[UserControl].((vm:WatchlistPageViewModel)DataContext).TestCommand, FallbackValue=null}"
-
 -->
 	<Grid RowDefinitions="Auto, *">
 		<!-- Header -->

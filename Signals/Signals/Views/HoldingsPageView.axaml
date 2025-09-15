@@ -7,11 +7,16 @@
              xmlns:vm="clr-namespace:Signals.ViewModels"
 			 xmlns:local="clr-namespace:Signals.Views"
              x:DataType="vm:HoldingsPageViewModel"
-             x:Class="Signals.Views.HoldingsPageView">
+             x:Class="Signals.Views.HoldingsPageView"
+             xmlns:converters="clr-namespace:Signals.Converters">
 
     <Design.DataContext>
         <vm:HoldingsPageViewModel />
     </Design.DataContext>
+    
+    <UserControl.Resources>
+        <converters:LocalTimeConverter x:Key="LocalTimeConverter" />
+    </UserControl.Resources>
 
     <Grid RowDefinitions="Auto, *">
         <!-- Header -->
@@ -29,7 +34,8 @@
                                 Name="{Binding Name}"
                                 ColourByTrend="{Binding ColourByTrend}"
                                 LatestQuotedPrice="{Binding LatestQuotedPrice}"
-                                WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived}"
+                                WhenLatestQuoteReceived="{Binding WhenLatestQuoteReceived
+                                , Converter={StaticResource LocalTimeConverter}}"
                                 CurrentDayPercentChange="{Binding CurrentDayPercentChange}" />
                         </StackPanel>
                     </DataTemplate>

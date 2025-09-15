@@ -17,7 +17,6 @@
         <converters:CurrencyOrEmptyConverter x:Key="DecimalOrEmptyConverter" />
         <converters:LocalTimeConverter x:Key="LocalTimeConverter" />
     </UserControl.Resources>
-    
 
     <Grid>
         <ContentControl Content="{Binding HoldingItem}">
