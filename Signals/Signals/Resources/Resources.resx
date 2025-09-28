@@ -19,11 +19,69 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     
-    <data name="AppTitle" xml:space="preserve">
+    <data name="ApplicationTitle" xml:space="preserve">
         <value>$ignal$</value>
     </data>
-    <data name="TagLine" xml:space="preserve">
+    <data name="ApplicationTagLine" xml:space="preserve">
         <value>Watch what happens</value>
+    </data>
+
+    <data name="Main" xml:space="preserve">
+        <value>Main</value>
+    </data>
+    <data name="MainPageSubtitle" xml:space="preserve">
+        <value>Main page</value>
+    </data>
+    <data name="Home" xml:space="preserve">
+        <value>Home</value>
+    </data>
+
+    <data name="Watchlist" xml:space="preserve">
+        <value>Watchlist</value>
+    </data>
+    <data name="WatchlistPageSubtitle" xml:space="preserve">
+        <value>Items I want to track but not necessarily hold</value>
+    </data>
+    
+    <data name="Holdings" xml:space="preserve">
+        <value>Holdings</value>
+    </data>
+    <data name="HoldingsPageSubtitle" xml:space="preserve">
+        <value>Items that I own in my portfolio</value>
+    </data>
+    <data name="Settings" xml:space="preserve">
+        <value>Settings</value>
+    </data>
+    <data name="About" xml:space="preserve">
+        <value>About</value>
+    </data>
+    <data name="Updates" xml:space="preserve">
+        <value>Updates</value>
+    </data>
+    <data name="UpdatesPageSubtitle" xml:space="preserve">
+        <value>Updates</value>
+    </data>
+    <data name="Log" xml:space="preserve">
+        <value>Log</value>
+    </data>
+    <data name="QuotationLog" xml:space="preserve">
+        <value>Quotation Log</value>
+    </data>
+    <data name="QuotationLogSubtitle" xml:space="preserve">
+        <value>Quotation Log</value>
+    </data>
+    <data name="SymbolNotRecognized" xml:space="preserve">
+        <value>The symbol was not recognized by the quotation service</value>
+    </data>
+
+    <data name="SettingsPageHeading" xml:space="preserve">
+        <value>Configure settings and preferences</value>
+    </data>
+    <data name="CurrentVersionStatement" xml:space="preserve">
+        <value>Current version is 1.0 released 2025</value>
+    </data>
+    <data name="LocalApplicationDataFolder" xml:space="preserve">
+        <value>Local Application Data Folder</value>
     </data>
 
     <data name="PriceLabel" xml:space="preserve">
@@ -117,6 +175,117 @@
     </data>
     <data name="PriceUpdatedEventHandler_Handle_Price_updated" xml:space="preserve">
         <value>Price updated</value>
+    </data>
+    <data name="Exchange" xml:space="preserve">
+        <value>Exchange</value>
+    </data>
+    <data name="Name" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="QuoteReceived" xml:space="preserve">
+        <value>Quote Received</value>
+    </data>
+    <data name="LatestQuote" xml:space="preserve">
+        <value>Latest Quote</value>
+    </data>
+    <data name="PercentChange" xml:space="preserve">
+        <value>% Change</value>
+    </data>
+    <data name="PreviousClose" xml:space="preserve">
+        <value>Previous Close</value>
+    </data>
+    <data name="TodayOpen" xml:space="preserve">
+        <value>Today's Open</value>
+    </data>
+    <data name="DailyLow" xml:space="preserve">
+        <value>Daily Low</value>
+    </data>
+    <data name="DailyHigh" xml:space="preserve">
+        <value>Daily High</value>
+    </data>
+    <data name="WhenPurchased" xml:space="preserve">
+        <value>When Purchased</value>
+    </data>
+    <data name="NumberOfUnitsHeld" xml:space="preserve">
+        <value>Number of Units Held</value>
+    </data>
+    <data name="AveragePurchasePrice" xml:space="preserve">
+        <value>Average Purchase Price</value>
+    </data>
+    <data name="PeakPriceSincePurchase" xml:space="preserve">
+        <value>Peak Price Since Purchase</value>
+    </data>
+    <data name="UseTrailingStop" xml:space="preserve">
+        <value>Use Trailing Stop</value>
+    </data>
+    <data name="TrailingStop" xml:space="preserve">
+        <value>Trailing Stop</value>
+    </data>
+    <data name="Buy" xml:space="preserve">
+        <value>Buy</value>
+    </data>
+    <data name="Sell" xml:space="preserve">
+        <value>Sell</value>
+    </data>
+    <data name="Delete" xml:space="preserve">
+        <value>Delete</value>
+    </data>
+    <data name="Confirm" xml:space="preserve">
+        <value>Confirm</value>
+    </data>
+    <data name="Cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="AddItem" xml:space="preserve">
+        <value>Add Item</value>
+    </data>
+    <data name="AddItemPageSubtitle" xml:space="preserve">
+        <value>Add a new item to watchlist or holdings</value>
+    </data>
+    <data name="BuyItemFormat" xml:space="preserve">
+        <value>Buy {0}</value>
+    </data>
+    <data name="SellItemFormat" xml:space="preserve">
+        <value>Sell {0}</value>
+    </data>
+    
+
+    <data name="HoldingsItemDetail" xml:space="preserve">
+        <value>Holdings Item Detail</value>
+    </data>
+    <data name="HoldingsItemPageSubtitle" xml:space="preserve">
+        <value>Item detail view</value>
+    </data>
+
+    <data name="WatchlistItem" xml:space="preserve">
+        <value>Watchlist Item</value>
+    </data>
+    <data name="WatchlistItemPageSubtitle" xml:space="preserve">
+        <value>Watchlist item detail</value>
+    </data>
+
+    <data name="DeleteAffirmationFormat" xml:space="preserve">
+        <value>Are you sure you want to delete {0}?</value>
+    </data>
+
+    <data name="AreYouSure" xml:space="preserve">
+        <value>Are you sure?</value>
+    </data>
+    <data name="Yes" xml:space="preserve">
+        <value>Yes</value>
+    </data>
+    <data name="No" xml:space="preserve">
+        <value>No</value>
+    </data>
+
+    <data name="MajorIndexExchangeTradedFunds" xml:space="preserve">
+        <value>Major Index Exchange Traded Funds</value>
+    </data>
+    <data name="UpdatedHourly" xml:space="preserve">
+        <value>Updated Hourly</value>
+    </data>
+    <data name="UpdatedDaily" xml:space="preserve">
+        <value>Updated Daily</value>
     </data>
     <data name="NewQuoteReceivedEventHandler_Handle_New_quote_received" xml:space="preserve">
         <value>New quote received</value>

@@ -39,7 +39,8 @@ public partial class HoldingsPageViewModel : PageViewModel
         IHoldingService holdingService,
         IMapper holdingsMapper,
         PageFactory pageFactory
-        ): base("Holdings", "Items that I own in my portfolio")
+        ): base(Resources.Resources.Holdings,
+        Resources.Resources.HoldingsPageSubtitle)
     {
         PageFactory = pageFactory;
         HoldingService = holdingService;

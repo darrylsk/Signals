@@ -60,6 +60,15 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signals empowers you to stay ahead of your financial goals by tracking stocks and ETFs like SPY and SPX in real time, with customizable alerts for significant price changes, such as doubling or a 25% drop..
         /// </summary>
         public static string AboutParagraph1 {
@@ -96,6 +105,24 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Item.
+        /// </summary>
+        public static string AddItem {
+            get {
+                return ResourceManager.GetString("AddItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new item to watchlist or holdings.
+        /// </summary>
+        public static string AddItemPageSubtitle {
+            get {
+                return ResourceManager.GetString("AddItemPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add to holdings.
         /// </summary>
         public static string AddToHoldingsLabel {
@@ -114,6 +141,24 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Watch what happens.
+        /// </summary>
+        public static string ApplicationTagLine {
+            get {
+                return ResourceManager.GetString("ApplicationTagLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $ignal$.
+        /// </summary>
+        public static string ApplicationTitle {
+            get {
+                return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current version is 1.0 released 2025.
         /// </summary>
         public static string ApplicationVersionStatement {
@@ -123,11 +168,20 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $ignal$.
+        ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
-        public static string AppTitle {
+        public static string AreYouSure {
             get {
-                return ResourceManager.GetString("AppTitle", resourceCulture);
+                return ResourceManager.GetString("AreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average Purchase Price.
+        /// </summary>
+        public static string AveragePurchasePrice {
+            get {
+                return ResourceManager.GetString("AveragePurchasePrice", resourceCulture);
             }
         }
         
@@ -204,6 +258,15 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buy.
+        /// </summary>
+        public static string Buy {
+            get {
+                return ResourceManager.GetString("Buy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to purchased units.
         /// </summary>
         public static string BuyEventHandler_Handle_purchased_units {
@@ -213,11 +276,137 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buy {0}.
+        /// </summary>
+        public static string BuyItemFormat {
+            get {
+                return ResourceManager.GetString("BuyItemFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current version is 1.0 released 2025.
+        /// </summary>
+        public static string CurrentVersionStatement {
+            get {
+                return ResourceManager.GetString("CurrentVersionStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily High.
+        /// </summary>
+        public static string DailyHigh {
+            get {
+                return ResourceManager.GetString("DailyHigh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily Low.
+        /// </summary>
+        public static string DailyLow {
+            get {
+                return ResourceManager.GetString("DailyLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string DateLabel {
             get {
                 return ResourceManager.GetString("DateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete {0}?.
+        /// </summary>
+        public static string DeleteAffirmationFormat {
+            get {
+                return ResourceManager.GetString("DeleteAffirmationFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange.
+        /// </summary>
+        public static string Exchange {
+            get {
+                return ResourceManager.GetString("Exchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holdings.
+        /// </summary>
+        public static string Holdings {
+            get {
+                return ResourceManager.GetString("Holdings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holdings Item Detail.
+        /// </summary>
+        public static string HoldingsItemDetail {
+            get {
+                return ResourceManager.GetString("HoldingsItemDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item detail view.
+        /// </summary>
+        public static string HoldingsItemPageSubtitle {
+            get {
+                return ResourceManager.GetString("HoldingsItemPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items that I own in my portfolio.
+        /// </summary>
+        public static string HoldingsPageSubtitle {
+            get {
+                return ResourceManager.GetString("HoldingsPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -240,11 +429,74 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latest Quote.
+        /// </summary>
+        public static string LatestQuote {
+            get {
+                return ResourceManager.GetString("LatestQuote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local Application Data Folder.
+        /// </summary>
+        public static string LocalApplicationDataFolder {
+            get {
+                return ResourceManager.GetString("LocalApplicationDataFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log.
+        /// </summary>
+        public static string Log {
+            get {
+                return ResourceManager.GetString("Log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        public static string Main {
+            get {
+                return ResourceManager.GetString("Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main page.
+        /// </summary>
+        public static string MainPageSubtitle {
+            get {
+                return ResourceManager.GetString("MainPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Major Index Exchange Traded Funds.
+        /// </summary>
+        public static string MajorIndexExchangeTradedFunds {
+            get {
+                return ResourceManager.GetString("MajorIndexExchangeTradedFunds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minute.
         /// </summary>
         public static string MinuteLabel {
             get {
                 return ResourceManager.GetString("MinuteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -267,6 +519,51 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Units Held.
+        /// </summary>
+        public static string NumberOfUnitsHeld {
+            get {
+                return ResourceManager.GetString("NumberOfUnitsHeld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peak Price Since Purchase.
+        /// </summary>
+        public static string PeakPriceSincePurchase {
+            get {
+                return ResourceManager.GetString("PeakPriceSincePurchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to % Change.
+        /// </summary>
+        public static string PercentChange {
+            get {
+                return ResourceManager.GetString("PercentChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous Close.
+        /// </summary>
+        public static string PreviousClose {
+            get {
+                return ResourceManager.GetString("PreviousClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price.
         /// </summary>
         public static string PriceLabel {
@@ -285,11 +582,65 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quotation Log.
+        /// </summary>
+        public static string QuotationLog {
+            get {
+                return ResourceManager.GetString("QuotationLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quotation Log.
+        /// </summary>
+        public static string QuotationLogSubtitle {
+            get {
+                return ResourceManager.GetString("QuotationLogSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quote Received.
+        /// </summary>
+        public static string QuoteReceived {
+            get {
+                return ResourceManager.GetString("QuoteReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sell.
+        /// </summary>
+        public static string Sell {
+            get {
+                return ResourceManager.GetString("Sell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sold units.
         /// </summary>
         public static string SellEventHandler_Handle_Sold_units {
             get {
                 return ResourceManager.GetString("SellEventHandler_Handle_Sold_units", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sell {0}.
+        /// </summary>
+        public static string SellItemFormat {
+            get {
+                return ResourceManager.GetString("SellItemFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         
@@ -339,6 +690,15 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configure settings and preferences.
+        /// </summary>
+        public static string SettingsPageHeading {
+            get {
+                return ResourceManager.GetString("SettingsPageHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Symbol.
         /// </summary>
         public static string SymbolLabel {
@@ -348,11 +708,11 @@ namespace Signals.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Watch what happens.
+        ///   Looks up a localized string similar to The symbol was not recognized by the quotation service.
         /// </summary>
-        public static string TagLine {
+        public static string SymbolNotRecognized {
             get {
-                return ResourceManager.GetString("TagLine", resourceCulture);
+                return ResourceManager.GetString("SymbolNotRecognized", resourceCulture);
             }
         }
         
@@ -366,11 +726,65 @@ namespace Signals.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Today&apos;s Open.
+        /// </summary>
+        public static string TodayOpen {
+            get {
+                return ResourceManager.GetString("TodayOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trailing Stop.
+        /// </summary>
+        public static string TrailingStop {
+            get {
+                return ResourceManager.GetString("TrailingStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Units.
         /// </summary>
         public static string UnitsLabel {
             get {
                 return ResourceManager.GetString("UnitsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated Daily.
+        /// </summary>
+        public static string UpdatedDaily {
+            get {
+                return ResourceManager.GetString("UpdatedDaily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated Hourly.
+        /// </summary>
+        public static string UpdatedHourly {
+            get {
+                return ResourceManager.GetString("UpdatedHourly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        public static string Updates {
+            get {
+                return ResourceManager.GetString("Updates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        public static string UpdatesPageSubtitle {
+            get {
+                return ResourceManager.GetString("UpdatesPageSubtitle", resourceCulture);
             }
         }
         
@@ -389,6 +803,42 @@ namespace Signals.Resources {
         public static string UsePhoneData {
             get {
                 return ResourceManager.GetString("UsePhoneData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Trailing Stop.
+        /// </summary>
+        public static string UseTrailingStop {
+            get {
+                return ResourceManager.GetString("UseTrailingStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watchlist.
+        /// </summary>
+        public static string Watchlist {
+            get {
+                return ResourceManager.GetString("Watchlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watchlist Item.
+        /// </summary>
+        public static string WatchlistItem {
+            get {
+                return ResourceManager.GetString("WatchlistItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watchlist item detail.
+        /// </summary>
+        public static string WatchlistItemPageSubtitle {
+            get {
+                return ResourceManager.GetString("WatchlistItemPageSubtitle", resourceCulture);
             }
         }
         
@@ -417,6 +867,33 @@ namespace Signals.Resources {
         public static string WatchlistItemPageViewModel_DeleteWatchlistItem_Deleted__0_ {
             get {
                 return ResourceManager.GetString("WatchlistItemPageViewModel_DeleteWatchlistItem_Deleted__0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items I want to track but not necessarily hold.
+        /// </summary>
+        public static string WatchlistPageSubtitle {
+            get {
+                return ResourceManager.GetString("WatchlistPageSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When Purchased.
+        /// </summary>
+        public static string WhenPurchased {
+            get {
+                return ResourceManager.GetString("WhenPurchased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

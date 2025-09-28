@@ -3,12 +3,13 @@
         xmlns:vm="using:Signals.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lang="clr-namespace:Signals.Resources"
         xmlns:views="clr-namespace:Signals.Views"
         mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="800"
         Width="450" Height="800"
         MinWidth="450" MinHeight="800"
         x:Class="Signals.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Signals">
-        <views:MainView />
+        Title="{x:Static lang:Resources.ApplicationTitle}">
+    <views:MainView />
 </Window>

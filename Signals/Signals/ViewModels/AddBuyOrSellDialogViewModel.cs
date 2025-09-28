@@ -18,8 +18,8 @@ public partial class AddBuyOrSellDialogViewModel : ConfirmDialogViewModel
 
     [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))] private bool _addToWatchlist;
     [ObservableProperty] [NotifyPropertyChangedFor(nameof(SaveIsEnabled))] private bool _addToHoldings;
-    [ObservableProperty] private string _confirmText = "Confirm";
-    [ObservableProperty] private string _cancelText = "Cancel";
+    [ObservableProperty] private string _confirmText = Resources.Resources.Confirm;
+    [ObservableProperty] private string _cancelText = Resources.Resources.Cancel;
     [ObservableProperty] private bool _isConfirmed;
 
     // Profile data items
@@ -61,21 +61,5 @@ public partial class AddBuyOrSellDialogViewModel : ConfirmDialogViewModel
     public TransactionTypes Action { get; set; }
 
     #endregion
-
-    /*
-    [RelayCommand]
-    public void Confirm()
-    {
-        IsConfirmed = true;
-        CloseDialog();
-    }
-
-    [RelayCommand]
-    public void Cancel()
-    {
-        IsConfirmed = false;
-        CloseDialog();
-    }
-    */
-
+    
 }

@@ -75,10 +75,7 @@
                     TargetNullValue=0, FallbackValue=0}"
                         FormatString="###,###,##0"
                         Minimum="0" Maximum="10000000" />
-                    <!--<TextBox Name="QuantityInput" Text="{Binding UnitsPurchased }"
-                         IsEnabled="{Binding  AddToHoldings}"
-                         HorizontalAlignment="Stretch" />-->
-
+                    
                     <Label Content="{x:Static lang:Resources.PriceLabel}"></Label>
                     <TextBox Name="PriceInput"
                              Text="{Binding PurchasePrice, 
@@ -86,11 +83,6 @@
                          Converter={StaticResource CurrencyOrEmptyConverter}}"
                              IsEnabled="{Binding  AddToHoldings}" />
 
-                    <!--<StackPanel Orientation="Horizontal">
-                    <Label Content="{x:Static lang:Resources.HourLabel}"></Label>
-                    <Label>/</Label>
-                    <Label Content="{x:Static lang:Resources.MinuteLabel}"></Label>
-                </StackPanel>-->
                 </StackPanel>
             </StackPanel>
 

@@ -17,8 +17,8 @@
 
         <!-- Application Header: Contains App Title and tagline ($ignalS Watch what happens) -->
         <StackPanel Grid.Row="0">
-            <TextBlock Classes="title" Text="{x:Static lang:Resources.AppTitle}" />
-            <TextBlock Classes="tag-line" Text="{x:Static lang:Resources.TagLine}" />
+            <TextBlock Classes="title" Text="{x:Static lang:Resources.ApplicationTitle}" />
+            <TextBlock Classes="tag-line" Text="{x:Static lang:Resources.ApplicationTagLine}" />
 
             <!-- App Content Container Border -->
             <Border Classes="app-header">
@@ -47,9 +47,11 @@
                                         </Label>
                                     </StackPanel>
                                 </MenuItem.Header>
-                                <MenuItem Header="About" Command="{Binding GotoAboutCommand}"></MenuItem>
-                                <MenuItem Header="Updates" Command="{Binding GotoUpdatesCommand}"></MenuItem>
-                                <MenuItem Header="Log" Command="{Binding GotoQuoteLogCommand}"></MenuItem>
+                                <MenuItem Header="{x:Static lang:Resources.About}" 
+                                          Command="{Binding GotoAboutCommand}"></MenuItem>
+                                <MenuItem Header="{x:Static lang:Resources.Updates}" 
+                                          Command="{Binding GotoUpdatesCommand}"></MenuItem>
+                                <MenuItem Header="{x:Static lang:Resources.Log}" Command="{Binding GotoQuoteLogCommand}"></MenuItem>
                             </MenuItem>
                         </Menu>
                     </StackPanel>
@@ -77,20 +79,20 @@
                         <StackPanel>
                             <Label Classes="icon" Content="&#xe2c6;">
                             </Label>
-                            <Label Content="Home"></Label>
+                            <Label Content="{x:Static lang:Resources.Home}"></Label>
                         </StackPanel>
                     </Button>
                     <Button Classes="navigation" Command="{Binding GoToWatchlistCommand}">
                         <StackPanel>
                             <Label Classes="icon" Content="&#xe220;">
                             </Label>
-                            <Label Content="Watchlist"></Label>
+                            <Label Content="{x:Static lang:Resources.Watchlist}"></Label>
                         </StackPanel>
                     </Button>
                     <Button Classes="navigation" Command="{Binding GoToHoldingsCommand}">
                         <StackPanel>
                             <Label Classes="icon" Content="&#xea8c;"></Label>
-                            <Label Content="Holdings"></Label>
+                            <Label Content="{x:Static lang:Resources.Holdings}"></Label>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -99,7 +101,7 @@
                     <Button Classes="navigation" Background="Transparent" Command="{Binding GoToSettingsCommand}">
                         <StackPanel>
                             <Label Classes="icon" Content="&#xe272;"></Label>
-                            <Label Content="Settings"></Label>
+                            <Label Content="{x:Static lang:Resources.Settings}"></Label>
                         </StackPanel>
                     </Button>
                 </StackPanel>

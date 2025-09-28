@@ -6,10 +6,10 @@ namespace Signals.ViewModels;
 
 public partial class ConfirmDialogViewModel : DialogViewModel
 {
-    [ObservableProperty] private string _title = "Confirm";
-    [ObservableProperty] private string _message = "Are you sure?";
-    [ObservableProperty] private string _confirmText = "Yes";
-    [ObservableProperty] private string _cancelText = "No";
+    [ObservableProperty] private string _title = Resources.Resources.Confirm;
+    [ObservableProperty] private string _message = Resources.Resources.AreYouSure;
+    [ObservableProperty] private string _confirmText = Resources.Resources.Yes;
+    [ObservableProperty] private string _cancelText = Resources.Resources.No;
     [ObservableProperty] private string _iconText = "\xE4E0";
     
     [ObservableProperty] private bool _isConfirmed;

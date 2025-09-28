@@ -9,8 +9,8 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
 {
     private readonly PageFactory _pageFactory;
 
-    [ObservableProperty] private string _appTitle = $"$ignal$";
-    [ObservableProperty] private string _tagLine = $"Watch what happens";
+    [ObservableProperty] private string _appTitle = Resources.Resources.ApplicationTitle;
+    [ObservableProperty] private string _tagLine = Resources.Resources.ApplicationTagLine;
     [ObservableProperty] private string _pageTitle;
     
     [ObservableProperty] private DialogViewModel _dialog;
@@ -20,16 +20,17 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
     /// </summary>
     public MainViewModel()
     {
-        _pageFactory = new PageFactory(type => new PageViewModel("Main", "main page"));
+        _pageFactory = new PageFactory(type => new PageViewModel( Resources.Resources.Main,
+            Resources.Resources.MainPageSubtitle));
         CurrentPage = _pageFactory.GetPageViewModel<HomePageViewModel>();
-        PageTitle = "Main";
+        PageTitle = Resources.Resources.Main;
     }
 
     public MainViewModel(PageFactory pageFactory)
     {
         _pageFactory = pageFactory;
         CurrentPage = pageFactory.GetPageViewModel<HomePageViewModel>();
-        PageTitle = "Main";
+        PageTitle = Resources.Resources.Main;
         GoToHome();
     }
 
@@ -39,23 +40,23 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
         CurrentPage = _pageFactory.GetPageViewModel<HomePageViewModel>(
             vm =>
             {
-                vm.PageSubtitle = "Home page";
+                vm.PageSubtitle = Resources.Resources.HoldingsPageSubtitle;
             });
-        PageTitle = "Home";
+        PageTitle = Resources.Resources.Home;
     }
 
     [RelayCommand]
     private void GoToWatchlist()
     {
         CurrentPage = _pageFactory.GetPageViewModel<WatchlistPageViewModel>();
-        PageTitle = "Watchlist";
+        PageTitle = Resources.Resources.Watchlist;
     }
 
     [RelayCommand]
     private void GoToHoldings()
     {
         CurrentPage =  _pageFactory.GetPageViewModel<HoldingsPageViewModel>();
-        PageTitle = "Holdings";
+        PageTitle = Resources.Resources.Holdings;
     }
 
     [RelayCommand]
@@ -63,7 +64,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
     {
         CurrentPage = _pageFactory.GetPageViewModel<SettingsPageViewModel>(async vm 
             => await vm.LoadSettings());
-        PageTitle = "Settings";
+        PageTitle = Resources.Resources.Settings;
     } 
 
     [RelayCommand]
@@ -72,7 +73,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
         CurrentPage = _pageFactory.GetPageViewModel<WatchlistItemPageViewModel>(async vm 
             => await vm.LoadData(symbol));
         CurrentPage.BackLink = this;
-        this.PageTitle = "Watchlist Item";
+        this.PageTitle = Resources.Resources.WatchlistItem;
     }
 
     [RelayCommand]
@@ -81,7 +82,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
         CurrentPage = _pageFactory.GetPageViewModel<HoldingsItemPageViewModel>(async vm 
             => await vm.LoadData(symbol));
         CurrentPage.BackLink = this;
-        PageTitle = "Holding";
+        PageTitle = Resources.Resources.HoldingsItemDetail;
     }
 
     [RelayCommand]
@@ -89,7 +90,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
     {
         CurrentPage = _pageFactory.GetPageViewModel<AddItemPageViewModel>();
         CurrentPage.BackLink = this;
-        PageTitle="Add Item";
+        PageTitle=Resources.Resources.AddItem;
     }
 
     [RelayCommand]
@@ -97,7 +98,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
     {
         CurrentPage = _pageFactory.GetPageViewModel<AboutPageViewModel>();
         CurrentPage.BackLink = this;
-        PageTitle = "About";
+        PageTitle = Resources.Resources.About;
     }
 
     [RelayCommand]
@@ -105,7 +106,7 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
     {
         CurrentPage = _pageFactory.GetPageViewModel<UpdatesPageViewModel>();
         CurrentPage.BackLink = this;
-        PageTitle = "Updates";
+        PageTitle = Resources.Resources.Updates;
     }
 
     [RelayCommand]
@@ -113,6 +114,6 @@ public partial class MainViewModel : Abstract.ViewModelBase, IDialogProvider
     {
         CurrentPage = _pageFactory.GetPageViewModel<QuoteLogPageViewModel>();
         CurrentPage.BackLink = this;
-        PageTitle = "Log";
+        PageTitle = Resources.Resources.Log;
     }
 }
