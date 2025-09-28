@@ -16,10 +16,7 @@
 	<UserControl.Resources>
 		<converters:LocalTimeConverter x:Key="LocalTimeConverter" />
 	</UserControl.Resources>
-	<!-- 
-                                Command="{Binding $parent[UserControl].((vm:MainViewModel)DataContext).GoToWatchlistDetailCommand, FallbackValue=null}"
-                                Command="{Binding $parent[UserControl].((vm:WatchlistPageViewModel)DataContext).TestCommand, FallbackValue=null}"
--->
+
 	<Grid RowDefinitions="Auto, *">
 		<!-- Header -->
 		<controls:StocklistHeader Grid.Row="0"></controls:StocklistHeader>

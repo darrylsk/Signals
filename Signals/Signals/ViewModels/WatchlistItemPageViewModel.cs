@@ -23,15 +23,6 @@ public partial class WatchlistItemPageViewModel : PageViewModel
     public IMapper Mapper { get; }
 
     [ObservableProperty] private WatchlistItem? _watchlistItem;
-    // [ObservableProperty] private DialogViewModel _currentDialog = new ConfirmDialogViewModel()
-    // {
-    //     IsDialogOpen = true
-    // };
-
-    public WatchlistItemPageViewModel()
-        : base("Watchlist Item Detail", "Watchlist Item Detail")
-    {
-    }
 
     /// <inheritdoc/>
     public WatchlistItemPageViewModel(
@@ -52,6 +43,12 @@ public partial class WatchlistItemPageViewModel : PageViewModel
         PageFactory = pageFactory;
     }
 
+    public WatchlistItemPageViewModel()
+        : base(Resources.Resources.WatchlistItem,
+            Resources.Resources.WatchlistItemPageSubtitle)
+    {
+    }
+
     public async Task LoadData(string symbol)
     {
         WatchlistItem = await WatchlistService.GetBySymbol(symbol);
@@ -62,7 +59,7 @@ public partial class WatchlistItemPageViewModel : PageViewModel
     {
         var confirmDialog = new ConfirmDialogViewModel()
         {
-            Message = $"Are you sure you want to delete {watchlistItem.Name}?"
+            Message = string.Format(Resources.Resources.DeleteAffirmationFormat, watchlistItem.Name)
         };
 
         await DialogService.ShowDialog(MainViewModel, confirmDialog);
@@ -87,14 +84,13 @@ public partial class WatchlistItemPageViewModel : PageViewModel
 
         var buyOrSellDialog = new BuyOrSellDialogViewModel()
         {
-            Title = $"Buy {watchlistItem.Name}",
+            Title = string.Format(Resources.Resources.BuyItemFormat, watchlistItem.Name),
             Action = TransactionTypes.Purchase,
             Symbol = watchlistItem.Symbol,
             Price = (quote! == null!) ? 0 : quote.LatestQuotedPrice
         };
 
         Mapper.Map(watchlistItem, buyOrSellDialog);
-        //Mapper.Map(quote, buyOrSellDialog);
 
         await DialogService.ShowDialog(MainViewModel, buyOrSellDialog);
 

@@ -5,6 +5,11 @@ namespace Signals.ViewModels;
 
 public partial class PageViewModel : ViewModelBase
 {
+    public PageViewModel()
+    {
+        _pageTitle = "";
+        _pageSubtitle = "";
+    }
     public PageViewModel(string pageTitle, string pageSubtitle)
     {
         _pageTitle = pageTitle;

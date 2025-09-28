@@ -48,7 +48,8 @@ public partial class AddItemPageViewModel : PageViewModel
     /// <summary>
     /// Design constructor
     /// </summary>
-    public AddItemPageViewModel() : base("AddItem", "Add item")
+    public AddItemPageViewModel() : base(Resources.Resources.AddItem, 
+        Resources.Resources.AddItemPageSubtitle)
     {
     }
 
@@ -60,7 +61,8 @@ public partial class AddItemPageViewModel : PageViewModel
         MainViewModel mainViewModel,
         IMapper mapper,
         PageFactory pageFactory)
-        : base("AddItem", "Add item")
+        : base(Resources.Resources.AddItem, 
+            Resources.Resources.AddItemPageSubtitle)
     {
         QuotationService = quotationService;
         CompanyProfileService = companyProfileService;
@@ -86,14 +88,14 @@ public partial class AddItemPageViewModel : PageViewModel
     private async Task AddSymbol(PageViewModel viewModel)
     {
         PageViewModel navigateToPage = PageFactory.GetPageViewModel<HomePageViewModel>();
-        var navigateToPageTitle = "Home";
+        var navigateToPageTitle = Resources.Resources.Home;
 
         try
         {
             // Call on the profile service to retrieve the company info.
             var profile = await QuotationService.GetProfileAsync(Symbol);
             if (profile! == null!)
-                throw new NullReferenceException("The symbol was not recognized by the quotation service");
+                throw new NullReferenceException(Resources.Resources.SymbolNotRecognized);
 
             // Call the quotation service to retrieve the latest quote for the given symbol
             var quotation = await QuotationService.GetQuoteAsync(Symbol);
@@ -127,7 +129,7 @@ public partial class AddItemPageViewModel : PageViewModel
                     await WatchlistService.Add(watchlistItem);
 
                     navigateToPage = PageFactory.GetPageViewModel<WatchlistPageViewModel>();
-                    navigateToPageTitle = "Watchlist";
+                    navigateToPageTitle = Resources.Resources.Watchlist;
                 }
             }
 
@@ -152,7 +154,7 @@ public partial class AddItemPageViewModel : PageViewModel
                 await HoldingService.Buy(holding);
 
                 navigateToPage = PageFactory.GetPageViewModel<HoldingsPageViewModel>();
-                navigateToPageTitle = "Holdings";
+                navigateToPageTitle = Resources.Resources.Holdings;
             }
         }
         catch (Exception ex)

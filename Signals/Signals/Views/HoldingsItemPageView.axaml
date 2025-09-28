@@ -3,9 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:vm="clr-namespace:Signals.ViewModels"
-			 xmlns:local="clr-namespace:Signals.Views"
              xmlns:entities="clr-namespace:Signals.CoreLayer.Entities"
+             xmlns:lang="clr-namespace:Signals.Resources"
+			 xmlns:local="clr-namespace:Signals.Views"
+             xmlns:vm="clr-namespace:Signals.ViewModels"
              x:Class="Signals.Views.HoldingsItemPageView"
              x:DataType="vm:HoldingsItemPageViewModel"
              xmlns:converters="clr-namespace:Signals.Converters">
@@ -35,12 +36,19 @@
                         </StackPanel>
                         <ScrollViewer Grid.Row="1" IsEnabled="True">
                             <StackPanel>
+                                <!-- {x:Static lang:Resources.AboutParagraph1} 
+                                Name
+                                Exchange
+                                QuoteReceived
+                                -->
                                 <TextBlock Text="{Binding  Symbol}" />
-                                <Label Content="Name" />
+                                <Label Content="{x:Static lang:Resources.Name}" />
                                 <TextBlock Text="{Binding  Name}" />
-                                <Label Content="Exchange" />
+                                <Label Content="{x:Static lang:Resources.Exchange}" />
                                 <TextBlock Text="{Binding  ExchangeName}" />
-                                <Label Content="Quote Received" />
+                                <Label Content=
+                                       "{x:Static lang:Resources.QuoteReceived}" 
+                                       />
                                 <TextBlock Text="{Binding  WhenLatestQuoteReceived, 
                                     StringFormat={}{0:MMM d\, yyyy hh:mm tt}
                                     , Converter={StaticResource LocalTimeConverter}}" />
@@ -58,39 +66,39 @@
 
                                     <!--Display data from quotation service-->
                                     <StackPanel Grid.Row="0" Grid.Column="0">
-                                        <Label Content="Latest Quote" />
+                                        <Label Content="{x:Static lang:Resources.LatestQuote}" />
                                         <TextBlock Text="{Binding  LatestQuotedPrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="0" Grid.Column="2">
-                                        <Label Content="% Change" />
+                                        <Label Content="{x:Static lang:Resources.PercentChange}" />
                                         <TextBlock
                                             Text="{Binding  CurrentDayPercentChange, StringFormat={}{0:#0.0%}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="1" Grid.Column="0">
-                                        <Label Content="Previous Close" />
+                                        <Label Content="{x:Static lang:Resources.PreviousClose}" />
                                         <TextBlock Text="{Binding  PreviousDayClosingPrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="1" Grid.Column="2">
-                                        <Label Content="Today's Open" />
+                                        <Label Content="{x:Static lang:Resources.TodayOpen}" />
                                         <TextBlock Text="{Binding  CurrentDayOpeningPrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="2" Grid.Column="0">
-                                        <Label Content="Daily Low" />
+                                        <Label Content="{x:Static lang:Resources.DailyLow}" />
                                         <TextBlock Text="{Binding  CurrentDayLowPrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="2" Grid.Column="2">
-                                        <Label Content="Daily High" />
+                                        <Label Content="{x:Static lang:Resources.DailyHigh}" />
                                         <TextBlock Text="{Binding  CurrentDayHighPrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
                                     <!-- Fillable fields -->
                                     <StackPanel Grid.Row="3" Grid.Column="0">
-                                        <Label Content="When Purchased" />
+                                        <Label Content="{x:Static lang:Resources.WhenPurchased}" />
                                         <TextBlock
                                             Text="{Binding  WhenLastPurchased, 
                                             StringFormat={}{0:MMM d\, yyyy hh:mm tt}
@@ -98,40 +106,27 @@
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="3" Grid.Column="2">
-                                        <Label Content="Number of Units Held" />
+                                        <Label Content="{x:Static lang:Resources.NumberOfUnitsHeld}" />
                                         <TextBlock
                                             Text="{Binding  UnitsHeld, StringFormat={}{0:#0}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="4" Grid.Column="0">
-                                        <Label Content="Average Purchase Price" />
+                                        <Label Content="{x:Static lang:Resources.AveragePurchasePrice}" />
                                         <TextBlock Text="{Binding  AveragePurchasePrice, StringFormat={}{0:C}}" />
                                     </StackPanel>
 
                                     <StackPanel Grid.Row="4" Grid.Column="2">
-                                        <Label Content="Peak Price Since Purchase" />
+                                        <Label Content="{x:Static lang:Resources.PeakPriceSincePurchase}" />
                                         <TextBlock Text="{Binding  PeakPriceSincePurchase, 
                                                  Converter={x:Static converters:CurrencyOrEmptyConverter.Instance}, 
                                                  UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:C}}" />
                                     </StackPanel>
-
-                                    <!-- ... existing code ... -->
-                                    <StackPanel Grid.Row="6" Grid.Column="0">
-                                        <Label Content="High Target Price" />
-                                        <TextBox
-                                            Text="{Binding HighTargetPrice, Converter={StaticResource DecimalOrEmptyConverter}, UpdateSourceTrigger=PropertyChanged}" />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Row="6" Grid.Column="2">
-                                        <Label Content="Low Target Price" />
-                                        <TextBox
-                                            Text="{Binding LowTargetPrice, Converter={StaticResource DecimalOrEmptyConverter}, UpdateSourceTrigger=PropertyChanged}" />
-                                    </StackPanel>
                                 </Grid>
                                 <StackPanel>
-                                    <Label Content="Use Trailing Stop"></Label>
+                                    <Label Content="{x:Static lang:Resources.UseTrailingStop}"></Label>
                                     <CheckBox IsChecked="{Binding UseTrailingStop}"></CheckBox>
-                                    <Label Content="Trailing Stop"></Label>
+                                    <Label Content="{x:Static lang:Resources.TrailingStop}"></Label>
                                     <Slider Value="{Binding TrailingStop}"></Slider>
                                 </StackPanel>
 
@@ -140,11 +135,11 @@
                         </ScrollViewer>
                         <!-- Buy and Sell buttons ;-->
                         <StackPanel Classes="buttons" Grid.Row="2" Orientation="Horizontal">
-                            <IconButton Classes="buy" IconText="&#xeb48;" Content="Buy"
+                            <IconButton Classes="buy" IconText="&#xeb48;" Content="{x:Static lang:Resources.Buy}"
                                         Command="{Binding $parent[UserControl].((vm:HoldingsItemPageViewModel)DataContext).BuyCommand, FallbackValue=null}"
                                         CommandParameter="{Binding}">
                             </IconButton>
-                            <IconButton Classes="sell" IconText="&#xe478;" Content="Sell"
+                            <IconButton Classes="sell" IconText="&#xe478;" Content="{x:Static lang:Resources.Sell}"
                                         Command="{Binding $parent[UserControl].((vm:HoldingsItemPageViewModel)DataContext).SellCommand, FallbackValue=null}"
                                         CommandParameter="{Binding}">
                             </IconButton>

@@ -2,7 +2,8 @@
 
 public class QuoteLogPageViewModel : PageViewModel
 {
-    public QuoteLogPageViewModel(): base("Quotation Log", "Quotation Log")
+    public QuoteLogPageViewModel(): base(Resources.Resources.QuotationLog, 
+        Resources.Resources.QuotationLogSubtitle)
     {
         
     }

@@ -22,23 +22,25 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     public IMapper Mapper { get; }
     [ObservableProperty] private Holding? _holdingItem;
     [ObservableProperty] private decimal _unitsHeld;
-    
+
     // Todo: decide whether these need to be observables (they probably do).
     public string Symbol { get; set; }
     public string Name { get; set; }
-    
+
     public DateTime WhenPurchased { get; set; }
     public decimal? PeakPriceSincePurchase { get; set; }
     public decimal? HighTargetPrice { get; set; }
     public decimal? LowTargetPrice { get; set; }
     public double TrailingStop { get; set; }
 
-    public bool UseTrailingStop { get; set; }    
-    public decimal? GainOrLoss => HoldingItem?.PeakPriceSincePurchase - HoldingItem?.LatestQuotedPrice; 
-    
+    public bool UseTrailingStop { get; set; }
+    public decimal? GainOrLoss => HoldingItem?.PeakPriceSincePurchase - HoldingItem?.LatestQuotedPrice;
+
     public HoldingsItemPageViewModel()
-        : base("Holdings Item Detail", "Holdings Item Detail")
-    { }
+        : base(Resources.Resources.HoldingsItemDetail,
+            Resources.Resources.HoldingsItemPageSubtitle)
+    {
+    }
 
     public HoldingsItemPageViewModel(
         PageFactory pageFactory,
@@ -47,8 +49,9 @@ public partial class HoldingsItemPageViewModel : PageViewModel
         IQuotationServiceAdapter quotationService,
         IHoldingService holdingService,
         IMapper mapper
-        )
-        : base("Holdings Item Detail", "Holdings Item Detail")
+    )
+        : base(Resources.Resources.HoldingsItemDetail,
+            Resources.Resources.HoldingsItemPageSubtitle)
     {
         PageFactory = pageFactory;
         MainViewModel = mainViewModel;
@@ -61,7 +64,7 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     public async Task LoadData(string symbol)
     {
         HoldingItem = await HoldingService.GetBySymbol(symbol);
-        if (HoldingItem == null) 
+        if (HoldingItem == null)
             MainViewModel.GoToHoldingsCommand.Execute(null);
     }
 
@@ -69,22 +72,22 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     public async Task Buy(Holding holding)
     {
         var quote = await QuotationService.GetQuoteAsync(holding.Symbol);
-        
+
         var buyOrSellViewDialogModel = new BuyOrSellDialogViewModel()
         {
-            Title = $"Buy {holding.Name}",
+            Title = String.Format(Resources.Resources.BuyItemFormat, holding.Name),
             Action = TransactionTypes.Purchase,
             Symbol = holding.Symbol,
             Price = (quote! == null!) ? 0 : quote.LatestQuotedPrice
         };
-        
+
         await DialogService.ShowDialog(MainViewModel, buyOrSellViewDialogModel);
-        
+
         if (buyOrSellViewDialogModel.IsConfirmed == false) return;
-        
+
         // Perform the Buy operation.
-        
-        holding.UnitsHeld = buyOrSellViewDialogModel.Units.Value;
+
+        holding.UnitsHeld = buyOrSellViewDialogModel.Units!.Value;
         // Note: The service will update the holding with the actual average purchase price.
         // This is a bad design.  To correct this, the next version will build the view model here, and
         // pass it to the service, so there is less confusion.
@@ -99,25 +102,24 @@ public partial class HoldingsItemPageViewModel : PageViewModel
     public async Task Sell(Holding holding)
     {
         var quote = await QuotationService.GetQuoteAsync(holding.Symbol);
-        
+
         var buyOrSellViewDialogModel = new BuyOrSellDialogViewModel()
         {
-            Title = $"Sell {holding.Name}",
+            Title = string.Format(Resources.Resources.SellItemFormat, holding.Name),
             Action = TransactionTypes.Sale,
             Symbol = holding.Symbol,
             Price = (quote! == null!) ? 0 : quote.LatestQuotedPrice
         };
-        
+
         await DialogService.ShowDialog(MainViewModel, buyOrSellViewDialogModel);
-        
+
         if (buyOrSellViewDialogModel.IsConfirmed == false) return;
 
-        holding.UnitsHeld = buyOrSellViewDialogModel.Units.Value;
+        holding.UnitsHeld = buyOrSellViewDialogModel.Units!.Value;
         holding.AveragePurchasePrice = buyOrSellViewDialogModel.Price.Value;
-        
+
         await HoldingService.Sell(holding);
-        
+
         MainViewModel.GoToHoldingDetailCommand.Execute(holding.Symbol);
     }
-
 }

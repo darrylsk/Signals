@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:Signals.Controls"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Signals.ViewModels"
+             xmlns:lang="clr-namespace:Signals.Resources"
 			 xmlns:local="clr-namespace:Signals.Views"
              xmlns:entities="clr-namespace:Signals.CoreLayer.Entities"
              x:Class="Signals.Views.WatchlistItemPageView"
@@ -40,42 +41,44 @@
                             <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*,*">
 
                                 <StackPanel Grid.Row="0" Grid.Column="0">
-                                    <TextBlock Text="Latest Quote" />
+                                    <TextBlock Text="{x:Static lang:Resources.LatestQuote}" />
                                     <TextBlock Text="{Binding  LatestQuotedPrice, StringFormat={}{0:C}}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="0" Grid.Column="1">
-                                    <TextBlock Text="% Change" />
+                                    <TextBlock Text="{x:Static lang:Resources.PercentChange}" />
                                     <TextBlock Text="{Binding  CurrentDayPercentChange, StringFormat={}{0:#0.0%}}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="1" Grid.Column="0">
-                                    <TextBlock Text="Previous Close" />
+                                    <TextBlock Text="{x:Static lang:Resources.PreviousClose}" />
                                     <TextBlock Text="{Binding  PreviousDayClosingPrice, StringFormat={}{0:C}}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="1" Grid.Column="1">
-                                    <TextBlock Text="Today's Open" />
+                                    <TextBlock Text="{x:Static lang:Resources.TodayOpen}" />
                                     <TextBlock Text="{Binding  CurrentDayOpeningPrice, StringFormat={}{0:C}}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="2" Grid.Column="0">
-                                    <TextBlock Text="Daily Low" />
+                                    <TextBlock Text="{x:Static lang:Resources.DailyLow}" />
                                     <TextBlock Text="{Binding  CurrentDayLowPrice, StringFormat={}{0:C}}" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="2" Grid.Column="1">
-                                    <TextBlock Text="Daily High" />
+                                    <TextBlock Text="{x:Static lang:Resources.DailyHigh}" />
                                     <TextBlock Text="{Binding  CurrentDayHighPrice, StringFormat={}{0:C}}" />
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
                         <StackPanel Classes="buttons" Grid.Row="1" Orientation="Horizontal">
-                            <IconButton Classes="command" IconText="&#xE4A6;" Content="Delete"
+                            <IconButton Classes="command" IconText="&#xE4A6;" 
+                                        Content="{x:Static lang:Resources.Delete}"
                                         Command="{Binding $parent[UserControl].((vm:WatchlistItemPageViewModel)DataContext).DeleteWatchlistItemCommand, FallbackValue=null}"
                                         CommandParameter="{Binding}">
                             </IconButton>
-                            <IconButton Classes="buy" IconText="&#xEB48;" Content="Buy"
+                            <IconButton Classes="buy" IconText="&#xEB48;" 
+                                        Content="{x:Static lang:Resources.Buy}"
                                         Command="{Binding $parent[UserControl].((vm:WatchlistItemPageViewModel)DataContext).BuyCommand, FallbackValue=null}"
                                         CommandParameter="{Binding}">
                             </IconButton>

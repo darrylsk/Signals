@@ -13,18 +13,17 @@ namespace Signals.ViewModels;
 
 public partial class HomePageViewModel : PageViewModel
 {
-    public HomePageViewModel() : base("Home",
-        "Main entry page (not sure if this will ever be useful - might remove)")
-    {
-    }
+    public HomePageViewModel() : base(Resources.Resources.Home,
+        Resources.Resources.Home)
+    { }
 
     public HomePageViewModel(
         IFileService fileService,
         IIndexItemService indexItemService,
         IQuotationServiceAdapter quotationService,
         IMapper mapper)
-        : base("Home",
-            "Main entry page (not sure if this will ever be useful - might remove)")
+        : base(Resources.Resources.Home,
+            Resources.Resources.Home)
     {
         FileService = fileService;
         IndexItemService = indexItemService;
@@ -57,24 +56,5 @@ public partial class HomePageViewModel : PageViewModel
     {
         IndexEtfList = await IndexItemService.GetAll();
     }
-
-    /*
-    [RelayCommand]
-    private async Task LookupSymbol(string symbol)
-    {
-        IndexEtfItem= null;
-        IsItemFound = false;
-        var profile = await QuotationService.GetProfileAsync(symbol);
-        var quote = await QuotationService.GetQuoteAsync(symbol);
-        var item = Mapper.Map<IndexItem>(quote);
-        item.Name = profile?.Name;
-        item.Symbol = profile?.Symbol;
-        IndexEtfItem = item;
-        // IndexEtfItem = Mapper.Map<IndexItem>(quote);
-        // IndexEtfItem.Name = profile?.Name;
-        // IndexEtfItem.Symbol = profile?.Symbol;
-
-        IsItemFound = true;
-    }
-*/
+    
 }

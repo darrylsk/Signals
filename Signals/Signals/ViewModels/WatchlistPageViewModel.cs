@@ -24,8 +24,8 @@ public partial class WatchlistPageViewModel : PageViewModel
     /// <summary>
     /// Design constructor to satisfy the previewer
     /// </summary>
-    public WatchlistPageViewModel():base("Watchlist",
-        "Tracking only - not part of portfolio")
+    public WatchlistPageViewModel():base( Resources.Resources.Watchlist,
+        Resources.Resources.WatchlistPageSubtitle)
     { }
     
     /// <inheritdoc/>
@@ -33,7 +33,8 @@ public partial class WatchlistPageViewModel : PageViewModel
         IWatchlistService watchlistService,
         IMapper watchlistMapper,
         PageFactory pageFactory) 
-        : base("Watchlist", "Tracking only - not part of portfolio")
+        : base( Resources.Resources.Watchlist,
+            Resources.Resources.WatchlistPageSubtitle)
     {
         WatchlistService = watchlistService;
         WatchlistMapper = watchlistMapper;
@@ -44,11 +45,5 @@ public partial class WatchlistPageViewModel : PageViewModel
     private async Task LoadData()
     {
         Watchlist = await WatchlistService.GetAll();
-    }
-
-    [RelayCommand]
-    public void Test()
-    {
-        System.Console.WriteLine("This is a test.");
     }
 }

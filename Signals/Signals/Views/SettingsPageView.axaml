@@ -14,7 +14,8 @@
 
     <Grid RowDefinitions="Auto, *, Auto">
         <StackPanel Grid.Row="0">
-            <TextBlock  HorizontalAlignment="Center" Classes="page-title" Text="Configure settings and preferences"></TextBlock>
+            <TextBlock  HorizontalAlignment="Center" Classes="page-title" 
+                        Text="{x:Static lang:Resources.SettingsPageHeading}"></TextBlock>
         </StackPanel>
 
         <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, *, Auto" ColumnDefinitions="Auto, 16, *">
@@ -79,8 +80,6 @@
                 <CheckBox Content="{x:Static lang:Resources.Use}"
                           IsChecked="{Binding DefaultUseHighGainMultiplier}">
                 </CheckBox>
-                <!--<Label 
-                    Content="{x:Static lang:Resources.SettingsDefaultUseHighGainMultiplierLabel}"></Label>-->
             </StackPanel>
 
             <!-- Default Trailing Stop -->

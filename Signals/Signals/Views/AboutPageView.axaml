@@ -33,18 +33,12 @@
                         Command="{Binding GetKeyCommand}"
                         CommandParameter="{Binding $self}" />
                 <TextBlock Name="VersionStatement" Text="{x:Static lang:Resources.ApplicationVersionStatement}" />
-                <TextBlock Name="VersionStatement2" Text="Version 1.0 released 2025" />
                 <Button Name="BtnCheckForNewVersion" Content="{x:Static lang:Resources.BtnCheckForNewVersionContent}"
                         Command="{Binding CheckForNewVersionCommand}" />
                 
-                <!--<Label Content="Application Data Folder"></Label>
-                <TextBlock Text="{Binding ApplicationDataFolderName}" />-->
-
-                <Label Content="Local Application Data Folder"></Label>
+                <Label Content="{x:Static lang:Resources.LocalApplicationDataFolder}"></Label>
                 <TextBlock Text="{Binding ApplicationLocalDataFolderName}" />
 
-                <!--<Label Content="Common Application Data Folder"></Label>
-                <TextBlock Text="{Binding ApplicationCommonDataFolderName}" />-->
             </StackPanel>
         </ScrollViewer>
     </Grid>

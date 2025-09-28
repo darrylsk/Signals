@@ -19,7 +19,7 @@
                 <Label Classes="icon" FontSize="24" Content="&#xE058;"></Label>
             </StackPanel>
         </Button>
-        <TextBlock>Current version is 1.0 released 2025</TextBlock>
+        <TextBlock Text="{x:Static lang:Resources.CurrentVersionStatement}"></TextBlock>
         <Button Name="BtnCheckForNewVersion" Content="{x:Static lang:Resources.BtnCheckForNewVersionContent}"></Button>
     </StackPanel>
 </UserControl>

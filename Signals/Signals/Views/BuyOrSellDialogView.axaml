@@ -50,6 +50,7 @@
                     <DatePicker SelectedDate="{Binding TransactionDate}"></DatePicker>
                     <TimePicker ClockIdentifier="12HourClock" SelectedTime="{Binding TransactionTime}"></TimePicker>
                     <Label Content="{x:Static lang:Resources.UnitsLabel}"></Label>
+                    
                     <!--Bug - can't use a value converter because the Numeric UpDown won't bind if you do.-->
                     <!--The value converter prevents an invalid cast exception if the TextBox part of the UpDown is 
                     empty.  The following is a work-around. Setting UpdateSourceTrigger=LostFocus and providing defaults
